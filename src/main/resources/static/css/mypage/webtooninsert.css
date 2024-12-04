@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: space-between;
-    width: 1190px;
+    width: 1200px;
     height: 64px;
     margin: 0 auto;
     border: 1px solid red;
@@ -20,3 +20,29 @@
     justify-content: center;
     line-height: 64px;
 }
+
+.container{
+    width: 1200px;
+    margin: 0 auto;
+    border: 1px dotted blue;
+}
+.rule{
+    width: 1150px;
+    margin: 0 auto;
+    background: #e3e0e0;
+}
+
+.ruleradio{
+    height: 20px;
+    line-height: 20px;
+    display: flex;
+    align-content: center;
+}
+
+input[type=radio]{
+    width: 20px;
+    height: 20px;
+
+}
+
+
