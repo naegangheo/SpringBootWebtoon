@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+
+/*------------------------------------------------*/
+
+.wrap .main{
+    width: 1200px;
+    border:1px dotted black;
+    margin: 0 auto;
+}
+
+.m_top{
+    width: 1200px;
+    height: 450px;
+    border: 1px dotted orange;
+}
+
+.m_top_week{
+    vertical-align: middle;
+}
+
+.top_week_cate{
+    display: flex;
+    padding: 10px;
+
+}
+
+.top_week_img {
+    width: 1200px;
+    overflow: hidden;
+    position: relative; /* 버튼을 절대 위치로 배치할 수 있게 부모 요소를 설정 */
+}
+
+.image_container {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* 슬라이딩 효과 */
+}
+
+.image_wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.image_wrapper div a img{
+    width: 230px;
+    padding: 5px;
+}
+a.prev, a.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 10px;
+    border-radius: 50%;
+    border: 0.5px solid #00DC64;
+    background: #00DC64;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    line-height: 10px;
+    opacity: 0.6; /* 호버 시 효과 */
+}
+
+a.prev img, a.next img {
+    width: 30px;
+    height: 40px;
+}
+
+a.prev{
+    left: 0; /* 오른쪽 끝에 위치 */
+}
+a.next{
+    right: 0;
+}
+
+a.prev:hover,
+a.next:hover {
+    opacity: 0.3; /* 호버 시 효과 */
+}
+
+.m_mid{
+    display: flex;
+    padding: 10px;
+}
+
+.m_mid_left{
+    width : 795px;
+    border: 1px dotted blue;
+    padding: 10px;
+}
+
+.mid_genre{
+    height: 310px;
+    border: 1px solid orange;
+}
+
+.genre{
+    border: 1px dotted orange;
+}
+
+.mid_genre_cate{
+    display: flex;
+    padding-left: 5px;
+    text-align: center;
+}
+
+.genre_img{
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+.mid_new{
+
+    height: 310px;
+    display: flex;
+    border: 1px dotted orange;
+
+}
+
+.new{
+    width : 795px;
+}
+
+
+.new_img{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.m_mid_right{
+    width: 395px;
+    border: 1px dotted red;
+    padding: 10px;
+}
+
+#ad{
+   justify-content: center;
+    align-items: center;
+}
+
+.mid_right_list{
+    border: 1px dotted red;
+    padding: 15px;
+
+}
+
+
+.list_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.gender{
+
+}
+
+ul{
+    display: block;
+    padding: 10px;
+    border: 1px solid red;
+}
+
+li{
+    list-style-type: none;
+    display: flex;
+    padding: 10px;
+    border: 1px dotted red;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title{
+    padding: 5px;
+    border: 1px solid red;
+    width: 150px;
+}
+
+li div {
+    display: flex;
+    justify-content: space-between;
+}
+
+li >div >label{
+    font-weight: bold;
+    font-size: 200%;
+    border: 1px solid blue;
+    text-align: center;
+    line-height: 60px;
+}
+
+.notice{
+    width: 300px;
+    padding: 10px;
+}
+
+label{
+    font-family: Verdana;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+
+
+
+
+/*--------------------------------------------------*/
+
+
