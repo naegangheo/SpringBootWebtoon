@@ -90,3 +90,40 @@ ul{
 .list{
 
 }
+
+.replyform{
+    position: relative;
+    border: 1px black solid;
+    border-radius: 5px;
+    display: block;
+    height: 140px;
+}
+
+#reply_input{
+    position: absolute;
+    left :9px;
+    width: 800px;
+    border:none;
+    resize: none;
+    padding: 10px;
+}
+
+#submit_button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: yellowgreen;
+    border-radius: 5px;
+    height: 30px;
+}
+
+.replylist_row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.replylist{
+    width: 840px;
+    height: 100px;
+    background: blue;
+}

@@ -31,6 +31,28 @@
                 <div class="list" >
                     <img src="images/webtoon/webimg1.png" width="840px;" height="1080px" />
                 </div>
+
+                <div class="reply">
+                    <h2>댓글</h2>
+                    <div class="replyform">
+                        <div>#아이디</div>
+                        <textarea id="reply_input" placeholder="댓글을 입력하세요..." rows="4" cols="100"></textarea>
+                        <button id="submit_button">댓글 추가</button>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="replylist_row">
+                            <div class="replylist_title">작성자</div>
+                            <div class="replylist_title">내용</div>
+                            <div class="replylist_title">작성일시</div>
+                        </div>
+                        <div class="replylist">
+<%--                            댓글리스트--%>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
 

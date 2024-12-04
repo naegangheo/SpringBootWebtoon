@@ -1,0 +1,22 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 1190px;
+    height: 64px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+.logo{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.id{
+    display: flex;
+    height: 64px;
+    align-content: center;
+    justify-content: center;
+    line-height: 64px;
+}
