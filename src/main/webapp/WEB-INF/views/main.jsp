@@ -23,7 +23,7 @@
                  <div class="top_week_img">
 
                      <a href="#" class="prev">
-                         <img src="/images/left_arrow.png"/>
+                         <img src="/images/left_arrow.png"/>aaaa
                      </a>
 
                      <div class="image_container">
