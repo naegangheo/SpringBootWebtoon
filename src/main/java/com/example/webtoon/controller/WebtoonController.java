@@ -36,5 +36,8 @@ public class WebtoonController {
         return "notice/noticemain";
     }
 
+    @GetMapping("/mypage")
+    public String mypage() {return "mypage/webtooninsert";}
+
 
 }
