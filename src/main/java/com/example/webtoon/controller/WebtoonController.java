@@ -39,5 +39,11 @@ public class WebtoonController {
     @GetMapping("/mypage")
     public String mypage() {return "mypage/webtooninsert";}
 
+    @GetMapping("/best")
+    public String best(){
+        return "best";
+
+    }
+
 
 }
