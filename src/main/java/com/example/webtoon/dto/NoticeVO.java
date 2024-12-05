@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class noticeVO {
+public class NoticeVO {
 
     private int nseq;       // 공지사항 번호
     private String adminid; // 관리자 ID

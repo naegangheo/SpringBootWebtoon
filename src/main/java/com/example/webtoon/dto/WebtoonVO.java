@@ -3,7 +3,7 @@ package com.example.webtoon.dto;
 import lombok.Data;
 
 @Data
-public class webtoonVO {
+public class WebtoonVO {
     // 웹툰 관련 속성
     private int wseq;            // 웹툰 순번
     private String userid;       // 회원 ID (작성자)

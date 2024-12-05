@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class qnaVO {
+public class QnaVO {
 
     private int qseq;      // Q&A 번호
     private String userid; // 사용자 ID
