@@ -1,0 +1,138 @@
+<!--<%@ page contentType="text/html;charset=UTF-8" language="java" %>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 수정</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #2db400;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        section {
+            margin-top: 30px;
+        }
+
+        .profile-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-section img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .profile-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .profile-buttons button {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-buttons button:hover {
+            background-color: #e6e6e6;
+        }
+
+        .name-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .name-section input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #757575;
+            font-size: 0.9rem;
+        }
+
+        .footer img {
+            width: 300px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+        div {
+            border: dashed #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>프로필 수정</h1>
+        </header>
+        <section>
+            <div class="profile-section">
+                <label for="userid">이름</label>
+                <div class="profile-buttons">
+                    <img src="profile.jpg" alt="프로필 사진">
+                    <button>사진 변경</button>
+                    <button>캐릭터 만들기</button>
+                    <button>삭제</button>
+                </div>
+            </div>
+            <div class="name-section">
+                <label for="nickname">별명</label>
+                <input type="text" id="nickname" value="와사비초밥">
+            </div>
+        </section>
+        <footer class="footer">
+            <img src="footer-ad.png" alt="광고">
+            <p>Copyright © NAVER Corp. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
