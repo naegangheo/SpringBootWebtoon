@@ -3,7 +3,7 @@ package com.example.webtoon.dto;
 import lombok.Data;
 
 @Data
-public class adminVO {
+public class AdminVO {
 
     private String adminid;  // 관리자 ID
     private String pwd;      // 비밀번호
