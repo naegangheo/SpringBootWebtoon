@@ -56,7 +56,7 @@
                 </c:choose>
             </nav>
             <div id="week_selector" class="week_selector">
-                <a href="#">요일전체</a>
+                <a href="#">요일전체</a> 
                 <a href="#">월</a>
                 <a href="#">화</a>
                 <a href="#">수</a>
