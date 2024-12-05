@@ -4,7 +4,6 @@
     width: 1200px;
     height: 64px;
     margin: 0 auto;
-    border: 1px solid red;
 }
 
 .logo{
@@ -24,12 +23,13 @@
 .container{
     width: 1200px;
     margin: 0 auto;
-    border: 1px dotted blue;
+    background: #ece9e9;
 }
-.rule{
+.rule, .info, .images{
     width: 1150px;
     margin: 0 auto;
-    background: #e3e0e0;
+    background: white;
+
 }
 
 .ruleradio{
@@ -38,11 +38,100 @@
     display: flex;
     align-content: center;
 }
+.ruleradio label{
+    display: flex;
+    align-content: center;
+    line-height: 20px;
+}
 
 input[type=radio]{
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 
 }
 
+.tag{
+    display: flex;
+}
+
+.genre, .subject, .content{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.genreradio{
+    display: flex;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+input[type="radio"] {
+    margin-right: 8px;
+    accent-color: green;
+    width: 20px;
+    height: 20px;
+}
+
+textarea {
+    resize: none;
+}
+
+
+
+button:hover {
+    background-color: #45a049;
+}
+
+.genre label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+#content{
+    width: 840px;
+}
+
+.imginsert{
+    display: flex;
+}
+
+.sub{
+    width: 150px;
+}
+
+button {
+    display: block;
+    width: 100px;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+.bottom_button{
+    display: flex;
+    justify-content: flex-end;
+
+
+}
 
