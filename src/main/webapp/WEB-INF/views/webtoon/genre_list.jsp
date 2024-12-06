@@ -11,7 +11,7 @@
             <c:forEach items="${genreList}" var="wvo">
                 <div class="best-item">
                     <a href="genreBest?wseq=${wvo.wseq}">
-                        <img src="/images/noname.jpg"/>
+                        <img src="/images/main/noname.jpg"/>
                     </a>
                     <a href="genreBest?wseq=${wvo.wseq}">
                         ${subject}
@@ -43,7 +43,7 @@
             <c:forEach begin="1" end="30" var="index">
                 <div class="grid-item">
                     <a href="webtoon_view?wseq="+wseq>
-                        <img src="/images/noname.jpg" alt="작품 이미지">
+                        <img src="/images/main/noname.jpg" alt="작품 이미지">
                     </a>
                     <div class="content">
                         <p class="title">

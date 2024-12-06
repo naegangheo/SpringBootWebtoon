@@ -21,7 +21,7 @@
         <header>
             <div class="h_left">
                 <a href="/">
-                    <img src="/images/logo.png">
+                    <img src="images/main/logo.png">
                 </a>
             </div>
             <div class="h_right">
@@ -29,7 +29,7 @@
                     <input type="text" placeholder="검색"/>
                     <div>
                         <a href="#">
-                            <img src="/images/search.png">
+                            <img src="images/main/search.png">
                         </a>
                     </div>
                 </div>
