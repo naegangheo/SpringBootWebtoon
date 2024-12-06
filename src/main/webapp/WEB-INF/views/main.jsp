@@ -6,7 +6,7 @@
         <div class="m_top">
              <div class="m_top_week"> <%-- 요일별  best webtoon--%>
                  <div class="top_week_cate">
-                    <label>#웹툰</label>&nbsp;
+                    <label>${message_week}웹툰</label>&nbsp;
                     <div class="week_cate">   <%-- 요일--%>
                         <a href="#">
                             인기순

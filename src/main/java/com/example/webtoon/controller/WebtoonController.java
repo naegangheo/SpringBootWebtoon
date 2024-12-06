@@ -29,4 +29,5 @@ public class WebtoonController {
         return "webtoon/best_list";
     }
 
+
 }

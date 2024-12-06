@@ -11,7 +11,6 @@ $(document).ready(function() {
     });
 });
 
-
 //=============
 
 $(document).ready(function() {
@@ -25,9 +24,21 @@ $(document).ready(function() {
         $('#genre_selector').slideUp();
     });
 });
+//==================
 
+$(document).ready(function() {
 
-//=============
+    $('#mypage_link').click(function(event) {
+        event.preventDefault();
+        $('#mypage_selector').slideToggle();
+    });
+
+    $('nav.main_category a').not('#mypage_link').click(function() {
+        $('#mypage_selector').slideUp();
+    });
+});
+
+//============================================
 
 $(document).ready(function() {
     $(".main_category a").click(function() {
@@ -42,7 +53,6 @@ $(document).ready(function() {
         $(this).addClass("selected");
     });
 });
-// ======================================
 
 $(document).ready(function() {
     $(".genre_selector a").click(function() {
@@ -50,6 +60,14 @@ $(document).ready(function() {
         $(this).addClass("selected");
     });
 });
+
+$(document).ready(function() {
+    $(".mypage_selector a").click(function() {
+        $(".mypage_selector a").removeClass("selected");
+        $(this).addClass("selected");
+    });
+});
+
 
 //======================================
 $(document).ready(function() {

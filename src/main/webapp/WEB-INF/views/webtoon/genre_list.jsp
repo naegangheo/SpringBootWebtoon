@@ -9,19 +9,25 @@
 
         <div class="best-wrapper">
             <div class="best-item">
-                <img src="/images/noname.jpg" alt="webtoon">
+                <a href="#">
+                    <img src="/images/noname.jpg" alt="webtoon">
+                </a>
                 <a href="#">작품 이름 1</a>
                 <div class="author"><a href="#">작가 이름</a></div>
                 <div class="views">👁 1234</div>
             </div>
             <div class="best-item">
-                <img src="/images/noname.jpg" alt="webtoon">
+                <a href="#">
+                    <img src="/images/noname.jpg" alt="webtoon">
+                </a>
                 <a href="#">작품 이름 2</a>
                 <div class="author"><a href="#">작가 이름</a></div>
                 <div class="views">👁 2345</div>
             </div>
             <div class="best-item">
-                <img src="/images/noname.jpg" alt="webtoon">
+                <a href="#">
+                    <img src="/images/noname.jpg" alt="webtoon">
+                </a>
                 <a href="#">작품 이름 3</a>
                 <div class="author"><a href="#">작가 이름</a></div>
                 <div class="views">👁 3456</div>
