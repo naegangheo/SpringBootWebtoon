@@ -1,7 +1,7 @@
 package com.example.webtoon.service.member;
 
 import com.example.webtoon.dao.member.IMemberDao;
-import com.example.webtoon.dto.member.MemberVO;
+import com.example.webtoon.dto.MemberVO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +20,11 @@ public class MemberService {
     public MemberVO getMember(@NotEmpty String userid) {
         return mdao.getMember( userid );
     }
+
+    public void updateMember(MemberVO mvo) {
+        mdao.updateMember(mvo);
+    }
+
+
 
 }

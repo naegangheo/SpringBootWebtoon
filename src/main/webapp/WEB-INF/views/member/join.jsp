@@ -35,27 +35,19 @@
             <label>성별</label>
             <div class="gender-group" style="width: 50% ">
                 <div class="gender-item">
-                    <div class="gender-label"><input type="radio" name="gender" id="male" value="m"></div><!--
+                    <div class="gender-label"><input type="radio" name="gender" id="male" value="M"></div><!--
                     --><div class="gender-label"><label for="male" class="gender-label">&nbsp;남자</label></div>
                 </div>
                 <div class="gender-item">
-                    <div class="gender-label"><input type="radio" name="gender" id="female" value="f" class="gender-label"></div><!--
+                    <div class="gender-label"><input type="radio" name="gender" id="female" value="F" class="gender-label"></div><!--
                     --><div class="gender-label"><label for="female" class="gender-label">&nbsp;여자</label></div>
                 </div>
                 <div class="gender-item">
-                    <div class="gender-label"><input type="radio" name="gender" id="none" value="n" class="gender-label"></div><!--
+                    <div class="gender-label"><input type="radio" name="gender" id="none" value="N" class="gender-label"></div><!--
                     --><div class="gender-label"><label for="none" class="gender-label">&nbsp;선택안함</label></div>
                 </div>
             </div>
         </div>
-        <%--        <div class="form-group">--%>
-        <%--            <label for="country">국가</label>--%>
-        <%--            <select id="country">--%>
-        <%--                <option value="+82">대한민국 +82</option>--%>
-        <%--                <option value="+1">미국 +1</option>--%>
-        <%--                <option value="+81">일본 +81</option>--%>
-        <%--            </select>--%>
-        <%--        </div>--%>
         <div class="form-group">
             <label for="phone">휴대전화번호</label>
             <input type="tel" name="phone" id="phone" placeholder="전화번호 입력">

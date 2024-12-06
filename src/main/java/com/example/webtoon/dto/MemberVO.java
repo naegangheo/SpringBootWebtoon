@@ -1,4 +1,4 @@
-package com.example.webtoon.dto.member;
+package com.example.webtoon.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
