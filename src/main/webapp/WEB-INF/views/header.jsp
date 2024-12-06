@@ -62,14 +62,14 @@
                 </c:choose>
             </nav>
             <div id="week_selector" class="week_selector">
-                <a href="#">요일전체</a>
-                <a href="#">월</a>
-                <a href="#">화</a>
-                <a href="#">수</a>
-                <a href="#">목</a>
-                <a href="#">금</a>
-                <a href="#">토</a>
-                <a href="#">일</a>
+                <a href="/week?week=0">요일전체</a>
+                <a href="/week?week=1">월</a>
+                <a href="/week?week=2">화</a>
+                <a href="/week?week=3">수</a>
+                <a href="/week?week=4">목</a>
+                <a href="/week?week=5">금</a>
+                <a href="/week?week=6">토</a>
+                <a href="/week?week=7">일</a>
             </div>
 
         </div>

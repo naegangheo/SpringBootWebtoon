@@ -3,7 +3,7 @@
 <head>
     <title>CREATE</title>
 </head>
-<link rel="stylesheet" href="/css/mypage/webtooninsert.css">
+<link rel="stylesheet" href="/css/mypage/webtoon_insert.css">
 <body>
 <div class="header">
     <div class="logo"><img src="images/mypage/insertwebtoonlogo.png"/></div>
