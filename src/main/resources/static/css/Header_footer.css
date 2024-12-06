@@ -193,3 +193,14 @@ footer a{
     }
 
 }
+
+.in-out-btn {
+    border: 1px solid #ccc;
+    width: auto;
+    min-width: 50px;
+    padding: 1px 4px 3px 4px;
+    font-size: 12px; 
+    cursor: pointer;
+    text-align: center;
+    margin-right: 5px;
+}

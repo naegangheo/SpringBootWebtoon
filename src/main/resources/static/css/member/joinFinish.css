@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
-
 }
 .main-container {
     width: 600px;
@@ -23,30 +22,20 @@ body {
     text-align: center;
 }
 h2 {
-    font-size: 20px;
+    font-size: 45px;
     margin-bottom: 20px;
     color: #2db400;
 }
 .form-group {
-    margin-bottom: 15px;
-    text-align: left;
+    text-align: center;
+    margin: 50px 0px 50px 0px;
 }
 .form-group label {
     display: block;
     font-size: 14px;
     margin-bottom: 5px;
 }
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.form-group input:focus {
-    border-color: #2db400;
-    outline: none;
-}
+
 .btn-submit {
     display: block;
     width: 100%;
@@ -61,7 +50,6 @@ h2 {
 .btn-submit:hover {
     background-color: #249a00;
 }
-.bottom,
 .footer
 {
     width: 540px;
@@ -69,26 +57,7 @@ h2 {
     color: #757575;
     text-align: center;
 }
-.bottom-group{
-    display: inline-block;
-    margin-left: 10px;
-    font-size: 14px;
-}
-a {
-    text-decoration: none;
-    color: inherit;
-}
 .footer {
     font-size: 12px;
-    margin-top: 50px;
-}
-
-h2 {
-    font-size: 45px;
-}
-.form-group {
-    margin: 50px 0px 50px 0px;
-}
-.footer {
     margin-top: 50px;
 }

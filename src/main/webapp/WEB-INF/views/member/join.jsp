@@ -10,55 +10,55 @@
 <body>
 <div class="container">
     <h2>회원 가입</h2>
-    <form>
+    <form action="member" method="POST">
         <div class="form-group">
-            <label for="id">아이디</label>
-            <input type="text" id="id" placeholder="아이디 입력">
+            <label for="userid">아이디</label>
+            <input type="text" name="userid" id="userid" placeholder="아이디 입력">
         </div>
         <div class="form-group">
-            <label for="password">비밀번호</label>
-            <input type="password" id="password" placeholder="비밀번호 입력">
+            <label for="pwd">비밀번호</label>
+            <input type="password" name="pwd" id="pwd" placeholder="비밀번호 입력">
         </div>
         <div class="form-group">
-            <label for="email">[선택] 이메일 주소</label>
-            <input type="email" id="email" placeholder="이메일 입력">
+            <label for="email">이메일 주소</label>
+            <input type="email" name="email" id="email" placeholder="이메일 입력">
         </div>
         <div class="form-group">
             <label for="name">이름</label>
-            <input type="text" id="name" placeholder="이름 입력">
+            <input type="text" name="name" id="name" placeholder="이름 입력">
         </div>
         <div class="form-group">
             <label for="birth">생년월일</label>
-            <input type="text" id="birth" placeholder="생년월일 8자리 입력">
+            <input type="text" name="birth" id="birth" placeholder="생년월일 8자리 입력">
         </div>
         <div class="form-group">
             <label>성별</label>
             <div class="gender-group" style="width: 50% ">
                 <div class="gender-item">
-                    <div class="gender-label"><input type="radio" name="gender" id="male" value="male"></div><!--
+                    <div class="gender-label"><input type="radio" name="gender" id="male" value="m"></div><!--
                     --><div class="gender-label"><label for="male" class="gender-label">&nbsp;남자</label></div>
                 </div>
                 <div class="gender-item">
-                    <div class="gender-label"><input type="radio" name="gender" id="female" value="female" class="gender-label"></div><!--
+                    <div class="gender-label"><input type="radio" name="gender" id="female" value="f" class="gender-label"></div><!--
                     --><div class="gender-label"><label for="female" class="gender-label">&nbsp;여자</label></div>
                 </div>
                 <div class="gender-item">
-                    <div class="gender-label"><input type="radio" name="gender" id="none" value="none" class="gender-label"></div><!--
+                    <div class="gender-label"><input type="radio" name="gender" id="none" value="n" class="gender-label"></div><!--
                     --><div class="gender-label"><label for="none" class="gender-label">&nbsp;선택안함</label></div>
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="country">국가</label>
-            <select id="country">
-                <option value="+82">대한민국 +82</option>
-                <option value="+1">미국 +1</option>
-                <option value="+81">일본 +81</option>
-            </select>
-        </div>
+        <%--        <div class="form-group">--%>
+        <%--            <label for="country">국가</label>--%>
+        <%--            <select id="country">--%>
+        <%--                <option value="+82">대한민국 +82</option>--%>
+        <%--                <option value="+1">미국 +1</option>--%>
+        <%--                <option value="+81">일본 +81</option>--%>
+        <%--            </select>--%>
+        <%--        </div>--%>
         <div class="form-group">
             <label for="phone">휴대전화번호</label>
-            <input type="tel" id="phone" placeholder="전화번호 입력">
+            <input type="tel" name="phone" id="phone" placeholder="전화번호 입력">
         </div>
         <button type="submit" class="btn-submit">입력 완료</button>
     </form>
