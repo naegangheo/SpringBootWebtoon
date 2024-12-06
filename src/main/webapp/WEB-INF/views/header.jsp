@@ -50,7 +50,7 @@
             <nav class="main_category">
                 <a href="/">Home</a>&nbsp;
                 <a href="#" id="category_link">Category</a>&nbsp;
-                <a href="best">Best</a>&nbsp;
+                <a href="/best">Best</a>&nbsp;
                 <a href="#">Genre</a>&nbsp;
                 <c:choose>
                     <c:when test="${empty loginUser}"> <%-- 로그아웃시 :  안 보임 --%>
