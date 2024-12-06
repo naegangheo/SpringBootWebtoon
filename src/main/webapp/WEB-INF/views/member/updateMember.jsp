@@ -1,98 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 정보</title>
-
-    <style>
-       body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-        }
-        
-        /*
-        div {
-            border: 1px solid red;
-        }
-        */
-
-        .profile-container {
-            max-width: 600px;
-            margin: 30px auto;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        label {
-            width: 120px;
-            display: inline-block;
-        }
-
-        .section {
-            margin-bottom: 20px;
-            border: 1px solid #eee;
-            border-radius: 15px;
-        }
-
-        .section>div {
-            padding : 17px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            border-radius: 10px 10px 0px 0px;
-            background: linear-gradient(90deg, #09aa5d, #09ac90);
-        }
-
-        .section-middle {
-            border-radius: 0px 0px 0px 0px;
-        }
-
-        .section-bottom {
-            border-radius: 0px 0px 10px 10px;
-        }
-
-        .last-button {
-            display: block;
-            width: 100%;
-            /*height: max-content;*/
-            padding: 3px 10px 3px 10px;
-            background-color: #2db400;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            background: linear-gradient(90deg, #09aa5d, #09ac90);
-        }
-
-        .pwd-edit-button {
-            float: right;
-            padding: 5px 10px;
-            font-size: 14px;
-            color: #5a6174;
-            background-color: #f6f6f8;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .input-type-box {
-            width: 100%; /* 가로 폭 */
-            padding: 10px; /* 안쪽 여백 */
-            margin: 8px 0; /* 위아래 여백 */
-            border: 1px solid #ccc; /* 테두리 */
-            border-radius: 5px; /* 둥근 테두리 */
-            font-size: 14px; /* 글꼴 크기 */
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 내부 그림자 */
-        }
-    </style>
+    <link href="css/member/updateMember.css" rel="stylesheet">
 </head>
 <body>
 <form action="updateMember" method="POST" name="updateMember">
@@ -104,8 +17,11 @@
                 <span>${loginUser.userid}</span>
             </div>
             <div class="section-middle">
-                <label>현재 비밀번호 : <button type="button" onclick="openPasswordModal()">비밀번호 수정</button></label>
+                <label>현재 비밀번호 :</label>
                 <input type="password" class="input-type-box" id="profileCurrentPwd" name="currentPwd" placeholder="정보를 수정하려면 비밀번호를 입력하세요">
+            </div>
+            <div class="section-middle">
+                <button type="button" onclick="openPasswordModal()">비밀번호 수정</button>
             </div>
         </div>
 
@@ -127,9 +43,10 @@
                 <label>전화번호 : </label>
                 <input type="tel" class="input-type-box" name="phone" value="${loginUser.phone}">
             </div>
-            
+        </div>
+        <div class="last-button">
             <input type="submit" class="last-button" value="수정">
-        </div>        
+        </div>
     </div>
 </form>
 

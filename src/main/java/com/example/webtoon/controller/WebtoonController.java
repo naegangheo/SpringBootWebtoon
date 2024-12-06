@@ -22,10 +22,12 @@ public class WebtoonController {
     }
 
     @GetMapping("/mypage")
+
     public String mypage() {return "webtoon_insert";}
 
+
     @GetMapping("/best")
-    public String best(){
+    public String best() {
         return "webtoon/best_list";
     }
 
