@@ -11,21 +11,6 @@ public class WebtoonController {
         return "main";
     }
 
-//    @GetMapping("/login")
-//    public String login() {
-//        return "member/login";
-//    }
-//
-//    @GetMapping("/contract")
-//    public String contract() {
-//        return "member/agree";
-//    }
-//
-//    @GetMapping("/join")
-//    public String join() {
-//        return "member/join";
-//    }
-
     @GetMapping("/webtoon_view")
     public String webtoonview() {
         return "webtoon_view";
