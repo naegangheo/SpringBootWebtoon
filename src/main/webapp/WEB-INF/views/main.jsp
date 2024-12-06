@@ -33,12 +33,12 @@
                             <c:forEach begin="1" end="5">
                                 <div class="best_item">
                                     <a href="#">
-                                        <img src="/images/main/noname.jpg" style="height: 300px"/>
+                                        <img src="/images/main/noname.jpg" style="height: 290px"/>
                                     </a>
                                     <a href="#">
                                         제목
                                     </a>
-                                    <div class="author">
+                                    <div class="b_author">
                                         <a href="#">
                                            저자
                                         </a>
@@ -103,9 +103,9 @@
                 <div class="genre_img">
                     <%-- webtoon 그림--%>
                     <c:forEach begin="1" end="5">
-                        <div class="gent_item">
+                        <div class="genre_item">
                             <a href="#">
-                                <img src="/images/main/noname.jpg" style="width: 140px"/>
+                                <img src="/images/main/noname.jpg" style="width: 150px"/>
                             </a>
                             <a href="#">
                                 제목
@@ -130,7 +130,7 @@
                         <c:forEach begin="1" end="3">
                             <div class="new_item">
                                 <a href="#">
-                                    <img src="/images/main/noname.jpg" style="width: 200px"/>
+                                    <img src="/images/main/noname.jpg" style="width: 200px; "/>
                                 </a>
                                 <a href="#">
                                     제목
@@ -185,7 +185,7 @@
                 </div>
                 <ul>
                     <c:forEach begin="1" end="5" var="index">
-                        <li>
+                        <li id="rank_list">
                             <div>
                                 <label>${index}</label>
                                 <a href="#">
