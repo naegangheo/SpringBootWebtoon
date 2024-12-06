@@ -23,95 +23,95 @@
                  <div class="top_week_img">
 
                      <a href="#" class="prev">
-                         <img src="/images/left_arrow.png"/>
+                         <img src="images/main/left_arrow.png"/>
                      </a>
 
                      <div class="image_container">
                          <div class="image_wrapper">
                              <div>
                                  <a href="webtoonview">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href=#>
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
-                                 </a>
-                             </div>
-                         </div>
-                         <div class="image_wrapper">
-                             <div>
-                                 <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
-                                 </a>
-                             </div>
-                             <div>
-                                 <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
-                                 </a>
-                             </div>
-                             <div>
-                                 <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
-                                 </a>
-                             </div>
-                             <div>
-                                 <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
-                                 </a>
-                             </div>
-                             <div>
-                                 <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                          </div>
                          <div class="image_wrapper">
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                              <div>
                                  <a href="#">
-                                     <img src="/images/noname.jpg" style="height: 300px">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
+                                 </a>
+                             </div>
+                         </div>
+                         <div class="image_wrapper">
+                             <div>
+                                 <a href="#">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
+                                 </a>
+                             </div>
+                             <div>
+                                 <a href="#">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
+                                 </a>
+                             </div>
+                             <div>
+                                 <a href="#">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
+                                 </a>
+                             </div>
+                             <div>
+                                 <a href="#">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
+                                 </a>
+                             </div>
+                             <div>
+                                 <a href="#">
+                                     <img src="images/main/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
                          </div>
                      </div>
 
                      <a href="#" class="next">
-                         <img src="/images/right_arrow.png" alt="다음" />
+                         <img src="images/main/right_arrow.png" alt="다음" />
                      </a>
                  </div>
              </div>
@@ -120,7 +120,7 @@
         <div>
             <%-- 광고 배너 --%>
             <div>
-                <img src="/images/ad_image1.png" style="width: 1200px;">
+                <img src="images/main/ad_image1.png" style="width: 1200px;">
             </div>
             <%-- ad image --%>
         </div>
@@ -162,27 +162,27 @@
                            <%-- webtoon 그림--%>
                         <div>
                             <a href="#">
-                                <img src="/images/noname.jpg" style="width: 140px;">
+                                <img src="images/main/noname.jpg" style="width: 140px;">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="/images/noname.jpg" style="width: 140px;">
+                                <img src="images/main/noname.jpg" style="width: 140px;">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="/images/noname.jpg" style="width: 140px;">
+                                <img src="images/main/noname.jpg" style="width: 140px;">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="/images/noname.jpg" style="width: 140px;">
+                                <img src="images/main/noname.jpg" style="width: 140px;">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="/images/noname.jpg" style="width: 140px;">
+                                <img src="images/main/noname.jpg" style="width: 140px;">
                             </a>
                         </div>
                     </div>
@@ -194,17 +194,17 @@
                         <div class="new_img">
                             <div>
                                 <a href="#">
-                                    <img src="/images/noname.jpg" style="width: 200px;">
+                                    <img src="images/main/noname.jpg" style="width: 200px;">
                                 </a>
                             </div>
                             <div>
                                 <a href="#">
-                                    <img src="/images/noname.jpg" style="width: 200px;">
+                                    <img src="images/main/noname.jpg" style="width: 200px;">
                                 </a>
                             </div>
                             <div>
                                 <a href="#">
-                                    <img src="/images/noname.jpg" style="width: 200px;">
+                                    <img src="images/main/noname.jpg" style="width: 200px;">
                                 </a>
                             </div>
                         </div>
@@ -235,7 +235,7 @@
             <div class="m_mid_right">
 
                 <div id="ad" style="border: 3px solid red; display: flex">
-                    <img src="/images/ad_image2.png" style="width: 310px; height: 310px;">
+                    <img src="images/main/ad_image2.png" style="width: 310px; height: 310px;">
                     <%-- ad광고 란~  (이것의 크기는 높이를 장르별 테그의 높이와 동일하게 작성 )--%>
                 </div>
 
@@ -260,7 +260,7 @@
                                 <div>
                                     <label>1</label>
                                     <a href="#">
-                                        <img src="/images/noname.jpg" style="width: 50px; padding-left: 10px;">
+                                        <img src="images/main/noname.jpg" style="width: 50px; padding-left: 10px;">
                                     </a>
                                 </div> <%-- 1위 사진--%>
                                 <div class="title">
@@ -271,7 +271,7 @@
                                 <div>
                                     <label>2</label>
                                     <a href="#">
-                                        <img src="/images/noname.jpg" style="width: 50px; padding-left: 10px;">
+                                        <img src="images/main/noname.jpg" style="width: 50px; padding-left: 10px;">
                                     </a>
                                 </div> <%-- 2위 사진--%>
                                 <div class="title">
@@ -282,7 +282,7 @@
                                 <div>
                                     <label>3</label>
                                     <a href="#">
-                                        <img src="/images/noname.jpg" style="width: 50px; padding-left: 10px;">
+                                        <img src="imges/main/noname.jpg" style="width: 50px; padding-left: 10px;">
                                     </a>
                                 </div> <%-- 3위 사진--%>
                                 <div class="title">
@@ -293,7 +293,7 @@
                                 <div>
                                     <label>4</label>
                                     <a href="#">
-                                        <img src="/images/noname.jpg" style="width: 50px; padding-left: 10px;">
+                                        <img src="images/main/noname.jpg" style="width: 50px; padding-left: 10px;">
                                     </a>
                                 </div> <%-- 4위 사진--%>
                                 <div class="title">
@@ -304,7 +304,6 @@
                                 <div>
                                     <label>5</label>
                                     <a href="#">
-                                        <img src="/images/noname.jpg" style="width: 50px; padding-left: 10px;">
                                     </a>
                                 </div> <%-- 5위 사진--%>
                                 <div class="title">
