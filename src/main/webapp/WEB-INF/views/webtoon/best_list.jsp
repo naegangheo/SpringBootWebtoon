@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/best.css" />
 
 <div class="main-container">
@@ -55,4 +55,4 @@
     </section>
 </div>
 
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>

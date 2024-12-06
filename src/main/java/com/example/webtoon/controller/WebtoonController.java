@@ -41,8 +41,7 @@ public class WebtoonController {
 
     @GetMapping("/best")
     public String best(){
-        return "best";
-
+        return "webtoon/best_list";
     }
 
 
