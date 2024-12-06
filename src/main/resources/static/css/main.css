@@ -5,14 +5,14 @@
 
 .wrap .main{
     width: 1200px;
-    border:1px dotted black;
+    border:1px dotted #00DC64;;
     margin: 0 auto;
 }
 
 .m_top{
     width: 1200px;
     height: 450px;
-    border: 1px dotted orange;
+    border: 1px dotted #00DC64;;
 }
 
 .m_top_week{
@@ -40,10 +40,29 @@
     display: flex;
     justify-content: space-between;
 }
-.image_wrapper div a img{
+.image_wrapper .best_item a img{
     width: 230px;
     padding: 5px;
 }
+
+.best_item{
+    transition: transform 0.4s ease;
+}
+.best_item:hover{
+    transform: scale(1.03);
+}
+
+.best_item a{
+    text-decoration: none; /* 밑줄 제거 */
+    color: black; /* 기본 글자 색상 */
+}
+.best_item a:hover{
+    color: #00DC64;
+}
+.b_author a:hover img{
+    color: #00DC64;
+}
+
 a.prev, a.next {
     position: absolute;
     top: 50%;
@@ -83,53 +102,115 @@ a.next:hover {
 
 .m_mid_left{
     width : 795px;
-    border: 1px dotted blue;
+    border: 1px dotted #00DC64;;
     padding: 10px;
 }
 
 .mid_genre{
-    height: 310px;
-    border: 1px solid orange;
+    height: 320px;
+    border: 1px solid #00DC64;;
 }
 
 .genre{
-    border: 1px dotted orange;
+    border: 1px dotted #00DC64;;
 }
 
 .mid_genre_cate{
     display: flex;
     padding-left: 5px;
     text-align: center;
+    text-decoration: none;
 }
 
 .genre_img{
     display: flex;
-    padding: 10px;
     justify-content: space-evenly;
     padding: 5px;
+    border: 1px dotted #00DC64;;
 }
 
-.mid_new{
+.genre_item{
+    display: block;
+    align-items: center;
+    transition: transform 0.3s ease;
+    border: 1px dotted #00DC64;;
+}
+.genre_item:hover{
+    transform: scale(1.05);
+}
 
-    height: 310px;
-    display: flex;
-    border: 1px dotted orange;
+.genre_item a{
+    text-decoration: none;
+    color: black;
+}
+.genre_item a:hover{
+    color: #00DC64;
+}
+
+.mid_new {
+    height: 320px;
+    display: block;
+    border: 1px dotted #00DC64;;
 
 }
 
-.new{
-    width : 795px;
+.new {
+    display: block;
+    width: 795px;
+    border: 1px dotted #00DC64;;
+
 }
 
+.new label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: left;
+}
 
-.new_img{
+.new_img {
     display: flex;
     justify-content: space-evenly;
+    height: 200px;
+    border: 1px solid #00DC64;;
+
 }
+
+.new_item {
+    display: block;
+    width: 200px;
+    height: 100%;
+    text-align: center;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.new_item:hover {
+    transform: scale(1.05);
+}
+
+.new_item img {
+    width: 100%;
+    max-height: 150px;
+}
+
+.new_item a {
+    display: block;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.new_item a:hover {
+    color: #00DC64;
+}
+
 
 .m_mid_right{
     width: 395px;
-    border: 1px dotted red;
+    border: 1px dotted #00DC64;;
     padding: 10px;
 }
 
@@ -139,7 +220,7 @@ a.next:hover {
 }
 
 .mid_right_list{
-    border: 1px dotted red;
+    border: 1px dotted #00DC64;;
     padding: 15px;
 
 }
@@ -150,6 +231,10 @@ a.next:hover {
     justify-content: space-between;
 }
 
+.list_title div a:hover{
+    color: #00DC64;
+}
+
 .gender{
 
 }
@@ -157,22 +242,30 @@ a.next:hover {
 ul{
     display: block;
     padding: 10px;
-    border: 1px solid red;
+    border: 1px solid #00DC64;;
 }
+
 
 li{
     list-style-type: none;
     display: flex;
     padding: 10px;
-    border: 1px dotted red;
+    border: 1px dotted #00DC64;;
     justify-content: space-between;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+li:hover{
+    transform: scale(1.05);
 }
 
 .title{
     padding: 5px;
-    border: 1px solid red;
+    border: 1px solid #00DC64;;
     width: 150px;
+}
+.title a:hover{
+    color: #00DC64;
 }
 
 li div {
@@ -183,7 +276,7 @@ li div {
 li >div >label{
     font-weight: bold;
     font-size: 200%;
-    border: 1px solid blue;
+    border: 1px solid #00DC64;;
     text-align: center;
     line-height: 60px;
 }
