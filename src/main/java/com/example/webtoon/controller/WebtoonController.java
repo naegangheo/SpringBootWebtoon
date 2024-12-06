@@ -13,18 +13,18 @@ public class WebtoonController {
 
     @GetMapping("/webtoonview")
     public String webtoonview() {
-        return "webtoon/webtoonview";
+        return "webtoon_view";
     }
 
     @GetMapping("/notice")
     public String notice() {
-        return "notice/noticemain";
+        return "notice_main";
     }
 
     @GetMapping("/mypage")
-    public String mypage() {
-        return "mypage/webtooninsert";
-    }
+
+    public String mypage() {return "webtoon_insert";}
+
 
     @GetMapping("/best")
     public String best() {
