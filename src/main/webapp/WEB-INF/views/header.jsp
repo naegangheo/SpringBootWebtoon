@@ -70,6 +70,7 @@
                 <a href="/week?week=5">금</a>
                 <a href="/week?week=6">토</a>
                 <a href="/week?week=7">일</a>
+
             </div>
 
             <div id="genre_selector" class="genre_selector">
@@ -85,6 +86,8 @@
                 <a href="#">회원탈퇴/수정</a>
                 <a href="#">게시물 등록</a>
                 <a href="#">Q&A</a>
+
+
             </div>
 
         </div>

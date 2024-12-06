@@ -11,22 +11,29 @@ public class WebtoonController {
         return "main";
     }
 
+
     @GetMapping("/webtoonview")
     public String webtoon_view() {
         return "/webtoon/webtoon_view";
+
     }
 
     @GetMapping("/notice")
     public String notice() {
-        return "notice/noticemain";
+
+        return "notice_main";
     }
 
     @GetMapping("/mypage")
-    public String mypage() {return "mypage/webtooninsert";}
+
+    public String mypage() {return "webtoon_insert";}
+
 
     @GetMapping("/best")
-    public String best(){
+    public String best() {
         return "webtoon/best_list";
+
     }
+
 
 }
