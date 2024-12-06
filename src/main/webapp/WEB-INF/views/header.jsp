@@ -51,13 +51,13 @@
                 <a href="/">Home</a>&nbsp;
                 <a href="#" id="category_link">Category</a>&nbsp;
                 <a href="/best">Best</a>&nbsp;
-                <a href="#">Genre</a>&nbsp;
+                <a href="/genre" id="genre_link">Genre</a>&nbsp;
                 <c:choose>
                     <c:when test="${empty loginUser}"> <%-- 로그아웃시 :  안 보임 --%>
-                        <a href="/mypage">Mypage</a>
+                        <a href="#"  id="mypage_link">Mypage</a>
                    </c:when>
                    <c:otherwise>    <%-- 로그인 시 : 보임 --%>
-                        <a href="/mypage">Mypage</a>
+                        <a href="#" id="mypage_link">Mypage</a>
                     </c:otherwise>
                 </c:choose>
             </nav>
@@ -70,6 +70,24 @@
                 <a href="/week?week=5">금</a>
                 <a href="/week?week=6">토</a>
                 <a href="/week?week=7">일</a>
+
+            </div>
+
+            <div id="genre_selector" class="genre_selector">
+                <a href="genre?genre=1">전체</a>
+                <a href="genre?genre=2">로맨스</a>
+                <a href="genre?genre=3">판타지</a>
+                <a href="genre?genre=4">액션</a>
+                <a href="genre?genre=5">일상</a>
+                <a href="genre?genre=6">스릴러</a>
+            </div>
+
+            <div id="mypage_selector" class="mypage_selector">
+                <a href="#">회원탈퇴/수정</a>
+                <a href="#">게시물 등록</a>
+                <a href="#">Q&A</a>
+
+
             </div>
 
         </div>

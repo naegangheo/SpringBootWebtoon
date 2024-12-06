@@ -12,8 +12,10 @@ public class WebtoonController {
     }
 
 
-    public String webtoonview() {
-        return "webtoon_view";
+    @GetMapping("/webtoonview")
+    public String webtoon_view() {
+        return "/webtoon/webtoon_view";
+
     }
 
     @GetMapping("/notice")
@@ -30,6 +32,8 @@ public class WebtoonController {
     @GetMapping("/best")
     public String best() {
         return "webtoon/best_list";
-   }
+
+    }
+
 
 }

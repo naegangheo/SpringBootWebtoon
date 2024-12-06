@@ -89,7 +89,7 @@ a{text-decoration: none;}
     color: white;
     background-color: #00DC64;
 }
-
+/*=============================*/
 .week_selector {
     display: none;
     margin-top: 10px;
@@ -122,10 +122,73 @@ a{text-decoration: none;}
     color: #00DC64;
     background-color: white;
 }
+/*=============================*/
+
+
+.genre_selector {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 20px;
+
+}
+
+.genre_selector a {
+
+    justify-content: flex-start;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Verdana;
+
+}
+
+.genre_selector a.selected {
+    color: #00DC64;
+    background-color: white;
+}
+
+
+.genre_selector a:hover {
+    color: #00DC64;
+    background-color: white;
+}
 
 
 /*==========================*/
 
+.mypage_selector {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 20px;
+
+}
+
+.mypage_selector a {
+
+    justify-content: flex-start;
+    text-decoration: none;
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Verdana;
+
+}
+
+.mypage_selector a.selected {
+    color: #00DC64;
+    background-color: white;
+}
+
+
+.mypage_selector a:hover {
+    color: #00DC64;
+    background-color: white;
+}
+
+/*==========================*/
 
 footer {
     background-color: #f4f4f4;
