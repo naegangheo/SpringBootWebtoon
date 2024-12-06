@@ -11,4 +11,5 @@ import java.util.List;
 public interface IMainDaoH {
 
 
+    WebtoonVO selectGenreBest(int wseq);
 }

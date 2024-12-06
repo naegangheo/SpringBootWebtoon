@@ -14,4 +14,9 @@ public class MainServiceH {
     IMainDaoH mdaoh;
 
 
+    public WebtoonVO selectGenreBest(int wseq) {
+
+        return mdaoh.selectGenreBest(wseq);
+
+    }
 }

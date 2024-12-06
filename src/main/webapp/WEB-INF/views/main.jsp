@@ -34,7 +34,7 @@
                                  </a>
                              </div>
                              <div>
-                                 <a href="webtoonview?wseq="+wseq>
+                                 <a href=#>
                                      <img src="/images/noname.jpg" style="height: 300px">
                                  </a>
                              </div>
