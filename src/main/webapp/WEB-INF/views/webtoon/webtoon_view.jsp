@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../header.jsp"%>
-<link rel="stylesheet" href="/css/webtoon/webtoonview.css" />
+<link rel="stylesheet" href="/css/webtoon/webtoon_view.css" />
 
     <br/>
     <div class="container">
