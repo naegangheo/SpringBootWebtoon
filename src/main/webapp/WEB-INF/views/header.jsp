@@ -74,12 +74,12 @@
             </div>
 
             <div id="genre_selector" class="genre_selector">
-                <a href="genre?genre=1">전체</a>
-                <a href="genre?genre=2">로맨스</a>
-                <a href="genre?genre=3">판타지</a>
-                <a href="genre?genre=4">액션</a>
-                <a href="genre?genre=5">일상</a>
-                <a href="genre?genre=6">스릴러</a>
+                <a href="genrecategory?genre=1">전체</a>
+                <a href="genrecategory?genre=2">로맨스</a>
+                <a href="genrecategory?genre=3">판타지</a>
+                <a href="genrecategory?genre=4">액션</a>
+                <a href="genrecategory?genre=5">일상</a>
+                <a href="genrecategory?genre=6">스릴러</a>
             </div>
 
             <div id="mypage_selector" class="mypage_selector">

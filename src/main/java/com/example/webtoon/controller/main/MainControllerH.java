@@ -23,50 +23,47 @@ public class MainControllerH {
     MainServiceH msh;
     
     // list의 타이틀을 장르에 맞춰서 변환
-    @GetMapping("/genre")
+    @GetMapping("/genrecategory")
     public ModelAndView genre(@RequestParam("genre") int genre) {
 
         ModelAndView mav = new ModelAndView();
-        if(genre == 1){
-            mav.addObject("messageG", "전체");
-        }else if(genre==2){
-            mav.addObject("messageG", "로맨스");
-        }else if(genre==3){
-            mav.addObject("messageG", "판타지");
-        }else if(genre==4){
-            mav.addObject("messageG", "액션");
-        }else if(genre==5){
-            mav.addObject("messageG", "일상");
-        }else if(genre==6){
-            mav.addObject("messageG", "스릴러");
-        }
+        System.out.println("받은 장르: " + genre);
 
+        String messageG = switch (genre) {
+            case 1 -> "전체";
+            case 2 -> "로맨스";
+            case 3 -> "판타지";
+            case 4 -> "액션";
+            case 5 -> "일상";
+            case 6 -> "스릴러";
+            default -> null;
+        };
+        mav.addObject("messageG", messageG);
+
+        System.out.println("MessageG: " + messageG);
+
+
+        System.out.println("genre_List 메서드, genre 값: " + genre);
+
+        List<WebtoonVO> list= msh.getGenreList(genre);
+        System.out.println("Genre List: " + list);
+        mav.addObject("genreList", list);
         mav.setViewName("/webtoon/genre_list");
 
         return mav;
     }
 
-    // Mapping
-//    @GetMapping("/genreBest")
-//    public String genreBest(@ModelAttribute("dto") @Valid WebtoonVO webtoonvo, BindingResult result, Model model) {
-//
-//        String url="genre_list";
-//
-//
-//
-//        return url;
-//
-//    }
-
-    @GetMapping("/genreBest")
-    public ModelAndView genreBest(@RequestParam("wseq") int wseq) {
+    @GetMapping("/webtoon_view")
+    public ModelAndView genreList(@RequestParam("wseq") int wseq) {
         ModelAndView mav = new ModelAndView();
 
-        WebtoonVO wvo=msh.selectGenreBest(wseq);
+        mav.addObject("genreList", msh.getGenreList(wseq));
+        mav.setViewName("/webtoon/webtoon_view");
 
-        mav.addObject("genreList",wvo);
-        System.out.println(1111);
-        mav.setViewName("/webtoon/genre_list");
         return mav;
     }
+
+
+
+
 }
