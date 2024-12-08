@@ -5,10 +5,10 @@
 
 <mapper namespace="com.example.webtoon.dao.main.IMainDaoH">
 
-    <select id="selectGenreBest" resultType="com.example.webtoon.dto.WebtoonVO">
-        select * from webtoon
-            where wseq=#{param1}
-        order by #{readcountF}+#{readcountM}+#{readcountN}
+    <select id="getGenreList" resultType="com.example.webtoon.dto.WebtoonVO">
+
+        select * from webtoon where genre=#{genre} or #{genre}=1 order by (readcountF + readcountM + readcountN) desc;
+
 
     </select>
 
