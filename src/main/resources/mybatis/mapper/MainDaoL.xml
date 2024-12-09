@@ -13,6 +13,17 @@
         select*from week_${param1} order by indate
     </select>
 
+    <select id="get_webtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select*from webtoon where wseq=#{wseq}
+    </select>
+
+    <update id="readcount_webtoon" parameterType="int">
+        update webtoon set readcountN = readcountN + 1 where wseq=#{wseq}
+    </update>
+
+    <select id="select_webtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select wseq, subject, userid, readcountN, readcountF, readcountM, indate from webtoon order by wseq
+    </select>
 
 
 </mapper>

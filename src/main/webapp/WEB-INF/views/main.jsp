@@ -9,14 +9,11 @@
             <div class="top_week_cate">
                 <label>${message_week}웹툰</label>&nbsp;
                 <div class="week_cate">   <%-- 요일--%>
-                    <a href="#">
+                    <a href="javascript:void(0);" id="sortReadcount">
                         인기순
                     </a>
-                    <a href="#">
+                    <a href="javascript:void(0);" id="sortWritedate">
                         업데이트순
-                    </a>
-                    <a href="#">
-                        조회순
                     </a>
                 </div>
             </div>
@@ -27,29 +24,30 @@
                     <img src="images/main/left_arrow.png"/>
                 </a>
 
-                <div class="image_container">
-                    <c:forEach begin="1" end="3">
-                        <div class="image_wrapper">
-                            <c:forEach begin="1" end="5">
-                                <div class="best_item">
-                                    <a href="#">
+                <div class="image_container" >
+
+
+                    <div id="webtoon" class="image_wrapper" >
+                            <c:forEach begin="0" end="14"   items="${webtoon}" var="wvo">
+                                <div class="best_item" data-read="${wvo.readcountM + wvo.readcountF + wvo.readcountN}" data-date="${wvo.indate}">
+                                    <a href="webtoonview?wseq=${wvo.wseq}">
                                         <img src="/images/main/noname.jpg" style="height: 290px"/>
                                     </a>
                                     <a href="#">
-                                        제목
+                                        제목 ${wvo.subject}
                                     </a>
                                     <div class="b_author">
                                         <a href="#">
-                                           저자
+                                           저자 ${wvo.userid}
                                         </a>
                                     </div>
                                     <div class="views">
-                                        👁 조회수
+                                        👁 조회수 ${wvo.readcountM + wvo.readcountF + wvo.readcountN}
                                     </div>
                                 </div>
-                            </c:forEach>
+                          </c:forEach>
                         </div>
-                    </c:forEach>
+
                 </div>
 
                 <a href="#" class="next">
@@ -102,7 +100,7 @@
                 </div>
                 <div class="genre_img">
                     <%-- webtoon 그림--%>
-                    <c:forEach begin="1" end="5">
+                    <c:forEach begin="0" end="4">
                         <div class="genre_item">
                             <a href="#">
                                 <img src="/images/main/noname.jpg" style="width: 150px"/>
@@ -127,7 +125,7 @@
                 <div class="new">
                     <label>이달의 신작</label>
                     <div class="new_img">
-                        <c:forEach begin="1" end="3">
+                        <c:forEach begin="0" end="2">
                             <div class="new_item">
                                 <a href="#">
                                     <img src="/images/main/noname.jpg" style="width: 200px; "/>
@@ -151,7 +149,7 @@
                 <div>
                     <div>
                         <ul>
-                            <c:forEach begin="1" end="5">
+                            <c:forEach begin="0" end="4">
                                 <li><a href="#">요고슨 반복문으로만든 공지사항임</a></li>
                             </c:forEach>
                         </ul>
@@ -184,7 +182,7 @@
                     </div>
                 </div>
                 <ul>
-                    <c:forEach begin="1" end="5" var="index">
+                    <c:forEach begin="0" end="4" var="index">
                         <li id="rank_list">
                             <div>
                                 <label>${index}</label>
@@ -206,3 +204,38 @@
 
 
 <%@ include file="footer.jsp" %>
+
+
+<script>
+    // sortReadcount
+    // sortWritedate
+
+    document.getElementById("sortReadcount").addEventListener("click",function (){ sortList("readcount");});
+
+    document.getElementById("sortWritedate").addEventListener("click",function (){sortList("writedate"); });
+
+    function sortList(type){
+        let webtoon = document.getElementById("webtoon");
+        let items = Array.from(webtoon.getElementsByClassName("best_item"));
+
+        if(type ==="readcount"){
+            items.sort((a,b) =>{
+                let readA = parseInt(a.getAttribute("data-read"))||0;
+                let readB = parseInt(b.getAttribute("data-read"))||0;
+                return readB - readA;
+            });
+        }else if(type === "writedate"){
+            items.sort((a,b)=>{
+                let dateA = a.getAttribute("data-date");
+                let dateB = b.getAttribute("data-date");
+                return new Date(dateB) - new Date(dateA);
+            });
+        }
+
+        webtoon.innerHTML = "";
+        items.forEach(item => webtoon.appendChild(item));
+    }
+
+
+
+</script>

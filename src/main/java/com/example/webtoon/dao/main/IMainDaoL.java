@@ -3,13 +3,18 @@ package com.example.webtoon.dao.main;
 
 import com.example.webtoon.dto.WebtoonVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mapper
 public interface IMainDaoL {
 
 
-    List<WebtoonVO> getWeek(int week);
-    List<WebtoonVO> getWeek_update(int week);
+    List<WebtoonVO> getWeek( int week);
+    List<WebtoonVO> getWeek_update( int week);
+    WebtoonVO get_webtoon( int wseq);
+    void readcount_webtoon(int wseq);
+    List<HashMap<String, Object>> select_webtoon();
 }
