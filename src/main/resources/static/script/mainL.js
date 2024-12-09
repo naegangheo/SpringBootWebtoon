@@ -1,0 +1,5 @@
+
+
+function getupdate(){
+    location.href="/"
+}
