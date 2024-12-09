@@ -33,4 +33,8 @@ public class MainServiceK {
         List<WebtoonVO> list=mdaok.getbestlist();
         return list;
     }
+
+
+
+
 }

@@ -49,45 +49,8 @@ public class MainControllerK {
     }
 
 }
-    /*@GetMapping("/today-best")
-    public ModelAndView getTodayBest() {
-        ModelAndView mav = new ModelAndView();
-
-        List<WebtoonVO> BestListTop = msk.BestListTop(3);
-
-        mav.addObject("BestListTop", BestListTop);
-
-        mav.setViewName("webtoon/best_list");
-
-        return mav;
-    }*/
 
 
-
-    /*@GetMapping("/best_list")
-    public ModelAndView best_list(@RequestParam(value = "filter", required = false, defaultValue = "update") String filter) {
-        ModelAndView mav = new ModelAndView();
-        List<WebtoonVO> BestList;
-
-        // 정렬 기준에 따라 서비스 메서드 호출
-        switch (filter) {
-            case "read":
-                BestList = msk.getWebtoonsByReadCountDesc();
-                break;
-            case "name":
-                BestList = msk.getWebtoonsByNameOrder();
-                break;
-            default:
-                BestList = msk.getWebtoonsByDateAsc();
-                break;
-        }
-
-        mav.addObject("BestList", BestList);
-        mav.addObject("filter", filter);
-        mav.setViewName("webtoon/best_list");
-
-        return mav;
-    }*/
 
 
 

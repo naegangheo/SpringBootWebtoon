@@ -13,7 +13,7 @@
                         <img src="/images/${wvo.savefilename != null ? wvo.savefilename : 'main/noname.jpg'}" alt="${wvo.subject}" />
                     </a>
                     <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
-                    <div class="author"><a href="#">${wvo.userid}</a></div>
+                    <div class="author"><a href="webtoon_view?wseq=${wvo.wseq}">${wvo.userid}</a></div>
                     <div class="views">👁 ${wvo.readcountF + wvo.readcountM + wvo.readcountN}</div>
                 </div>
             </c:forEach>

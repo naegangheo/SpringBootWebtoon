@@ -24,9 +24,10 @@ public class WebtoonController {
         return "notice_main";
     }
 
-    @GetMapping("/mypage")
 
-    public String mypage() {return "webtoon_insert";}
+    @GetMapping("/created")
+
+    public String mypage() {return "mypage/webtoon_insert";}
 
 
 
