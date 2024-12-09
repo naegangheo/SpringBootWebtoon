@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.main.IMainDaoH">
+
+    <select id="getGenreList" resultType="com.example.webtoon.dto.WebtoonVO">
+
+        select * from webtoon where genre=#{genre} or #{genre}=1 order by (readcountF + readcountM + readcountN) desc;
+
+
+    </select>
+
+</mapper>
+
+
+

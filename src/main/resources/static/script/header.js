@@ -11,6 +11,35 @@ $(document).ready(function() {
     });
 });
 
+//=============
+
+$(document).ready(function() {
+
+    $('#genre_link').click(function(event) {
+        event.preventDefault();
+        $('#genre_selector').slideToggle();
+    });
+
+    $('nav.main_category a').not('#genre_link').click(function() {
+        $('#genre_selector').slideUp();
+    });
+});
+//==================
+
+$(document).ready(function() {
+
+    $('#mypage_link').click(function(event) {
+        event.preventDefault();
+        $('#mypage_selector').slideToggle();
+    });
+
+    $('nav.main_category a').not('#mypage_link').click(function() {
+        $('#mypage_selector').slideUp();
+    });
+});
+
+//============================================
+
 $(document).ready(function() {
     $(".main_category a").click(function() {
         $(".main_category a").removeClass("selected");
@@ -25,6 +54,22 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $(".genre_selector a").click(function() {
+        $(".genre_selector a").removeClass("selected");
+        $(this).addClass("selected");
+    });
+});
+
+$(document).ready(function() {
+    $(".mypage_selector a").click(function() {
+        $(".mypage_selector a").removeClass("selected");
+        $(this).addClass("selected");
+    });
+});
+
+
+//======================================
 $(document).ready(function() {
     let currentIndex = 0; // 현재 슬라이드 인덱스
     const slideWidth = 1200; // 각 슬라이드 그룹의 너비

@@ -1,0 +1,151 @@
+body {
+    margin: 0 ;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-container{
+
+    justify-content: left;
+    max-width: 900px;
+    margin: auto;
+    transform: translateX(-160px);
+
+}
+
+@media (max-width: 1200px) {
+    .main-container {
+        transform: translateX(0);
+        margin: 0;
+    }
+}
+
+/* 오늘의 베스트 */
+.today-best {
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 10px;
+
+}
+
+.today-best h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.today-best .best-wrapper {
+    display: flex;
+    justify-content: flex-start; /* 가로 정렬 */
+    gap: 20px;
+}
+
+.today-best .best-item {
+    width: 260px;
+    text-align: left;
+}
+
+.today-best .best-item img {
+    width: 260px;
+    height: 160px;
+
+}
+
+.today-best .best-item a {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+
+.today-best .best-item .author,
+.today-best .best-item .views {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 전체 베스트 */
+.all-best {
+    margin-top: 40px;
+    text-align: left;
+    padding-left: 10px;
+
+}
+
+/* '전체 베스트'와 필터를 가로 정렬 */
+.best-header {
+    display: flex;
+    justify-content: space-between; /* 제목 왼쪽, 필터 오른쪽 정렬 */
+    align-items: center;
+    margin-bottom: 10px; /* 콘텐츠와 간격 */
+}
+
+.best-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0; /* 기본 마진 제거 */
+}
+
+.filters {
+    display: flex;
+    gap: 3px; /* 필터 간격 */
+}
+
+.filters a {
+    margin-left: 5px; /* 링크 간격 설정 */
+    text-decoration: none; /* 밑줄 제거 */
+    color: #666666;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.filters a:hover {
+    color: #00DC64; /* 마우스 오버 시 색상 변경 */
+}
+
+
+
+.filters a:hover {
+    color: #007bff; /* 링크 호버 시 색상 */
+}
+
+.all-best .best-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 260px); /* 3열 고정 */
+    grid-gap: 20px;
+}
+
+.grid-item {
+    display: flex;
+    gap: 15px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.grid-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.grid-item .content {
+    text-align: left;
+}
+
+.grid-item .content .title {
+    font-weight: bold;
+    margin: 0;
+    border: 0px;
+}
+
+.grid-item .content .author {
+    margin-top: 0;
+}
+
+.grid-item .content .author,
+.grid-item .content .views {
+    font-size: 12px;
+    color: #666;
+}
