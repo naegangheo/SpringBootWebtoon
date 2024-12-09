@@ -29,11 +29,7 @@ public class WebtoonController {
     public String mypage() {return "webtoon_insert";}
 
 
-    @GetMapping("/best")
-    public String best() {
-        return "webtoon/best_list";
 
-    }
 
 
 }

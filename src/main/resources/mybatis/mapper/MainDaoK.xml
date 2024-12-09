@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.webtoon.dao.main.IMainDaoK">
 
-    <select id="selectTopWebtoonsByReadCount" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
+    <select id="getBestListTop" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
         SELECT
             wseq, userid, subject, genre, content, week,
             image, image2, savefilename, savefilename2,
@@ -20,7 +20,7 @@
 
 
     <!-- 1. 등록 날짜가 빠른 순서로 웹툰 리스트 조회 -->
-    <select id="selectWebtoonsByDateAsc" resultType="com.example.webtoon.dto.WebtoonVO">
+    <select id="getDayList" resultType="com.example.webtoon.dto.WebtoonVO">
         SELECT
             wseq, userid, subject, genre, content, week,
             image, image2, savefilename, savefilename2,
@@ -32,7 +32,7 @@
     </select>
 
     <!-- 2. 조회수가 높은 순서로 웹툰 리스트 조회 -->
-    <select id="selectWebtoonsByReadCountDesc" resultType="com.example.webtoon.dto.WebtoonVO">
+    <select id="getbestlist" resultType="com.example.webtoon.dto.WebtoonVO">
         SELECT
             wseq, userid, subject, genre, content, week,
             image, image2, savefilename, savefilename2,
@@ -44,8 +44,21 @@
             total_readcount DESC
     </select>
 
+    <!--<select id="selectWebtoonsByReadCountDesc" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT
+            wseq, userid, subject, genre, content, week,
+            image, image2, savefilename, savefilename2,
+            indate, readcountF, readcountM, readcountN,
+            (COALESCE(readcountF, 0) + COALESCE(readcountM, 0) + COALESCE(readcountN, 0)) AS total_readcount
+        FROM
+            webtoon
+        ORDER BY
+            total_readcount DESC
+    </select>-->
+
+
     <!-- 3. 작품 이름이 가나다순으로 정렬된 웹툰 리스트 조회 -->
-    <select id="selectWebtoonsByNameOrder" resultType="com.example.webtoon.dto.WebtoonVO">
+    <select id="getNameList" resultType="com.example.webtoon.dto.WebtoonVO">
         SELECT
             wseq, userid, subject, genre, content, week,
             image, image2, savefilename, savefilename2,
