@@ -11,7 +11,7 @@
             <c:if test="${empty genreList}">
                 <p>조회된 데이터가 없습니다.</p>
             </c:if>
-            <c:forEach items="${genreList}" var="wvo">
+            <c:forEach items="${genreList}" var="wvo" begin="1" end="3">
                 <div class="best-item">
                     <a href="webtoon_view?wseq=${wvo.wseq}">
                         <img src="/images/main/noname.jpg"/>
@@ -47,7 +47,7 @@
                     <p>조회된 데이터가 없습니다.</p>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${genreList}" var="wvo">
+                    <c:forEach items="${genreList}" var="wvo" begin="1" end="15">
                         <div class="grid-item" data-title="${wvo.subject}" data-date="${wvo.indate}">
                             <a href="webtoon_view?wseq=${wvo.genre}">
                                 <img src="/images/main/noname.jpg" alt="작품 이미지">

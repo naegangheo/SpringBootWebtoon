@@ -3,10 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>가입 완료</title>
+    <link href="css/member/joinFinish.css" rel="stylesheet">
 </head>
-<link href="css/member/joinFinish.css" rel="stylesheet">
-
 <body>
 <div class="main-container">
     <div class="container">
@@ -16,7 +15,7 @@
         </div>
         <button type="button" class="btn-submit" onclick="location.href='/'">시작하기</button>
     </div>
-    <div class="footer"><img src="/images/ad_pet.png" style="width: 540"></div>
+    <div class="footer"><img src="images/member/ad_pet.png" style="width: 540"></div>
     <div class="footer">Copyright © NAVER Corp. All Rights Reserved.</div>
     </div>
 </body>

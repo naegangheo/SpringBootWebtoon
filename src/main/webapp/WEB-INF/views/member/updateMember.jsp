@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>내 정보</title>
     <link href="css/member/updateMember.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <form action="updateMember" method="POST" name="updateMember">
@@ -13,15 +15,12 @@
         <div class="section">
             <div class="section-title">계정</div>
             <div class="section-middle">
-                <label>아이디 :</label>
+                <label>아이디 :</label><br>
                 <span>${loginUser.userid}</span>
             </div>
             <div class="section-middle">
-                <label>현재 비밀번호 :</label>
-                <input type="password" class="input-type-box" id="profileCurrentPwd" name="currentPwd" placeholder="정보를 수정하려면 비밀번호를 입력하세요">
-            </div>
-            <div class="section-middle">
-                <button type="button" onclick="openPasswordModal()">비밀번호 수정</button>
+                <label>현재 비밀번호 :</label><button type="button" onclick="openPasswordModal()" class="pwd-edit-button">비밀번호 수정</button>
+                <input type="password" class="input-type-box" id="profileCurrentPwd" name="currentPwd" placeholder="회원 정보를 수정하려면 현재 비밀번호를 입력하세요">
             </div>
         </div>
 
@@ -29,19 +28,26 @@
             <div class="section-title">개인 정보</div>
             <div class="section-middle">
                 <label>이름 : </label>
-                <input type="text" class="input-type-box" name="name" value="${loginUser.name}">
+                <input type="text" class="input-type-box" name="name" id="name" value="${loginUser.name}">
+                <div id="nameErrorMessage" class="error-message"></div>
             </div>
             <div class="section-middle">
                 <label>이메일 : </label>
-                <input type="email" class="input-type-box" name="email" value="${loginUser.email}">
+                <input type="email" class="input-type-box" name="email" id="email" value="${loginUser.email}">
+                <div id="emailErrorMessage" class="error-message"></div>
             </div>
             <div class="section-middle">
                 <label>성별 : </label>
-                <input type="text" class="input-type-box" name="gender" value="${loginUser.gender}">
+                <select id="gender" class="input-type-box" name="gender">
+                    <option value="1" <c:if test="${loginUser.gender == '1'}">selected</c:if>>남자</option>
+                    <option value="2" <c:if test="${loginUser.gender == '2'}">selected</c:if>>여자</option>
+                    <option value="3" <c:if test="${loginUser.gender == '3'}">selected</c:if>>선택안함</option>
+                </select>
             </div>
             <div class="section-bottom">
                 <label>전화번호 : </label>
-                <input type="tel" class="input-type-box" name="phone" value="${loginUser.phone}">
+                <input type="tel" class="input-type-box" name="phone" id="phone" value="${loginUser.phone}">
+                <div id="phoneErrorMessage" class="error-message"></div>
             </div>
         </div>
         <div class="last-button">
@@ -74,6 +80,51 @@
 </div>
 
 <script>
+    (function ($) {
+        $(document).ready(function () {
+            let valid = true;
+
+            $('#name').on('blur', function () {
+                const name = $(this).val().trim();
+                if (!name) {
+                    $('#nameErrorMessage').text('이름을 입력해주세요.');
+                    valid = false;
+                } else {
+                    $('#nameErrorMessage').text('');
+                    valid = true;
+                }
+            });
+
+            $('#email').on('blur', function () {
+                const email = $(this).val().trim();
+                if (!email) {
+                    $('#emailErrorMessage').text('이메일을 입력해주세요.');
+                    valid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    $('#emailErrorMessage').text('올바른 이메일 주소를 입력해주세요.');
+                    valid = false;
+                } else {
+                    $('#emailErrorMessage').text('');
+                    valid = true;
+                }
+            });
+
+            $('#phone').on('blur', function () {
+                const phone = $(this).val().trim();
+                if (!phone) {
+                    $('#phoneErrorMessage').text('전화번호를 입력해주세요.');
+                    valid = false;
+                } else if (!/^\d{10,11}$/.test(phone)) {
+                    $('#phoneErrorMessage').text('올바른 전화번호를 입력해주세요.');
+                    valid = false;
+                } else {
+                    $('#phoneErrorMessage').text('');
+                    valid = true;
+                }
+            });
+        });
+    })(jQuery);
+
     function openPasswordModal() {
         document.getElementById("passwordModal").style.display = "block";
     }
@@ -112,6 +163,17 @@
             });
         return false;
     }
+
+    function showAlert(message) {
+        if (message) {
+            alert(message);
+        }
+    }
+
+    // 메시지 출력
+    showAlert('<c:out value="${errorMessage}" escapeXml="true" />');
+    showAlert('<c:out value="${successMessage}" escapeXml="true" />');
 </script>
+
 </body>
 </html>
