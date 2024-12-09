@@ -13,18 +13,12 @@ public class MemberService {
     @Autowired
     IMemberDao mdao;
 
-    public void insertMember(@Valid MemberVO mvo) {
-        mdao.insertMember( mvo );
-    }
+    public void insertMember(@Valid MemberVO mvo) { mdao.insertMember( mvo ); }
 
-    public MemberVO getMember(@NotEmpty String userid) {
-        return mdao.getMember( userid );
-    }
+    public MemberVO getMember(@NotEmpty String userid) { return mdao.getMember( userid ); }
 
     public void updateMember(MemberVO mvo) {
         mdao.updateMember(mvo);
     }
-
-
 
 }

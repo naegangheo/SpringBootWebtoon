@@ -6,8 +6,8 @@
 <mapper namespace="com.example.webtoon.dao.member.IMemberDao">
 
     <insert id="insertMember" parameterType="com.example.webtoon.dto.MemberVO">
-        insert into member( userid, pwd, name, email, phone, zip_num, address1, address2, address3, gender)
-        values( #{userid}, #{pwd}, #{name}, #{email}, #{phone}, #{zip_num}, #{address1}, #{address2}, #{address3}, #{gender})
+        insert into member( userid, pwd, name, email, phone, gender)
+        values( #{userid}, #{pwd}, #{name}, #{email}, #{phone}, #{gender})
     </insert>
 
     <select id="getMember" resultType="com.example.webtoon.dto.MemberVO" >
