@@ -7,14 +7,14 @@
     <section class="today-best">
         <h2>오늘의 인기 베스트</h2>
         <div class="best-wrapper">
-            <c:forEach items="${topWebtoons}" var="webtoon">
+            <c:forEach items="${BestListTop}" var="wvo">
                 <div class="best-item">
-                    <a href="webtoon_view?wseq=${webtoon.wseq}">
-                        <img src="/images/${webtoon.savefilename}" alt="${webtoon.subject}">
+                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                        <img src="/images/${wvo.savefilename != null ? wvo.savefilename : 'main/noname.jpg'}" alt="${wvo.subject}" />
                     </a>
-                    <a href="webtoon_view?wseq=${webtoon.wseq}">${webtoon.subject}</a>
-                    <div class="author"><a href="#">${webtoon.userid}</a></div>
-                    <div class="views">👁 ${webtoon.readcountF + webtoon.readcountM + webtoon.readcountN}</div>
+                    <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
+                    <div class="author"><a href="webtoon_view?wseq=${wvo.wseq}">${wvo.userid}</a></div>
+                    <div class="views">👁 ${wvo.readcountF + wvo.readcountM + wvo.readcountN}</div>
                 </div>
             </c:forEach>
         </div>
@@ -31,15 +31,15 @@
             </div>
         </div>
         <div class="best-grid">
-            <c:forEach items="${webtoonList}" var="webtoon">
+            <c:forEach items="${webtoonList}" var="wvo">
                 <div class="grid-item">
-                    <a href="webtoon_view?wseq=${webtoon.wseq}">
-                        <img src="/images/${webtoon.savefilename}" alt="${webtoon.subject}">
+                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                       <img src="/images/${wvo.savefilename != null ? wvo.savefilename : 'main/noname.jpg'}" alt="${wvo.subject}" />
                     </a>
                     <div class="content">
-                        <p class="title"><a href="webtoon_view?wseq=${webtoon.wseq}">${webtoon.subject}</a></p>
-                        <p class="author"><a href="#">${webtoon.userid}</a></p>
-                        <p class="views">👁 ${webtoon.readcountF + webtoon.readcountM + webtoon.readcountN}</p>
+                        <p class="title"><a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a></p>
+                        <p class="author"><a href="#">${wvo.userid}</a></p>
+                        <p class="views">👁 ${wvo.readcountF + wvo.readcountM + wvo.readcountN}</p>
                     </div>
                 </div>
             </c:forEach>

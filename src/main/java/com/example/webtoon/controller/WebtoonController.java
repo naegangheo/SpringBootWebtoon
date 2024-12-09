@@ -18,15 +18,21 @@ public class WebtoonController {
 
     }
 
+
+  
+
+
+    @GetMapping("/created")
+
+    public String mypage() {return "mypage/webtoon_insert";}
+
+=======
     @GetMapping("/writeFrom")
     public String mypage() {
         return "/mypage/webtoon_insert";}
 
-    @GetMapping("/best")
-    public String best() {
-        return "webtoon/best_list";
 
-    }
+
 
 
 }
