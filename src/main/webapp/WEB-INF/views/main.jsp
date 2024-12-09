@@ -149,8 +149,10 @@
                 <div>
                     <div>
                         <ul>
-                            <c:forEach begin="0" end="4">
-                                <li><a href="#">요고슨 반복문으로만든 공지사항임</a></li>
+                            <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="4">
+                                <li>
+                                    <a href="#?nseq=${noticeVO.nseq}">${noticeVO.subject}</a>
+                                </li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -185,13 +187,13 @@
                     <c:forEach begin="0" end="4" var="index">
                         <li id="rank_list">
                             <div>
-                                <label>${index}</label>
+                                <label>${index+1}</label>
                                 <a href="#">
                                     <img src="images/main/noname.jpg" style="width: 50px; padding-left: 10px;">
                                 </a>
                             </div>
                             <div class="title">
-                                <a href="#">title${index}</a>
+                                <a href="#">title${index+1}</a>
                             </div>
                         </li>
                     </c:forEach>

@@ -6,11 +6,13 @@
 <mapper namespace="com.example.webtoon.dao.main.IMainDaoH">
 
     <select id="getGenreList" resultType="com.example.webtoon.dto.WebtoonVO">
-
         select * from webtoon where genre=#{genre} or #{genre}=1 order by (readcountF + readcountM + readcountN) desc;
-
-
     </select>
+
+    <select id="getNoticeList" resultType="com.example.webtoon.dto.NoticeVO">
+        select * from notice order by indate desc;
+    </select>
+
 
 </mapper>
 

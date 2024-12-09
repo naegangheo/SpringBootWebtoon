@@ -1,10 +1,13 @@
 package com.example.webtoon.service.main;
 
 import com.example.webtoon.dao.main.IMainDaoH;
+import com.example.webtoon.dto.NoticeVO;
 import com.example.webtoon.dto.WebtoonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -19,5 +22,13 @@ public class MainServiceH {
         List<WebtoonVO> list = mdaoh.getGenreList(genre);
 
         return list;
+    }
+
+
+    public List<HashMap<String, Object>> getNoticeList() {
+
+        List<HashMap<String, Object>> list = mdaoh.getNoticeList();
+        return list;
+
     }
 }

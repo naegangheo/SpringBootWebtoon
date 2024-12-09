@@ -5,8 +5,12 @@
 
 <mapper namespace="com.example.webtoon.dao.notice.INoticeDao">
 
-    <select id="getNoticeList" resultType="com.example.webtoon.dto.NoticeVO">
-        select * from notice order by nseq desc
+    <select id="selectNotice" resultType="com.example.webtoon.dto.NoticeVO" parameterType="com.example.webtoon.dto.NoticeVO">
+        select * from notice order by indate desc limit #{displayRow} offset #{startNum};
+    </select>
+
+    <select id="getAllcount" resultType="_int">
+        select count(*) from notice;
     </select>
 
 </mapper>
