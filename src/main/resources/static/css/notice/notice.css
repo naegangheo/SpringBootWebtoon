@@ -1,69 +1,38 @@
-
+@charset "UTF-8";
 
 .container{
-    position: relative;
-    width: 1190px;
-    height: 3000px;
+    width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-
+    border: 1px solid green;
 }
 
-#notice{
-    width: 840px;
-    height: 500px;
-}
-
-.aside_banner{
-    width: 300px;
-    height: 100%;
-}
-
-input[type="text"]{
-    border: none;
-    outline: none;
-    font-size:13px;
-    line-height: 35px;
-    height: 35px;
-}
-.qnasearch{
-    display: flex;
-    flex :4;
-    border: 2px black solid;
-    border-radius: 5px;
-    height: 40px;
-    justify-content: flex-end;
-}
-
-
-.top{
-
-    width: 840px;
-    height: 50px;
-    display: flex;
-}
-
-
-.adimg{
+.left{
     width: 100%;
-    height: 100%;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid green;
+    align-items: center;
+    justify-content: space-between;
 }
 
-a{
-    text-decoration: none;
+.notice{
+    margin: 0 auto;
+    border: 1px dotted red;
+}
+.notice h1{
+    font-size: 150%;
+    font-weight: bold;
 }
 
-.ad{
-    width: 100%;
-    height: 300px;
+.notice_content{
+    display: block;
+    align-items: center;
+    border: 1px solid black;
 }
 
-ul{
-    list-style: none;
-}
-
-.notice_line{
-    color:black;
-
+.notice_title{
+    display: flex;
+    justify-content: space-around;
 }

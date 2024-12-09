@@ -18,16 +18,9 @@ public class WebtoonController {
 
     }
 
-    @GetMapping("/notice")
-    public String notice() {
-
-        return "notice_main";
-    }
-
-    @GetMapping("/mypage")
-
-    public String mypage() {return "webtoon_insert";}
-
+    @GetMapping("/writeFrom")
+    public String mypage() {
+        return "/mypage/webtoon_insert";}
 
     @GetMapping("/best")
     public String best() {
