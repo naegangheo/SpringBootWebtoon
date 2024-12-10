@@ -61,15 +61,14 @@ input[type=radio]{
 }
 
 
-.genreradio{
-    display: flex;
+.genre label{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+
 }
 
-label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
+
 
 input[type="text"], textarea {
     width: 100%;
@@ -107,7 +106,7 @@ button:hover {
     width: 840px;
 }
 
-.imginsert{
+.imgInsert{
     display: flex;
 }
 
