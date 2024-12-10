@@ -24,13 +24,12 @@ public interface IMainDaoK {
     List<WebtoonVO> getbestlist();
 
     // 기존 웹툰 조회
-    WebtoonVO searchWebtoon(int wseq);
 
-    // 새로운 웹툰 저장
-    void insertWebtoon(WebtoonVO webtoon);
 
-    //기존 웹툰 수정
-    void updateWebtoon(WebtoonVO webtoon);
+
+    void saveFileInfo(WebtoonVO vo);
+
+    WebtoonVO getFileInfo(int wseq);
 
 }
 

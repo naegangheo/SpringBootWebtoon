@@ -33,10 +33,7 @@
 </div>
 
 <div class="container">
-        <h2>${createTitle != null ? createTitle : "신규 작품 등록"}</h2>
-
-
-
+        <h2>신규 작품 등록</h2>
 
     <div class="rule">
         <label>운영원칙</label>
