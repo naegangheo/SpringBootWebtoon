@@ -10,35 +10,42 @@
                 <%-- 제목,이미지--%>
                 <div class="title">
                     <div class="title_image">
-                        <img class="wbimg" src="images/webtoon/noimg.png"/>
+                        <img class="wbimg" src="../images/webtoon/webtoon_images/title_img/${webtoonVO.image}"/>
                     </div>
                     <div class="title_right">
-                        <div class="subtitle" style="font-size: 26px; font-weight: bold;">제목</div>
+                        <div class="subtitle" style="font-size: 26px; font-weight: bold;">${webtoonVO.subject}</div>
                         <br/>
-                        <div class="title_name">작가이름 /글/그림/요일/이용가</div>
+                        <div class="title_name" id="tag">작가 : ${webtoonVO.userid}</div>
                         <br/>
-                        <div class="title_content">죽다 살아나 눈을 뜬 장소는 인간을 애완동물로 키우는 괴물들의 세상.
-                            졸지에 괴물의 애완인간이 된 산호는 어떻게든 탈출해 집으로 돌아가고자 하는데…</div>
+                        <div class="title_content" id="tag">내용 : ${webtoonVO.content}</div>
                         <br/>
-                        <a class="tag" href="/">#판타지</a>
-                        <a class="tag" href="/">#액션</a>
-                        <a class="tag" href="/">#뭐시기</a>
-                        <a class="tag" href="/">#어쩌구</a>
+                        <div class="title_content" id="tag">
+                            <c:choose>
+                                <c:when test ="${webtoonVO.genre == 1}">장르 : 전체</c:when>
+                                <c:when test ="${webtoonVO.genre == 2}">장르 : 로맨스</c:when>
+                                <c:when test ="${webtoonVO.genre == 3}">장르 : 판타지</c:when>
+                                <c:when test ="${webtoonVO.genre == 4}">장르 : 액션</c:when>
+                                <c:when test ="${webtoonVO.genre == 5}">장르 : 일상</c:when>
+                                <c:when test ="${webtoonVO.genre == 6}">장르 : 스릴러</c:when>
+                                <c:otherwise>장르 : null</c:otherwise>
+                            </c:choose>
+                        </div>
+                        <input type="button" value="목록보기" onClick="history.go(-1)"/>
                     </div>
                 </div>
                 <br>
-                <%-- 목록 --%>
+                <%-- 내용 --%>
                 <div class="list" >
-                    <img src="images/webtoon/webimg1.png" width="840px;" height="1080px" />
+                    <img src="../images/webtoon/webtoon_images/content_img/content_img01.png" width="840px;" height="1080px" />
                 </div>
 
                 <div class="reply">
                     <h2>댓글</h2>
-                    <div class="replyform">
+                    <form mehod="post" action="" class="replyform">
                         <div>#아이디</div>
                         <textarea id="reply_input" placeholder="댓글을 입력하세요..." rows="4" cols="100"></textarea>
-                        <button id="submit_button">댓글 추가</button>
-                    </div>
+                        <input type="submit" value="댓글추가" onclick=""/>
+                    </form>
                     <br>
                     <div>
                         <div class="replylist_row">
@@ -70,7 +77,9 @@
             </div>
 
             <div class="notice">
-                <ul style="font-size: 26px; font-weight: bold;"><a href="#">공지사항</a></ul>
+                <ul style="font-size: 26px; font-weight: bold;">
+                    <a href="#">공지사항</a>
+                </ul>
                 <ul class="notice_list">
                     <li><a class="notice_line" href="/">첫 번째 공지</a></li>
                     <li><a class="notice_line" href="/">두 번째 공지</a></li>
@@ -79,9 +88,7 @@
                     <li><a class="notice_line" href="/">다섯 번째 공지</a></li>
                 </ul>
             </div>
-
         </div>
-
     </div>
 
 

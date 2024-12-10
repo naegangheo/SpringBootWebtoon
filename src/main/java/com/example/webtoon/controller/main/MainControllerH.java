@@ -36,17 +36,16 @@ public class MainControllerH {
             case 4 -> "액션";
             case 5 -> "일상";
             case 6 -> "스릴러";
-            default -> null;
+            default -> "null";
         };
         mav.addObject("messageG", messageG);
 
         System.out.println("MessageG: " + messageG);
 
-
         System.out.println("genre_List 메서드, genre 값: " + genre);
 
         List<WebtoonVO> list= msh.getGenreList(genre);
-        System.out.println("Genre List: " + list);
+
         mav.addObject("genreList", list);
         mav.setViewName("/webtoon/genre_list");
 
@@ -54,10 +53,10 @@ public class MainControllerH {
     }
 
     @GetMapping("/webtoon_view")
-    public ModelAndView genreList(@RequestParam("wseq") int wseq) {
+    public ModelAndView webtoonView(@RequestParam("wseq") int wseq) {
         ModelAndView mav = new ModelAndView();
 
-        mav.addObject("genreList", msh.getGenreList(wseq));
+        mav.addObject("webtoonVO", msh.getWebtoon(wseq));
         mav.setViewName("/webtoon/webtoon_view");
 
         return mav;

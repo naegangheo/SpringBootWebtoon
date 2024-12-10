@@ -13,6 +13,9 @@
         select * from notice order by indate desc;
     </select>
 
+    <select id="getWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where wseq=#{param1}
+    </select>
 
 </mapper>
 

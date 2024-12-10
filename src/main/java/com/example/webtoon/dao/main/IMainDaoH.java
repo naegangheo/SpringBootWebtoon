@@ -15,4 +15,6 @@ public interface IMainDaoH {
     List<WebtoonVO> getGenreList(int genre);
 
     List<HashMap<String, Object>> getNoticeList();
+
+    WebtoonVO getWebtoon(int wseq);
 }

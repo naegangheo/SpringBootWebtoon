@@ -57,15 +57,15 @@
 
 }
 
-.tag{
+#tag{
     overflow: hidden;
     margin: 0 5px 5px 0;
     padding: 0 10px;
-    background: #827d7d;
+    background: #f9f9f9;
     border-radius: 4px;
     font-size: 14px;
     line-height: 30px;
-    color: white;
+    color: black;
 
 }
 
@@ -108,11 +108,11 @@ ul{
     padding: 10px;
 }
 
-#submit_button{
+input[type=submit]{
     position: absolute;
     right: 0;
     bottom: 0;
-    background: yellowgreen;
+    background: #f9f9f9;
     border-radius: 5px;
     height: 30px;
 }
