@@ -22,6 +22,16 @@ public interface IMainDaoK {
 
     // 조회수가 높은 순서로 웹툰 리스트 조회
     List<WebtoonVO> getbestlist();
+
+    // 기존 웹툰 조회
+    WebtoonVO searchWebtoon(int wseq);
+
+    // 새로운 웹툰 저장
+    void insertWebtoon(WebtoonVO webtoon);
+
+    //기존 웹툰 수정
+    void updateWebtoon(WebtoonVO webtoon);
+
 }
 
 

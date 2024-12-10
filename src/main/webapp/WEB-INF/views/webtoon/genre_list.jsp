@@ -49,17 +49,17 @@
                 <c:otherwise>
                     <c:forEach items="${genreList}" var="wvo" begin="1" end="15">
                         <div class="grid-item" data-title="${wvo.subject}" data-date="${wvo.indate}">
-                            <a href="webtoon_view?wseq=${wvo.genre}">
+                            <a href="webtoon_view?wseq=${wvo.wseq}">
                                 <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="작품 이미지">
                             </a>
                             <div class="content">
                                 <p class="title">
-                                    <a href="webtoon_view?wseq=${wvo.genre}">
+                                    <a href="webtoon_view?wseq=${wvo.wseq}">
                                          ${wvo.subject}
                                     </a>
                                 </p>
                                 <p class="author">
-                                   <a href="webtoon_view?wseq=${wvo.genre}">
+                                   <a href="webtoon_view?wseq=${wvo.wseq}">
                                     ${wvo.userid}
                                    </a>
                                 </p>

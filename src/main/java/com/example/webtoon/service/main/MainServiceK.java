@@ -4,6 +4,7 @@ import com.example.webtoon.dao.main.IMainDaoK;
 import com.example.webtoon.dto.WebtoonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -34,7 +35,47 @@ public class MainServiceK {
         return list;
     }
 
+    public WebtoonVO searchWebtoon(int wseq) {
+        return mdaok.searchWebtoon(wseq);
+    }
+
+    public void insertWebtoon(WebtoonVO webtoon) {
+        mdaok.insertWebtoon(webtoon);
+    }
+
+    public void saveWebtoon(WebtoonVO webtoon, MultipartFile mainImage, MultipartFile contentImage) {
+        // 이미지 저장 로직
+        if (!mainImage.isEmpty()) {
+            String mainImagePath = saveImage(mainImage);
+            webtoon.setSavefilename(mainImagePath);
+        }
+        if (!contentImage.isEmpty()) {
+            String contentImagePath = saveImage(contentImage);
+            webtoon.setSavefilename2(contentImagePath);
+        }
+
+        if (webtoon.getWseq() == 0) {
+            mdaok.insertWebtoon(webtoon);
+        } else {
+            mdaok.updateWebtoon(webtoon);
+        }
+    }
+
+    private String saveImage(MultipartFile image) {
+        // 이미지 저장 경로 처리
+        String imagePath = "경로/" + image.getOriginalFilename();
+
+        String mainImagePath = "/images/title/";
+        String contentImagePath = "/images/content/";
+        // 실제 파일 저장 로직 추가
+        return imagePath;
+    }
+
+
+
 
 
 
 }
+
+

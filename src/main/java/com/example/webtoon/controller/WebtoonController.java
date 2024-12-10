@@ -54,10 +54,10 @@ public class WebtoonController {
 //
 //    }
 
-    @GetMapping("/created")
+    /*@GetMapping("/created")
     public String mypage() {
         return "mypage/webtoon_insert";
-    }
+    }*/
 
 
 //    @GetMapping("/writeFrom")

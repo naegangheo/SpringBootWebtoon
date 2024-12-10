@@ -31,4 +31,8 @@ public class MainServiceH {
         return list;
 
     }
+
+    public WebtoonVO getWebtoon(int wseq) {
+        return mdaoh.getWebtoon(wseq);
+    }
 }
