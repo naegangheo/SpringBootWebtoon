@@ -17,6 +17,14 @@
         select * from webtoon where wseq=#{param1}
     </select>
 
+    <select id="selectGenreList" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where (genre=#{genre} or #{genre}=1) order by wseq limit #{displayRow} offset #{startNum}
+    </select>
+
+    <select id="getAllcount" resultType="_int">
+        select count(*) from webtoon where genre=#{genre} or #{genre}=1;
+    </select>
+
 </mapper>
 
 

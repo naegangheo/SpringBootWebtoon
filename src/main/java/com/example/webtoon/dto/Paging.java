@@ -15,6 +15,7 @@ public class Paging {
     private boolean next;
     private int startNum;
     private int endNum;   // 사용되지 않을 예정
+    private int genre;
 
     public void calPaging(){
         endPage = ( (int)Math.ceil( page/(double)displayPage ) ) * displayPage;

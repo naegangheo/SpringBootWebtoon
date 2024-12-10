@@ -37,17 +37,17 @@
         <div class="best-header">
         <h2>${messageG} 리스트</h2>
         <div class="filters">
+            <a href="javascript:void(0);" id="sortWritedate">업데이트순</a>
             <a href="javascript:void(0);" id="sortString">가나다순</a>
-            <a href="javascript:void(0);" id="sortWritedate">등록일순</a>
             </div>
         </div>
         <div class="best-grid" id="genreList">
             <c:choose>
-                <c:when test="${empty genreList}">
+                <c:when test="${empty selectGenreList}">
                     <p>조회된 데이터가 없습니다.</p>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach items="${genreList}" var="wvo" begin="1" end="15">
+                    <c:forEach items="${selectGenreList}" var="wvo">
                         <div class="grid-item" data-title="${wvo.subject}" data-date="${wvo.indate}">
                             <a href="webtoon_view?wseq=${wvo.wseq}">
                                 <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="작품 이미지">
@@ -71,6 +71,24 @@
                     </c:forEach>
                 </c:otherwise>
             </c:choose>
+        </div>
+        <div class="paging">
+            <!-- prev 버튼의 표시 여부 -->
+            <c:if test="${paging.prev}" >
+                <a href="genrecategory?genre=${genre}&page=${paging.beginPage-1}">◀</a>&nbsp;
+            </c:if>
+            <p>Genre: ${genre}</p>
+            <!--  beginPage 부터  endPage 까지 일렬로 페이지를 표시 -->
+            <c:forEach begin="${paging.beginPage}"  end="${paging.endPage}"  var="index">
+                <a href="genrecategory?genre=${genre}&page=${index}">
+                    &nbsp;${index}&nbsp;
+                </a>
+            </c:forEach>
+
+            <!-- next 버튼 표시 여부 -->
+            <c:if test="${paging.next}" >
+                <a href="genrecategory?genre=${genre}&page=${paging.endPage+1}">▶</a>&nbsp;
+            </c:if>
         </div>
     </section>
 </div>
