@@ -21,4 +21,6 @@ public class MemberService {
         mdao.updateMember(mvo);
     }
 
+    public void deleteMember(@NotEmpty String userid) { mdao.deleteMember(userid);
+    }
 }

@@ -113,3 +113,4 @@ $(document).ready(function() {
     // 페이지 로드 시 초기 버튼 상태 설정
     checkButtons();
 });
+
