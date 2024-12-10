@@ -39,8 +39,8 @@
                             <a href="login" class="in-out-btn">login</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="#">${loginUser.name}님&nbsp;</a>
-                            <a href="logout" class="in-out-btn">logout</a>
+                            <a href="updateMember">${loginUser.name}님&nbsp;</a>
+                            <a href="logout" class="in-out-btn" id="logout-confirm">logout</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -84,13 +84,8 @@
 
             <div id="mypage_selector" class="mypage_selector">
                 <a href="#">회원탈퇴/수정</a>
-
                 <a href="created">게시물 등록</a>
-
                 <a href="#">Q&A</a>
-
-
             </div>
-
         </div>
 

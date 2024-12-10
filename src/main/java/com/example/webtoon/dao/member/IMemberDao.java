@@ -9,7 +9,9 @@ public interface IMemberDao {
     MemberVO getMember(String userid);
     void insertMember(MemberVO mvo);
     void updateMember(MemberVO mvo);
-    MemberVO getMemberByEmail(@NotEmpty String email);
-    MemberVO getMemberByPhone(@NotEmpty String phone);
+    void deleteMember(@NotEmpty String userid);
+//    MemberVO getMemberByEmail(@NotEmpty String email);
+//    MemberVO getMemberByPhone(@NotEmpty String phone);
+
 }
 

@@ -28,5 +28,9 @@
         WHERE userid = #{userid}
     </update>
 
+    <delete id="deleteMember" parameterType="String">
+        DELETE FROM member WHERE userid = #{userid}
+    </delete>
+
 
 </mapper>

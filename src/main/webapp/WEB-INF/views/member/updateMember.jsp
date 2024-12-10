@@ -1,15 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 정보</title>
-    <link href="css/member/updateMember.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
+<%@ include file="../header.jsp"%>
+<link href="css/member/updateMember.css" rel="stylesheet">
+
 <form action="updateMember" method="POST" name="updateMember">
     <div class="profile-container">
         <div class="section">
@@ -18,7 +11,7 @@
                 <label>아이디 :</label><br>
                 <span>${loginUser.userid}</span>
             </div>
-            <div class="section-middle">
+            <div class="section-bottom">
                 <label>현재 비밀번호 :</label><button type="button" onclick="openPasswordModal()" class="pwd-edit-button">비밀번호 수정</button>
                 <input type="password" class="input-type-box" id="profileCurrentPwd" name="currentPwd" placeholder="회원 정보를 수정하려면 현재 비밀번호를 입력하세요">
             </div>
@@ -53,6 +46,9 @@
         <div class="last-button">
             <input type="submit" class="last-button" value="수정">
         </div>
+    </div>
+    <div class="profile-container-footer">
+        <div><a href="logout" id="logout">로그아웃</a></div><div>|</div><div><a href="deleteMember">회원탈퇴</a></div>
     </div>
 </form>
 
@@ -145,8 +141,8 @@
 
         fetch('/updatePwd', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ currentPwd: currentPwd, newPwd: newPwd })
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({currentPwd: currentPwd, newPwd: newPwd})
         })
             .then(response => response.json())
             .then(data => {
@@ -173,6 +169,17 @@
     // 메시지 출력
     showAlert('<c:out value="${errorMessage}" escapeXml="true" />');
     showAlert('<c:out value="${successMessage}" escapeXml="true" />');
+
+    // 로그아웃 확인
+    document.getElementById('logout').addEventListener('click', function (event) {
+    event.preventDefault();
+
+
+    const confirmLogout = confirm('정말 로그아웃 하시겠습니까?');
+    if (confirmLogout) {
+    window.location.href = '/logout';
+    }
+    });
 </script>
 
 </body>
