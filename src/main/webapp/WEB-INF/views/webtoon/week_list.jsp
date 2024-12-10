@@ -9,14 +9,14 @@
         <div class="best-wrapper">
             <c:forEach items="${week}" var="week" begin="0" end="2">
                 <div class="best-item">
-                  <a href="webtoonview?wseq=${week.wseq}">
-                    <img src="/images/main/noname.jpg"/>
+                  <a href="webtoon_view?wseq=${week.wseq}">
+                    <img src="/images/webtoon/webtoon_images/title_img/${week.image}"/>
                   </a>
-                  <a href="webtoonview?wseq=${week.wseq}">
+                  <a href="webtoon_view?wseq=${week.wseq}">
                     ${week.subject}
                   </a>
                   <div class="author">
-                      <a href="webtoonview?wseq=${week.wseq}">
+                      <a href="webtoon_view?wseq=${week.wseq}">
                         ${week.userid}
                       </a>
                   </div>
@@ -32,7 +32,7 @@
     <!-- 전체 베스트 -->
     <section class="all-best">
         <div class="best-header">
-        <h2>${weekend} 전체 베스트</h2>
+        <h2>${weekend} 전체</h2>
         <div class="filters">
             <a href="javascript:void(0);" id="sortString">가나다순</a>
             <a href="javascript:void(0);" id="sortWritedate">업데이트순</a>
@@ -41,12 +41,12 @@
         <div class="best-grid" id="week">
             <c:forEach items="${week}" var="week">
                 <div class="grid-item" data-title="${week.subject}" data-date="${week.indate}">
-                    <a href="webtoonview?wseq=${week.wseq}">
-                        <img src="/images/main/noname.jpg" alt="작품 이미지">
+                    <a href="webtoon_view?wseq=${week.wseq}">
+                        <img src="/images/webtoon/webtoon_images/title_img/${week.image}" alt="작품 이미지">
                     </a>
                     <div class="content">
-                        <p class="title"><a href="webtoonview?wseq=${week.wseq}">작품 제목 ${week.subject}</a></p>
-                        <p class="author"><a href="webtoonview?wseq=${week.wseq}">작가 이름 ${week.userid}</a></p>
+                        <p class="title"><a href="webtoon_view?wseq=${week.wseq}">${week.subject}</a></p>
+                        <p class="author"><a href="webtoon_view?wseq=${week.wseq}">${week.userid}</a></p>
                         <p class="views">👁${week.readcountF+week.readcountM+week.readcountN}</p>
                     </div>
                 </div>

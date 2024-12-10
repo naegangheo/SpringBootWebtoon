@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -26,12 +27,13 @@ public class WebtoonController {
     @GetMapping("/")
     public String main(Model model) {
 
-        List<HashMap<String, Object>> webtoon = sl.select_webtoon();
-
-        List<HashMap<String, Object>> list = msh.getNoticeList();
+        List<WebtoonVO> webtoon = sl.select_webtoon();
+        List<WebtoonVO> list = msh.getNoticeList();
+        List<WebtoonVO> last = sl.lastWebtoon();
 
         model.addAttribute("webtoon", webtoon);
         model.addAttribute("noticeList", list);
+        model.addAttribute("last", last);
         return "main";
 
     }
@@ -66,6 +68,13 @@ public class WebtoonController {
 //    }
 
 
+//    ajax(sg)
+
+//    @GetMapping("/webtoon/genre")
+//    @ResponseBody
+//    public List<WebtoonVO> filterByGenre(@RequestParam("genre") String genre) {
+//        return sl.selectByGenre(genre);
+//    }
 
 
 
