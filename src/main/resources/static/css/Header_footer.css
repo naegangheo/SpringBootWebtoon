@@ -191,6 +191,8 @@ a{text-decoration: none;}
 /*==========================*/
 
 footer {
+    width: 1200px;
+    margin: 0 auto;
     background-color: #f4f4f4;
     padding: 20px;
     text-align: left;

@@ -1,9 +1,12 @@
 @charset "UTF-8";
 /* 전체 섹션 스타일 */
 section {
-    padding: 20px;
+    width: 1200px;
+    margin: 0 auto;
+
     background-color: #f9f9f9;
     font-family: Arial, sans-serif;
+    border: 1px solid black;
 }
 
 /* 컨테이너 레이아웃 */
@@ -15,19 +18,23 @@ section {
 
 /* 왼쪽 공지사항 */
 .left {
+    position: relative;
+    display: block;
+    flex-direction: column;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid green;
 }
 
 /* 공지사항 헤더 */
 .notice h1 {
     font-size: 24px;
     margin-bottom: 10px;
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #00DC64;
     padding-bottom: 5px;
-    color: #333;
+    color: #00DC64;
 }
 
 /* 공지사항 목록 */
@@ -41,7 +48,7 @@ section {
 .notice_title {
     display: grid;
     grid-template-columns: 1fr 4fr 2fr; /* 번호, 제목, 등록일 비율 */
-    background: #f1f1f1;
+    background: #00DC64;
     padding: 10px;
     border-radius: 5px;
     align-items: center;
@@ -50,7 +57,19 @@ section {
 }
 
 .notice_title:nth-child(odd) {
-    background: #e9e9e9;
+    background: #f9f9f9;
+}
+
+.paging{
+    position: relative; /* grid 레이아웃을 고려 */
+    bottom: 0;
+    margin-top: 10px;
+    padding: 5px;
+
+}
+
+.paging a{
+    text-decoration: none;
 }
 
 /* 열 스타일 */
@@ -76,6 +95,7 @@ section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
 /* 숨겨진 상태 */
 .toggle-content {
     display: none;
@@ -84,11 +104,21 @@ section {
     border: 1px solid #ddd;
     margin-top: 5px;
     border-radius: 5px;
+    position: absolute; /* 콘텐츠 영역을 격리 */
+    top: 100%; /* 헤더 바로 아래로 이동 */
+    left: 0;
+    width: 100%;
+    z-index: 50;
 }
 
 /* 보이는 상태 */
 .toggle-content.visible {
     display: block;
+    margin: 0 auto;
+    width: 95%;
+    position: relative;
+    z-index: 50;
+    justify-content: center;
 }
 
 /* 클릭 가능한 헤더 스타일 */
@@ -98,24 +128,21 @@ section {
 }
 
 .toggle-header:hover {
-    background-color: #f1f1f1;
+    background-color: #e9e9e9;
 }
 
 
 
 /* 반응형 디자인 */
-@media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr; /* 한 줄로 변경 */
-    }
+/*@media (max-width: 768px) {*/
 
-    .aside_banner {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+/*    .aside_banner {*/
+/*        flex-direction: row;*/
+/*        flex-wrap: wrap;*/
+/*        justify-content: center;*/
+/*    }*/
 
-    .adimg {
-        width: 45%;
-    }
-}
+/*    .adimg {*/
+/*        width: 45%;*/
+/*    }*/
+/*}*/
