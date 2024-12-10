@@ -87,8 +87,6 @@
 
                 <a href="created">게시물 등록</a>
 
-                
-
                 <a href="#">Q&A</a>
 
 

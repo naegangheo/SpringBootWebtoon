@@ -25,7 +25,7 @@ public class NoticeService {
             page= Integer.parseInt(request.getParameter("page"));
             session.setAttribute("page", page);
         }else if(session.getAttribute("page") != null) {
-            page=Integer.parseInt(request.getParameter("page"));
+            page=(Integer)session.getAttribute("page");
         }
 
         Paging paging = new Paging();

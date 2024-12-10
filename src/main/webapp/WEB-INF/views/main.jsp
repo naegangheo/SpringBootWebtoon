@@ -151,7 +151,7 @@
                         <ul>
                             <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="4">
                                 <li>
-                                    <a href="#?nseq=${noticeVO.nseq}">${noticeVO.subject}</a>
+                                    ${noticeVO.subject}
                                 </li>
                             </c:forEach>
                         </ul>
