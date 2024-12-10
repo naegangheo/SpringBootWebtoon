@@ -30,14 +30,14 @@
                     <div id="webtoon" class="image_wrapper" >
                             <c:forEach begin="0" end="14"   items="${webtoon}" var="wvo">
                                 <div class="best_item" data-read="${wvo.readcountM + wvo.readcountF + wvo.readcountN}" data-date="${wvo.indate}">
-                                    <a href="webtoonview?wseq=${wvo.wseq}">
-                                        <img src="/images/main/noname.jpg" style="height: 290px"/>
+                                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" style="height: 290px"/>
                                     </a>
-                                    <a href="#">
+                                    <a href="webtoon_view?wseq=${wvo.wseq}">
                                         제목 ${wvo.subject}
                                     </a>
                                     <div class="b_author">
-                                        <a href="#">
+                                        <a href="webtoon_view?wseq=${wvo.wseq}">
                                            저자 ${wvo.userid}
                                         </a>
                                     </div>
@@ -72,27 +72,27 @@
                     <label>가장 핫한 ## 웹툰만 모아봤어요!</label><br>
                     <div class="mid_genre_cate">   <%-- 장르 필요하면 더추가~--%>
                         <div>
-                            <a href="#">
+                            <a href="javascript:void(0);" class="genre_button" data-genre="2">
                                 로맨스
                             </a>&nbsp;
                         </div>
                         <div>
-                            <a href="#">
+                            <a href="javascript:void(0);" class="genre_button" data-genre="3">
                                 판타지
                             </a>&nbsp;
                         </div>
                         <div>
-                            <a href="#">
+                            <a href="javascript:void(0);" class="genre_button" data-genre="4">
                                 액션
                             </a>&nbsp;
                         </div>
                         <div>
-                            <a href="#">
+                            <a href="javascript:void(0);" class="genre_button" data-genre="5">
                                 일상
                             </a>&nbsp;
                         </div>
                         <div>
-                            <a href="#">
+                            <a href="javascript:void(0);" class="genre_button" data-genre="6">
                                 스릴러
                             </a>&nbsp;
                         </div>
@@ -100,21 +100,21 @@
                 </div>
                 <div class="genre_img">
                     <%-- webtoon 그림--%>
-                    <c:forEach begin="0" end="4">
+                    <c:forEach begin="0" end="4"  items="${webtoon}" var="wvo">
                         <div class="genre_item">
-                            <a href="#">
-                                <img src="/images/main/noname.jpg" style="width: 150px"/>
+                            <a href="webtoon_view?wseq=${wvo.wseq}">
+                                <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}"  style="width: 150px"/>
                             </a>
-                            <a href="#">
-                                제목
+                            <a href="webtoon_view?wseq=${wvo.wseq}">
+                                제목 ${wvo.subject}
                             </a>
                             <div class="author">
-                                <a href="#">
-                                   저자
+                                <a href="webtoon_view?wseq=${wvo.wseq}">
+                                   저자 ${wvo.userid}
                                 </a>
                             </div>
                             <div class="views">
-                                👁 조회수
+                                👁 조회수 ${wvo.readcountM + wvo.readcountF + wvo.readcountN}
                             </div>
                         </div>
                      </c:forEach>
@@ -125,13 +125,13 @@
                 <div class="new">
                     <label>이달의 신작</label>
                     <div class="new_img">
-                        <c:forEach begin="0" end="2">
+                        <c:forEach begin="0" end="2" items="${last}" var="last">
                             <div class="new_item">
-                                <a href="#">
-                                    <img src="/images/main/noname.jpg" style="width: 200px; "/>
+                                <a href="webtoon_view?wseq=${last.wseq}">
+                                    <img src="/images/webtoon/webtoon_images/title_img/${last.image}" style="width: 200px; "/>
                                 </a>
-                                <a href="#">
-                                    제목
+                                <a href="webtoon_view?wseq=${last.wseq}">
+                                    제목 ${last.subject}
                                 </a>
                             </div>
                         </c:forEach>
@@ -222,8 +222,8 @@
 
         if(type ==="readcount"){
             items.sort((a,b) =>{
-                let readA = parseInt(a.getAttribute("data-read"))||0;
-                let readB = parseInt(b.getAttribute("data-read"))||0;
+                let readA = parseInt(a.getAttribute("data-read")) || 0;
+                let readB = parseInt(b.getAttribute("data-read")) || 0;
                 return readB - readA;
             });
         }else if(type === "writedate"){
@@ -237,6 +237,60 @@
         webtoon.innerHTML = "";
         items.forEach(item => webtoon.appendChild(item));
     }
+
+
+
+<%--         ajax시도(SG)     --%>
+
+<%--    document.querySelectorAll(".genre-button").forEach(button => {--%>
+<%--        button.addEventListener("click", () => {--%>
+<%--            const genreId = button.getAttribute("data-genre");--%>
+<%--            updateGenreList(genreId);--%>
+<%--        });--%>
+<%--    });--%>
+
+<%--    function updateGenreList(genre) {--%>
+<%--        fetch(`/webtoon/genre?genre=${genre}`, {--%>
+<%--            method: "GET",--%>
+<%--            headers: {--%>
+<%--                "Content-Type": "application/json"--%>
+<%--            }--%>
+<%--        })--%>
+<%--        .then(response => response.json())  // JSON 응답 처리--%>
+<%--        .then(data => {--%>
+<%--            const webtoonContainer = document.querySelector(".genre_img");--%>
+<%--            webtoonContainer.innerHTML = ""; // 기존 목록 초기화--%>
+
+<%--            if (data.length === 0) {--%>
+<%--                webtoonContainer.innerHTML = "<p>해당 장르의 웹툰이 없습니다.</p>";--%>
+<%--            } else {--%>
+<%--                data.forEach(wvo => {--%>
+<%--                    const item = document.createElement("div");--%>
+<%--                    item.classList.add("genre_item");--%>
+
+<%--                    item.innerHTML = `--%>
+<%--                    <a href="webtoon_view?wseq=${wvo.wseq}">--%>
+<%--                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" style="width: 150px" />--%>
+<%--                    </a>--%>
+<%--                    <a href="webtoon_view?wseq=${wvo.wseq}">--%>
+<%--                        제목 ${wvo.subject}--%>
+<%--                    </a>--%>
+<%--                    <div class="author">--%>
+<%--                        <a href="webtoon_view?wseq=${wvo.wseq}">--%>
+<%--                            저자 ${wvo.userid}--%>
+<%--                        </a>--%>
+<%--                    </div>--%>
+<%--                    <div class="views">--%>
+<%--                        👁 조회수 ${wvo.readcountM + wvo.readcountF + wvo.readcountN}--%>
+<%--                    </div>--%>
+<%--                `;--%>
+<%--                    webtoonContainer.appendChild(item);--%>
+<%--                });--%>
+<%--            }--%>
+<%--        })--%>
+<%--        .catch(error => console.error("데이터 로드 오류:", error));--%>
+
+<%--}--%>
 
 
 

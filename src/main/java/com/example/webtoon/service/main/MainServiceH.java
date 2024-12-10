@@ -25,9 +25,9 @@ public class MainServiceH {
     }
 
 
-    public List<HashMap<String, Object>> getNoticeList() {
+    public List<WebtoonVO> getNoticeList() {
 
-        List<HashMap<String, Object>> list = mdaoh.getNoticeList();
+        List<WebtoonVO> list = mdaoh.getNoticeList();
         return list;
 
     }

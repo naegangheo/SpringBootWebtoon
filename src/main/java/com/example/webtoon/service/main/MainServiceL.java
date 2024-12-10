@@ -38,9 +38,20 @@ public class MainServiceL {
 
     }
 
-    public List<HashMap<String, Object>> select_webtoon() {
+    public List<WebtoonVO> select_webtoon() {
 
         return mdaoL.select_webtoon();
 
     }
+
+    public List<WebtoonVO> lastWebtoon() {
+        return mdaoL.lastWebtoon();
+    }
+
+    // ajax(sg)
+
+//    public List<WebtoonVO> selectByGenre(String genre) {
+//        return mdaoL.selectByGenre(genre);
+//
+//    }
 }

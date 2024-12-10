@@ -22,8 +22,19 @@
     </update>
 
     <select id="select_webtoon" resultType="com.example.webtoon.dto.WebtoonVO">
-        select wseq, subject, userid, readcountN, readcountF, readcountM, indate from webtoon order by wseq
+        select *from webtoon order by wseq
     </select>
+
+    <select id="lastWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select *from webtoon order by indate desc
+    </select>
+
+
+
+<!--    ajax -->
+<!--    <select id="selectByGenre" resultType="com.example.webtoon.dto.WebtoonVO">-->
+<!--        select*from webtoon where genre=#{genre} order by readcountM + readcountF + readcountN desc-->
+<!--    </select>-->
 
 
 </mapper>
