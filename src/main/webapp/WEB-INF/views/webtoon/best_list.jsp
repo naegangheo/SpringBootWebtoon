@@ -10,7 +10,7 @@
             <c:forEach items="${BestListTop}" var="wvo">
                 <div class="best-item">
                     <a href="webtoon_view?wseq=${wvo.wseq}">
-                        <img src="/images/${wvo.savefilename != null ? wvo.savefilename : 'main/noname.jpg'}" alt="${wvo.subject}" />
+                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject}" />
                     </a>
                     <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
                     <div class="author"><a href="webtoon_view?wseq=${wvo.wseq}">${wvo.userid}</a></div>
@@ -27,7 +27,7 @@
             <div class="filters">
                 <a href="?filter=update">업데이트순</a>
                 <a href="?filter=read">인기순</a>
-                <a href="?filter=name">ㄱ.ㄴ.ㄷ순</a>
+                <a href="?filter=name">가나다순</a>
             </div>
         </div>
         <div class="best-grid">

@@ -52,5 +52,5 @@ public class CreatedController {
         msk.saveWebtoon(webtoon, mainImage, contentImage);
         return "redirect:/best";
 
-
+    }
 }
