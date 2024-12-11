@@ -13,14 +13,14 @@
             </c:if>
             <c:forEach items="${genreList}" var="wvo" begin="1" end="3">
                 <div class="best-item">
-                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                    <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                         <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}"/>
                     </a>
-                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                    <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                         ${wvo.subject}
                     </a>
                     <div class="author">
-                        <a href="webtoon_view?wseq=${wvo.wseq}">
+                        <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                             ${wvo.userid}
                         </a>
                     </div>
@@ -49,17 +49,17 @@
                 <c:otherwise>
                     <c:forEach items="${selectGenreList}" var="wvo">
                         <div class="grid-item" data-title="${wvo.subject}" data-date="${wvo.indate}">
-                            <a href="webtoon_view?wseq=${wvo.wseq}">
+                            <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                 <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="작품 이미지">
                             </a>
                             <div class="content">
                                 <p class="title">
-                                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                                    <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                          ${wvo.subject}
                                     </a>
                                 </p>
                                 <p class="author">
-                                   <a href="webtoon_view?wseq=${wvo.wseq}">
+                                   <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                     ${wvo.userid}
                                    </a>
                                 </p>

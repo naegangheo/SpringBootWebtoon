@@ -21,6 +21,18 @@
         update webtoon set readcountN = readcountN + 1 where wseq=#{wseq}
     </update>
 
+    <update id="getReadCountM" parameterType="int">
+        update webtoon set readcountM = readcountM + 1 where wseq=#{wseq}
+    </update>
+
+    <update id="getReadCountF" parameterType="int">
+        update webtoon set readcountF = readcountF + 1 where wseq=#{wseq}
+    </update>
+
+    <update id="getReadCountN" parameterType="int">
+        update webtoon set readcountN = readcountN + 1 where wseq=#{wseq}
+    </update>
+
     <select id="select_webtoon" resultType="com.example.webtoon.dto.WebtoonVO">
         select *from webtoon order by wseq
     </select>

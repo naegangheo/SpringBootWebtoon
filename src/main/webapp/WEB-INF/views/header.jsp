@@ -49,7 +49,7 @@
         <div class="nav_area">
             <nav class="main_category">
                 <a href="/">Home</a>&nbsp;
-                <a href="#" id="category_link">Category</a>&nbsp;
+                <a href="#" id="category_link">Week</a>&nbsp;
                 <a href="/best">Best</a>&nbsp;
                 <a href="/genre" id="genre_link">Genre</a>&nbsp;
                 <c:choose>

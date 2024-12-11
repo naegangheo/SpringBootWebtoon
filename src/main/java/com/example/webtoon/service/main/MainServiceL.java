@@ -48,6 +48,8 @@ public class MainServiceL {
         return mdaoL.lastWebtoon();
     }
 
+
+
     // ajax(sg)
 
 //    public List<WebtoonVO> selectByGenre(String genre) {

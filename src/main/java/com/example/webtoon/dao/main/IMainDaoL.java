@@ -21,6 +21,11 @@ public interface IMainDaoL {
 
     List<WebtoonVO> lastWebtoon();
 
+    void getReadCountM(int wseq);
+    void getReadCountF(int wseq);
+    void getReadCountN(int wseq);
+
+
 //    ajax(sg)
 //    List<WebtoonVO> selectByGenre(@Param("genre") String genre);
 }

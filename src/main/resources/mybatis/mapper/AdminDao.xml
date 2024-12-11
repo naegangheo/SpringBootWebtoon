@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.admin.IAdminDao">
+    <select id="getAdmin" resultType="com.example.webtoon.dto.AdminVO" >
+        select * from admin where adminid=#{param1}
+    </select>
+
+    <select id="adSelectWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select*from webtoon order by wseq
+    </select>
+
+    <select id="adSelectQna" resultType="com.example.webtoon.dto.QnaVO">
+        select*from qna order by qseq
+    </select>
+
+    <select id="adSelectNotice" resultType="com.example.webtoon.dto.NoticeVO">
+        select*from notice order by nseq
+    </select>
+
+
+
+</mapper>

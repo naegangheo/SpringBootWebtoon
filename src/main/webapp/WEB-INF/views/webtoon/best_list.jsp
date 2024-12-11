@@ -9,11 +9,11 @@
         <div class="best-wrapper">
             <c:forEach items="${BestListTop}" var="wvo">
                 <div class="best-item">
-                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                    <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                         <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject}" />
                     </a>
                     <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
-                    <div class="author"><a href="webtoon_view?wseq=${wvo.wseq}">${wvo.userid}</a></div>
+                    <div class="author"><a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">${wvo.userid}</a></div>
                     <div class="views">👁 ${wvo.readcountF + wvo.readcountM + wvo.readcountN}</div>
                 </div>
             </c:forEach>
@@ -37,7 +37,7 @@
                        <img src="/images/${wvo.savefilename != null ? wvo.savefilename : 'main/noname.jpg'}" alt="${wvo.subject}" />
                     </a>
                     <div class="content">
-                        <p class="title"><a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a></p>
+                        <p class="title"><a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">${wvo.subject}</a></p>
                         <p class="author"><a href="#">${wvo.userid}</a></p>
                         <p class="views">👁 ${wvo.readcountF + wvo.readcountM + wvo.readcountN}</p>
                     </div>
