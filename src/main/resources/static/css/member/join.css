@@ -82,3 +82,7 @@ h2 {
 .btn-submit:hover {
     background-color: #249a00;
 }
+
+.error-message {
+    color: red; margin-bottom: 15px;
+}
