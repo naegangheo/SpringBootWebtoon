@@ -2,10 +2,13 @@ package com.example.webtoon.service.member;
 
 import com.example.webtoon.dao.member.IMemberDao;
 import com.example.webtoon.dto.MemberVO;
+import com.example.webtoon.dto.WebtoonVO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MemberService {
@@ -23,4 +26,8 @@ public class MemberService {
 
     public void deleteMember(@NotEmpty String userid) { mdao.deleteMember(userid);
     }
+
+
+
+
 }
