@@ -25,7 +25,7 @@ public class CreatedController {
 
 
 
-    @PostMapping("/created")
+    @PostMapping("/fileup")
     @ResponseBody
     public HashMap<String, Object> fileup(@RequestParam("fileimage") MultipartFile file) {
         // 파일 저장 경로

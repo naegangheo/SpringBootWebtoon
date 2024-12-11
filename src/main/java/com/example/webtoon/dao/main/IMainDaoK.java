@@ -31,6 +31,12 @@ public interface IMainDaoK {
 
     WebtoonVO getFileInfo(int wseq);
 
+    void insertWebtoon(WebtoonVO webtoonVO);
+
+    void updateWebtoon(WebtoonVO webtoonVO);
+
+    WebtoonVO findWebtoonById(int wseq);
+
 }
 
 

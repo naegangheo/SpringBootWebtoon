@@ -58,21 +58,26 @@
     </select>
 
 
-    <!-- 특정 웹툰의 파일 정보 조회 -->
-    <select id="getFileInfo" resultType="com.example.webtoon.dto.WebtoonVO">
-        SELECT main_image, content_image
-        FROM webtoon_files
-        WHERE webtoon_id = #{wseq};
-    </select>
-
-
-    <!-- 파일 정보 저장 -->
-    <insert id="saveFileInfo" parameterType="com.example.webtoon.dto.WebtoonVO">
-        INSERT INTO webtoon_files (webtoon_id, main_image, content_image)
-        VALUES (#{wseq}, #{mainImage}, #{contentImage});
+    <!-- 업로드된 파일 정보 저장 -->
+    <insert id="saveFileInfo" parameterType="WebtoonVO">
+        INSERT INTO webtoon (
+                  title, genre, content, savefilename,
+                  savefilename2, userid, indate
+        )
+        VALUES (#{title}, #{genre}, #{content}, #{savefilename}, #{savefilename2}, #{userid},
+                   NOW() )
     </insert>
 
 
+    <!-- 특정 웹툰 정보 조회 -->
+    <select id="getWebtoonById" parameterType="int" resultType="WebtoonVO">
+        SELECT
+            wseq, title, genre, content, savefilename, savefilename2, userid, indate
+        FROM
+            webtoon
+        WHERE
+            wseq = #{wseq}
+    </select>
 
 
 

@@ -44,7 +44,7 @@
 
 
 
-    <form action="/webtoon/save" method="post" enctype="multipart/form-data">
+
     <div class="info">
         <div class="subject">
             <div class="sub">작품명</div>
@@ -59,6 +59,7 @@
             <label><input type="radio" name="genre" value="4"> 일상</label>
             <label><input type="radio" name="genre" value="5"> 스릴러</label>
         </div>
+    </div>
 
         <div class="content">
             <div class="sub">내용</div>
@@ -67,43 +68,38 @@
             </div>
         </div>
 
-        <div class="images">
-            <!-- 이미지 업로드 영역 -->
-            <div class="imgInsert">
+        <form method="POST" action="/saveWebtoon" enctype="multipart/form-data">
+            <div class="images">
                 <!-- 대표 이미지 -->
                 <div class="sub">대표 이미지</div>
                 <label>
                     <input type="file" id="mainImageFile" name="mainImage" style="display: none;" onchange="previewImage(event, 'mainImagePreview')">
-                    <button type="button" onclick="document.getElementById('mainImageFile').click()">대표 이미지 선택</button>
+                    <button type="button" onclick="triggerFileInput('mainImageFile')">대표 이미지 선택</button>
                 </label>
 
                 <!-- 웹툰 이미지 -->
                 <div class="sub">웹툰 이미지</div>
                 <label>
                     <input type="file" id="contentImageFile" name="contentImage" style="display: none;" onchange="previewImage(event, 'contentImagePreview')">
-                    <button type="button" onclick="document.getElementById('contentImageFile').click()">웹툰 이미지 선택</button>
+                    <button type="button" onclick="triggerFileInput('contentImageFile')">웹툰 이미지 선택</button>
                 </label>
             </div>
 
-            <!-- 이미지 미리보기 영역 -->
+            <!-- 이미지 미리보기 -->
             <div class="imgPreview">
                 <div class="sub">이미지 미리보기</div>
                 <img id="mainImagePreview" src="" alt="대표 이미지 미리보기" style="display: none; width: 150px; height: 150px;">
                 <img id="contentImagePreview" src="" alt="웹툰 이미지 미리보기" style="display: none; width: 150px; height: 150px;">
             </div>
-        </div>
+
+            <div class="bottom_button">
+                <button type="submit">제출</button>
+                <button type="button" value="돌아가기" onclick="location.href='/'">돌아가기</button>
+            </div>
+        </form>
 
 
-    <div class="bottom_button">
-        <button type="submit">제출</button>
-        <button type="button" value="돌아가기" onclick="location.href='/'">돌아가기</button>
+
     </div>
-    <br/>
-
-    </div>
-</form>
-
-
-</div>
 </body>
 </html>
