@@ -6,29 +6,25 @@
       <div class="list">
         <div class="title">
           <div class="col">번호</div>
-          <div class="col">작가</div>
+          <div class="col">작성자</div>
           <div class="col">제목</div>
-          <div class="col">조회수</div>
           <div class="col">등록일</div>
         </div>
         <br>
         <div class="content">
-          <c:forEach items="${webtoon}" var="wvo">
+          <c:forEach items="${qna}" var="qna">
             <div class="title">
               <div class="col">
-                  ${wvo.wseq}
+                  ${qna.qseq}
               </div>
               <div class="col">
-                  ${wvo.userid}
+                  ${qna.userid}
               </div>
               <div class="col">
-                  ${wvo.subject}
+                  ${qna.subject}
               </div>
               <div class="col">
-                  ${wvo.readcountF+wvo.readcountM+wvo.readcountN}
-              </div>
-              <div class="col">
-                ${wvo.indate}
+                  ${qna.indate}
               </div>
             </div>
           </c:forEach>

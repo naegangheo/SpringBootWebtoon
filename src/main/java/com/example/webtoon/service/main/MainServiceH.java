@@ -1,6 +1,7 @@
 package com.example.webtoon.service.main;
 
 import com.example.webtoon.dao.main.IMainDaoH;
+import com.example.webtoon.dao.main.IMainDaoL;
 import com.example.webtoon.dto.NoticeVO;
 import com.example.webtoon.dto.Paging;
 import com.example.webtoon.dto.WebtoonVO;
@@ -20,6 +21,9 @@ public class MainServiceH {
     @Autowired
     IMainDaoH mdaoh;
 
+    @Autowired
+    IMainDaoL mdaol;
+
 
     public List<WebtoonVO> getGenreList(int genre) {
         List<WebtoonVO> list = mdaoh.getGenreList(genre);
@@ -32,9 +36,20 @@ public class MainServiceH {
         return list;
     }
 
-    public WebtoonVO getWebtoon(int wseq) {
+    public WebtoonVO getWebtoon(int wseq, String gender) {
+
+        if(gender.equals("m")||gender.equals("M")) {
+            mdaol.getReadCountM(wseq);
+        }else if(gender.equals("f")||gender.equals("F")) {
+            mdaol.getReadCountF(wseq);
+        }else {
+            mdaol.getReadCountN(wseq);
+        }
+
         return mdaoh.getWebtoon(wseq);
     }
+
+
 
     public HashMap<String, Object> selectGenreList(int genre, HttpServletRequest request) {
         HashMap<String, Object> result = new HashMap<>();

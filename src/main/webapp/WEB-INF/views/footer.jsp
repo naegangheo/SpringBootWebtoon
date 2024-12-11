@@ -7,7 +7,7 @@
             Contact mail : abc@abc.com  Tel : +82 02 1234 1234	Fax : +82 02 1233 1233 &nbsp;
           </div>
           <div>
-            <a href="#">admin</a>
+            <a href="/adminLogin">admin</a>
           </div>
     </footer>
 

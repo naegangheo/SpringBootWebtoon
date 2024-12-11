@@ -1,43 +1,29 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" href="/css/main.css">
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="main">
     <div class="m_top">
         <div class="m_top_week"> <%-- 요일별  best webtoon--%>
             <div class="top_week_cate">
-                <label>${message_week}웹툰</label>&nbsp;
-                <div class="week_cate">   <%-- 요일--%>
-                    <a href="javascript:void(0);" id="sortReadcount">
-                        인기순
-                    </a>
-                    <a href="javascript:void(0);" id="sortWritedate">
-                        업데이트순
-                    </a>
-                </div>
+                <label>웹툰</label>
             </div>
-
             <div class="top_week_img">
-
-                <a href="#" class="prev">
-                    <img src="images/main/left_arrow.png"/>
+                <a href="#" class="prev" >
+                    <img src="images/main/left_arrow.png" alt="이전"/>
                 </a>
-
                 <div class="image_container" >
-
-
                     <div id="webtoon" class="image_wrapper" >
-                            <c:forEach begin="0" end="14"   items="${webtoon}" var="wvo">
-                                <div class="best_item" data-read="${wvo.readcountM + wvo.readcountF + wvo.readcountN}" data-date="${wvo.indate}">
-                                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                            <c:forEach  begin="0" end="14" items="${webtoon}" var="wvo">
+                                <div class="best_item">
+                                    <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                         <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" style="height: 290px"/>
                                     </a>
-                                    <a href="webtoon_view?wseq=${wvo.wseq}">
+                                    <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                         제목 ${wvo.subject}
                                     </a>
                                     <div class="b_author">
-                                        <a href="webtoon_view?wseq=${wvo.wseq}">
+                                        <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                            저자 ${wvo.userid}
                                         </a>
                                     </div>
@@ -102,14 +88,14 @@
                     <%-- webtoon 그림--%>
                     <c:forEach begin="0" end="4"  items="${webtoon}" var="wvo">
                         <div class="genre_item">
-                            <a href="webtoon_view?wseq=${wvo.wseq}">
+                            <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                 <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}"  style="width: 150px"/>
                             </a>
-                            <a href="webtoon_view?wseq=${wvo.wseq}">
+                            <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                 제목 ${wvo.subject}
                             </a>
                             <div class="author">
-                                <a href="webtoon_view?wseq=${wvo.wseq}">
+                                <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
                                    저자 ${wvo.userid}
                                 </a>
                             </div>
@@ -127,10 +113,10 @@
                     <div class="new_img">
                         <c:forEach begin="0" end="2" items="${last}" var="last">
                             <div class="new_item">
-                                <a href="webtoon_view?wseq=${last.wseq}">
+                                <a href="webtoon_view?wseq=${last.wseq}&gender=${loginUser.gender}">
                                     <img src="/images/webtoon/webtoon_images/title_img/${last.image}" style="width: 200px; "/>
                                 </a>
-                                <a href="webtoon_view?wseq=${last.wseq}">
+                                <a href="webtoon_view?wseq=${last.wseq}&gender=${loginUser.gender}">
                                     제목 ${last.subject}
                                 </a>
                             </div>
@@ -209,34 +195,69 @@
 
 
 <script>
+    $(window).on('load', function() {
+        let currentIndex = 0;
+        const slideWidth = 1200;
+        const totalSlides = 3;
+
+
+
+        $('.prev').click(function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                $('.image_container').css('transform', 'translateX(' + (-currentIndex * slideWidth) + 'px)');
+                checkButtons();
+            }
+        });
+
+        $('.next').click(function() {
+            console.log("총 슬라이드 개수:", totalSlides);
+            if (currentIndex < totalSlides - 1) {
+                currentIndex++;
+                $('.image_container').css('transform', 'translateX(' + (-currentIndex * slideWidth) + 'px)');
+                checkButtons();
+            }
+        });
+
+        function checkButtons() {
+            $('.prev').toggle(currentIndex !== 0);
+            $('.next').toggle(currentIndex !== totalSlides - 1);
+        }
+
+        checkButtons();  // 초기 버튼 상태 설정
+
+    });
+
+
+
     // sortReadcount
     // sortWritedate
 
-    document.getElementById("sortReadcount").addEventListener("click",function (){ sortList("readcount");});
-
-    document.getElementById("sortWritedate").addEventListener("click",function (){sortList("writedate"); });
-
-    function sortList(type){
-        let webtoon = document.getElementById("webtoon");
-        let items = Array.from(webtoon.getElementsByClassName("best_item"));
-
-        if(type ==="readcount"){
-            items.sort((a,b) =>{
-                let readA = parseInt(a.getAttribute("data-read")) || 0;
-                let readB = parseInt(b.getAttribute("data-read")) || 0;
-                return readB - readA;
-            });
-        }else if(type === "writedate"){
-            items.sort((a,b)=>{
-                let dateA = a.getAttribute("data-date");
-                let dateB = b.getAttribute("data-date");
-                return new Date(dateB) - new Date(dateA);
-            });
-        }
-
-        webtoon.innerHTML = "";
-        items.forEach(item => webtoon.appendChild(item));
-    }
+    // document.getElementById("sortReadcount").addEventListener("click",function (){ sortList("readcount");});
+    //
+    // document.getElementById("sortWritedate").addEventListener("click",function (){sortList("writedate"); });
+    //
+    // function sortList(type){
+    //     let webtoon = document.getElementById("webtoon");
+    //     let items = Array.from(webtoon.getElementsByClassName("best_item"));
+    //
+    //     if(type ==="readcount"){
+    //         items.sort((a,b) =>{
+    //             let readA = parseInt(a.getAttribute("data-read")) || 0;
+    //             let readB = parseInt(b.getAttribute("data-read")) || 0;
+    //             return readB - readA;
+    //         });
+    //     }else if(type === "writedate"){
+    //         items.sort((a,b)=>{
+    //             let dateA = a.getAttribute("data-date");
+    //             let dateB = b.getAttribute("data-date");
+    //             return new Date(dateB) - new Date(dateA);
+    //         });
+    //     }
+    //
+    //     webtoon.innerHTML = "";
+    //     items.forEach(item => webtoon.appendChild(item));
+    // }
 
 
 

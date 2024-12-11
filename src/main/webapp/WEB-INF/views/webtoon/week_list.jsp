@@ -9,14 +9,14 @@
         <div class="best-wrapper">
             <c:forEach items="${week}" var="week" begin="0" end="2">
                 <div class="best-item">
-                  <a href="webtoon_view?wseq=${week.wseq}">
+                  <a href="webtoon_view?wseq=${week.wseq}&gender=${loginUser.gender}">
                     <img src="/images/webtoon/webtoon_images/title_img/${week.image}"/>
                   </a>
-                  <a href="webtoon_view?wseq=${week.wseq}">
+                  <a href="webtoon_view?wseq=${week.wseq}&gender=${loginUser.gender}">
                     ${week.subject}
                   </a>
                   <div class="author">
-                      <a href="webtoon_view?wseq=${week.wseq}">
+                      <a href="webtoon_view?wseq=${week.wseq}&gender=${loginUser.gender}">
                         ${week.userid}
                       </a>
                   </div>
@@ -41,12 +41,12 @@
         <div class="best-grid" id="week">
             <c:forEach items="${week}" var="week">
                 <div class="grid-item" data-title="${week.subject}" data-date="${week.indate}">
-                    <a href="webtoon_view?wseq=${week.wseq}">
+                    <a href="webtoon_view?wseq=${week.wseq}&gender=${loginUser.gender}">
                         <img src="/images/webtoon/webtoon_images/title_img/${week.image}" alt="작품 이미지">
                     </a>
                     <div class="content">
-                        <p class="title"><a href="webtoon_view?wseq=${week.wseq}">${week.subject}</a></p>
-                        <p class="author"><a href="webtoon_view?wseq=${week.wseq}">${week.userid}</a></p>
+                        <p class="title"><a href="webtoon_view?wseq=${week.wseq}&gender=${loginUser.gender}">${week.subject}</a></p>
+                        <p class="author"><a href="webtoon_view?wseq=${week.wseq}&gender=${loginUser.gender}">${week.userid}</a></p>
                         <p class="views">👁${week.readcountF+week.readcountM+week.readcountN}</p>
                     </div>
                 </div>
