@@ -25,14 +25,20 @@
                 </a>
             </div>
             <div class="h_right">
+
+                <!-- 검색 입력창 -->
                 <div class="h_search">
-                    <input type="text" placeholder="검색"/>
-                    <div>
-                        <a href="#">
-                            <img src="images/main/search.png">
-                        </a>
-                    </div>
+                    <form action="/search" method="get">
+                        <input type="text" name="keyword" placeholder="제목/작가로 검색할 수 있습니다."
+                               value="${param.keyword != null ? param.keyword : ''}"/>
+                        <button type="submit" style="border: none; background-color: transparent; cursor: pointer;">
+                            <svg width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z" stroke="#666" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
                 </div>
+
+                <!--로그인버튼-->
                 <div id="h_login">
                     <c:choose>
                         <c:when test="${empty loginUser}">

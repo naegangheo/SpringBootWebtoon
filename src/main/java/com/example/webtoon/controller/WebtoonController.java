@@ -4,6 +4,7 @@ import com.example.webtoon.dto.NoticeVO;
 import com.example.webtoon.dto.WebtoonVO;
 import com.example.webtoon.service.main.MainServiceH;
 import com.example.webtoon.service.main.MainServiceL;
+import com.example.webtoon.service.member.WebtoonService;
 import com.oracle.wls.shaded.org.apache.xpath.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class WebtoonController {
     MainServiceL sl;
     @Autowired
     MainServiceH msh;
+    @Autowired
+    WebtoonService webtoonService;
 
     @GetMapping("/")
     public String main(Model model) {
@@ -76,6 +79,19 @@ public class WebtoonController {
 //        return sl.selectByGenre(genre);
 //    }
 
+    @GetMapping("/search")
+    public String search(@RequestParam String keyword, Model model) {
+        if (keyword.isEmpty()) {
+            model.addAttribute("error", "검색어를 입력해주세요.");
+            //return "main"; // 검색어 없을 때 메인으로 리다이렉트?
+        }
 
+        // 제목 또는 작가명으로 검색
+        List<WebtoonVO> searchResults = webtoonService.searchWebtoonsByKeyword(keyword);
+
+        model.addAttribute("searchResults", searchResults);
+        model.addAttribute("keyword", keyword);
+        return "/webtoon/search";
+    }
 
 }
