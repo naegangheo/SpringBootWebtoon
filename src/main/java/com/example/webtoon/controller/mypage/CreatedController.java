@@ -3,19 +3,16 @@ package com.example.webtoon.controller.mypage;
 
 import com.example.webtoon.dto.WebtoonVO;
 import com.example.webtoon.service.main.MainServiceK;
+import jakarta.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 public class CreatedController {
@@ -23,34 +20,75 @@ public class CreatedController {
     @Autowired
     private MainServiceK msk;
 
-    @GetMapping("/created")
-    public ModelAndView created(@RequestParam(value = "wseq", required = false) Integer   wseq) {
-        ModelAndView mav = new ModelAndView();
+    @Autowired
+    private ServletContext context;
 
-        if (wseq != null) {
-            // 기존 작품 수정
-            WebtoonVO webtoon = msk.searchWebtoon(wseq);
-            mav.addObject("webtoon", webtoon);
-            mav.addObject("createTitle", "작품 수정");
-        } else {
-            // 신규 작품 등록
-            mav.addObject("createTitle", "신규 작품 등록");
+
+
+    @PostMapping("/fileup")
+    @ResponseBody
+    public HashMap<String, Object> fileup(@RequestParam("fileimage") MultipartFile file) {
+        // 파일 저장 경로
+        String path = context.getRealPath("/images/upload");
+        File directory = new File(path);
+        if (!directory.exists()) {
+            directory.mkdirs(); // 경로가 없으면 생성
         }
 
+        // 파일명 생성
+        Calendar today = Calendar.getInstance();
+        long t = today.getTimeInMillis();
+        String originalFilename = file.getOriginalFilename();
+        String fileExtension = originalFilename.substring(originalFilename.lastIndexOf("."));
+        String saveFilename = "webtoon_" + t + fileExtension;
 
+        // 저장 경로
+        String uploadPath = path + "/" + saveFilename;
+        System.out.println("파일 저장 경로: " + uploadPath);
 
-        mav.setViewName("mypage/webtoon_insert");
+        // 응답 데이터 저장
+        HashMap<String, Object> result = new HashMap<>();
+        try {
+            file.transferTo(new File(uploadPath)); // 파일 저장
+            result.put("STATUS", "SUCCESS");
+            result.put("originalFilename", originalFilename);
+            result.put("saveFilename", saveFilename);
+        } catch (IllegalStateException | IOException e) {
+            e.printStackTrace();
+            result.put("STATUS", "FAILURE");
+        }
 
-        return mav;
-
+        return result;
     }
 
-    @PostMapping("/webtoon/save")
-    public String saveWebtoon(@ModelAttribute WebtoonVO webtoon,
-                              @RequestParam("mainImage") MultipartFile mainImage,
-                              @RequestParam("contentImage") MultipartFile contentImage) {
-        msk.saveWebtoon(webtoon, mainImage, contentImage);
-        return "redirect:/best";
+    // 작품 생성 및 수정
+    @PostMapping("/saveWebtoon")
+    public ModelAndView saveWebtoon(@RequestParam("title") String title,
+                                    @RequestParam("genre") int genre,
+                                    @RequestParam("content") String content,
+                                    @RequestParam("mainImage") MultipartFile mainImage,
+                                    @RequestParam("contentImage") MultipartFile contentImage) {
+        ModelAndView mav = new ModelAndView();
+
+        // 파일 업로드 로직 호출
+        HashMap<String, Object> mainImageResult = fileup(mainImage);
+        HashMap<String, Object> contentImageResult = fileup(contentImage);
+
+        // 업로드 성공 여부 확인
+        if ("SUCCESS".equals(mainImageResult.get("STATUS")) && "SUCCESS".equals(contentImageResult.get("STATUS"))) {
+            System.out.println("대표 이미지: " + mainImageResult.get("saveFilename"));
+            System.out.println("웹툰 이미지: " + contentImageResult.get("saveFilename"));
+
+            // 이후 DB에 저장 로직 추가 필요
+            mav.addObject("message", "작품이 성공적으로 저장되었습니다.");
+        } else {
+            mav.addObject("message", "파일 업로드 실패. 다시 시도해주세요.");
+        }
+
+        mav.setViewName("redirect:/mypage");
+        return mav;
+    }
+
 
     }
 }
