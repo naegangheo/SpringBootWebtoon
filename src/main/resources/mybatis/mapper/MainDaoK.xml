@@ -58,25 +58,20 @@
     </select>
 
 
-    <!-- 업로드된 파일 정보 저장 -->
-    <insert id="saveFileInfo" parameterType="WebtoonVO">
+    <!-- 신규 작품 등록 -->
+    <insert id="insertWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
         INSERT INTO webtoon (
-                  title, genre, content, savefilename,
-                  savefilename2, userid, indate
-        )
-        VALUES (#{title}, #{genre}, #{content}, #{savefilename}, #{savefilename2}, #{userid},
-                   NOW() )
+            subject, genre, content, savefilename, savefilename2, indate
+        ) VALUES (
+                     #{subject}, #{genre}, #{content}, #{savefilename}, #{savefilename2}, NOW()
+                 )
     </insert>
 
-
-    <!-- 특정 웹툰 정보 조회 -->
-    <select id="getWebtoonById" parameterType="int" resultType="WebtoonVO">
-        SELECT
-            wseq, title, genre, content, savefilename, savefilename2, userid, indate
-        FROM
-            webtoon
-        WHERE
-            wseq = #{wseq}
+    <!--기존 작품 조회-->
+    <select id="searchWebtoon" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT *
+        FROM webtoon
+        WHERE wseq = #{wseq}
     </select>
 
 
