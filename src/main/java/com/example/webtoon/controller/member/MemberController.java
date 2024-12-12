@@ -1,11 +1,14 @@
 package com.example.webtoon.controller.member;
 
 
+import com.example.webtoon.dao.member.IMemberDao;
 import com.example.webtoon.dto.MemberVO;
+import com.example.webtoon.dto.WebtoonVO;
 import com.example.webtoon.service.member.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +18,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
+
 public class MemberController {
     @Autowired
     MemberService ms;
@@ -214,4 +219,6 @@ public class MemberController {
                     .body(Map.of("success", false, "message", "회원 탈퇴 중 오류가 발생했습니다."));
         }
     }
+
+
 }

@@ -32,5 +32,14 @@
         DELETE FROM member WHERE userid = #{userid}
     </delete>
 
+    <!-- 제목(subject) 검색 -->
+    <select id="searchBySubjectOrUserid" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT *
+        FROM webtoon
+        WHERE subject LIKE CONCAT('%', #{keyword}, '%')
+           OR userid LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+
 
 </mapper>
