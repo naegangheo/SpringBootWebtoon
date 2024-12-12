@@ -8,11 +8,10 @@ import com.example.webtoon.service.main.MainServiceL;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -86,6 +85,21 @@ public class MainControllerH {
         return mav;
     }
 
+    @GetMapping("/readCountByGenre")
+    @ResponseBody
+    public List<WebtoonVO> readCount(@RequestParam(value = "genre", defaultValue = "0") int genre) {
+        // genre가 0일 경우 적절히 처리
+        if (genre == 0) {
+            System.out.println("잘못된 장르 값: " + genre);
+            return Collections.emptyList();  // 빈 리스트 반환
+        }
+
+        System.out.println("선택된 장르: " + genre);
+        List<WebtoonVO> list = msh.getReadCount(genre);
+        System.out.println("조회된 웹툰 리스트: " + list);
+
+        return list;
+    }
 
 
 
