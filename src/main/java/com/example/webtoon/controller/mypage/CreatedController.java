@@ -1,7 +1,6 @@
 package com.example.webtoon.controller.mypage;
 
 
-import com.example.webtoon.dto.WebtoonVO;
 import com.example.webtoon.service.main.MainServiceK;
 import jakarta.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;

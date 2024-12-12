@@ -33,7 +33,6 @@
 <script>
     $(document).ready(function() {
         $('#loginButton').click(function() {
-            // 에러 메시지 초기화
             $('#errorMessage').text('');
 
             const userid = $('#id').val().trim();
@@ -49,9 +48,8 @@
             }
 
             if (valid) {
-                // 유효성 검사를 통과한 경우 AJAX 요청
                 $.ajax({
-                    url: '/adminLogin', // 서버 로그인 엔드포인트
+                    url: '/adminLogin',
                     type: 'POST',
                     data: {
                         adminid: userid,
@@ -59,10 +57,8 @@
                     },
                     success: function(response) {
                         if (response.success) {
-                            // 로그인 성공 시
-                            window.location.href = response.redirectUrl; // 리다이렉트
+                            window.location.href = response.redirectUrl;
                         } else {
-                            // 로그인 실패 시 에러 메시지를 비밀번호 위에 표시
                             $('#errorMessage').text(response.message);
                         }
                     },

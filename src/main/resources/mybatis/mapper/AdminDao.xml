@@ -8,19 +8,29 @@
         select * from admin where adminid=#{param1}
     </select>
 
-    <select id="adSelectWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
-        select*from webtoon order by wseq
+    <select id="adSelectWebtoon" resultType="com.example.webtoon.dto.WebtoonVO" parameterType="com.example.webtoon.dto.WebtoonVO">
+        select*from webtoon order by wseq desc limit #{displayRow} offset #{startNum}
     </select>
 
-    <select id="adSelectQna" resultType="com.example.webtoon.dto.QnaVO">
-        select*from qna order by qseq
+    <select id="adSelectQna" resultType="com.example.webtoon.dto.QnaVO" parameterType="com.example.webtoon.dto.QnaVO">
+        select*from qna order by qseq desc limit #{displayRow} offset #{startNum}
     </select>
 
     <select id="adSelectNotice" resultType="com.example.webtoon.dto.NoticeVO">
-        select*from notice order by nseq
+        select*from notice order by nseq desc
     </select>
 
+    <select id="getAllcount" resultType="_int">
+        select count(*) from webtoon
+    </select>
 
+    <select id="getAllcountQna" resultType="_int">
+        select count(*) from qna
+    </select>
+
+    <select id="adAllCountMember" resultType="_int">
+        select count(*) from member
+    </select>
 
 
 </mapper>

@@ -59,22 +59,35 @@ public class AdminController {
 
 
     @GetMapping("/admin")
-    public ModelAndView admin(Model model) {
+    public ModelAndView admin(HttpServletRequest request, Model model) {
         ModelAndView mav = new ModelAndView();
-        List<WebtoonVO> webtoon = ads.adSelectWebtoon();
-        model.addAttribute("webtoon", webtoon);
-        mav.setViewName("admin/admin_main");
+        HashMap<String, Object> result = ads.adSelectWebtoon(request);
+        int mCount= ads.adAllCountMember();
+        int wCount = ads.adAllCountWebtoon();
+
+        model.addAttribute("webtoonCount", wCount);
+        model.addAttribute("memberCount", mCount);
+        mav.addObject("adSelectWebtoon", result.get("adSelectWebtoon"));
+        mav.addObject("paging", result.get("paging"));
+        mav.setViewName("admin/webtoon/admin_webtoonlist");
 
         return mav;
     }
 
     @GetMapping("/adminQnalist")
-    public ModelAndView adminQnalist(Model model) {
+    public ModelAndView adminQnalist(HttpServletRequest request, Model model) {
 
         ModelAndView mav = new ModelAndView();
-        List<QnaVO> qna = ads.adSelectQna();
-        model.addAttribute("qna", qna);
-        mav.setViewName("admin/admin_qnalist");
+        HashMap<String, Object> result = ads.adSelectQna(request);
+        int mCount= ads.adAllCountMember();
+        int wCount = ads.adAllCountWebtoon();
+
+        model.addAttribute("webtoonCount", wCount);
+        model.addAttribute("memberCount", mCount);
+        mav.addObject("adSelectQna", result.get("adSelectQna"));
+        mav.addObject("paging", result.get("paging"));
+        mav.setViewName("admin/qna/admin_qnalist");
+
 
         return mav;
     }
@@ -84,8 +97,13 @@ public class AdminController {
 
         ModelAndView mav = new ModelAndView();
         List<NoticeVO> notice = ads.adSelectNotice();
+        int mCount= ads.adAllCountMember();
+        int wCount = ads.adAllCountWebtoon();
+
+        model.addAttribute("webtoonCount", wCount);
+        model.addAttribute("memberCount", mCount);
         model.addAttribute("notice", notice);
-        mav.setViewName("admin/admin_noticelist");
+        mav.setViewName("admin/notice/admin_noticelist");
 
         return mav;
     }
