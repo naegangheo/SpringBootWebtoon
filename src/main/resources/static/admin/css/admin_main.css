@@ -1,0 +1,103 @@
+body{
+    margin: 0 auto;
+    width: 1800px;
+    background-color: rgb(180, 180, 180);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.wrap{
+    width: 1780px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex: 0.5;
+}
+
+
+
+.side_bar{
+    position: relative;
+    width: 230px;
+    height: 130px;
+    background-color: rgb(222, 246, 222);
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.side_menu{
+    position: absolute;
+    right: 5px;
+    top: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    transition: all 0.5s ease;
+
+}
+
+.side_menu a{
+    background: aliceblue;
+    color: cornflowerblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 150%;
+}
+
+.side_menu a{
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+a{
+    text-decoration: none;
+
+}
+
+.admin_view{
+    width: 1550px;
+    background-color: rgb(222, 246, 222);
+    border-radius: 5px;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+
+}
+
+.list{
+    background-color: aliceblue;
+    border-bottom: 2px solid #00DC64 ;
+}
+
+
+.title{
+    display: flex;
+    border-bottom: 2px solid #00DC64 ;
+    justify-content: space-between;
+    font-size: 120%;
+}
+
+.content .title:nth-child(even){
+    background: white;
+}
+
+.top{
+    font-size: 200%;
+    display: flex;
+    line-height: 130px;
+}
+
+.side_title{
+    line-height: 80px;
+    text-align: center;
+
+
+}
