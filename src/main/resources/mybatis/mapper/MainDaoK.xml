@@ -57,22 +57,31 @@
             subject COLLATE utf8mb4_general_ci ASC
     </select>
 
+<!--  특정 웹툰 조회
+    <select id="getWebtoonById" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT * FROM webtoon WHERE wseq = #{wseq}
+    </select>-->
 
-    <!-- 신규 작품 등록 -->
+
+    <!-- 업로드된 파일 정보 저장 -->
     <insert id="insertWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
         INSERT INTO webtoon (
-            subject, genre, content, savefilename, savefilename2, indate
-        ) VALUES (
-                     #{subject}, #{genre}, #{content}, #{savefilename}, #{savefilename2}, NOW()
-                 )
+            subject, genre, week, content, savefilename,
+                  savefilename2, image, image2, userid, indate
+        )
+        VALUES (#{subject}, #{genre},  #{week}, #{content}, #{savefilename}, #{savefilename2}, #{image}, #{image2}, #{userid},
+                   NOW() )
     </insert>
 
-    <!--기존 작품 조회-->
-    <select id="searchWebtoon" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
-        SELECT *
-        FROM webtoon
+
+  <!--  <update id="updateWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
+        UPDATE webtoon
+        SET subject = #{subject}, genre = #{genre}, content = #{content},
+            savefilename = #{savefilename}, savefilename2 = #{savefilename2}, userid = #{userid}
         WHERE wseq = #{wseq}
-    </select>
+    </update>-->
+
+
 
 
 

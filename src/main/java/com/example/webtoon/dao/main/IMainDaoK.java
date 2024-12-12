@@ -2,7 +2,9 @@ package com.example.webtoon.dao.main;
 
 
 import com.example.webtoon.dto.WebtoonVO;
+import jakarta.validation.Valid;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,20 +25,19 @@ public interface IMainDaoK {
     // 조회수가 높은 순서로 웹툰 리스트 조회
     List<WebtoonVO> getbestlist();
 
-    // 기존 웹툰 조회
 
 
 
-    void saveFileInfo(WebtoonVO vo);
 
-    WebtoonVO getFileInfo(int wseq);
 
-    void insertWebtoon(WebtoonVO webtoonVO);
+    // 새로운 웹툰 등록
+    void insertWebtoon( WebtoonVO webtoon);
 
-    void updateWebtoon(WebtoonVO webtoonVO);
+    
+    // 특정 웹툰 조회
+   /* WebtoonVO getWebtoonById(int wseq);*/
 
-    WebtoonVO findWebtoonById(int wseq);
-
+   /* void updateWebtoon(WebtoonVO webtoon);*/
 }
 
 
