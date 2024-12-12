@@ -75,19 +75,19 @@
         <div class="paging">
             <!-- prev 버튼의 표시 여부 -->
             <c:if test="${paging.prev}" >
-                <a href="genrecategory?genre=${genre}&page=${paging.beginPage-1}">◀</a>&nbsp;
+                <a href="genreCategory?genre=${genre}&page=${paging.beginPage-1}">◀</a>&nbsp;
             </c:if>
             <p>Genre: ${genre}</p>
             <!--  beginPage 부터  endPage 까지 일렬로 페이지를 표시 -->
             <c:forEach begin="${paging.beginPage}"  end="${paging.endPage}"  var="index">
-                <a href="genrecategory?genre=${genre}&page=${index}">
+                <a href="genreCategory?genre=${genre}&page=${index}">
                     &nbsp;${index}&nbsp;
                 </a>
             </c:forEach>
 
             <!-- next 버튼 표시 여부 -->
             <c:if test="${paging.next}" >
-                <a href="genrecategory?genre=${genre}&page=${paging.endPage+1}">▶</a>&nbsp;
+                <a href="genreCategory?genre=${genre}&page=${paging.endPage+1}">▶</a>&nbsp;
             </c:if>
         </div>
     </section>
