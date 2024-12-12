@@ -1,13 +1,13 @@
 package com.example.webtoon.service.admin;
 
 import com.example.webtoon.dao.admin.IAdminDao;
-import com.example.webtoon.dto.AdminVO;
-import com.example.webtoon.dto.NoticeVO;
-import com.example.webtoon.dto.QnaVO;
-import com.example.webtoon.dto.WebtoonVO;
+import com.example.webtoon.dto.*;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -21,15 +21,67 @@ public class AdminService {
     public AdminVO getAdmin(String adminid) {return iadao.getAdmin(adminid);
     }
 
-    public List<WebtoonVO> adSelectWebtoon() {
-        return iadao.adSelectWebtoon();
+    public HashMap<String, Object> adSelectWebtoon(HttpServletRequest request) {
+        HashMap<String, Object> result = new HashMap<>();
+        HttpSession session = request.getSession();
+        int page=1;
+        if(request.getParameter("page") != null) {
+            page= Integer.parseInt(request.getParameter("page"));
+            session.setAttribute("page", page);
+        }else if(session.getAttribute("page") != null) {
+            page=(Integer)session.getAttribute("page");
+        }
+
+        Paging paging = new Paging();
+        paging.setPage(page);
+        int count= iadao.getAllcount();
+        paging.setTotalCount(count);
+        paging.calPaging();
+
+        List<WebtoonVO> list= iadao.adSelectWebtoon(paging);
+
+
+        result.put("adSelectWebtoon",list);
+        result.put("paging", paging);
+        return result;
     }
 
-    public List<QnaVO> adSelectQna() {
-        return iadao.adSelectQna();
+    public HashMap<String, Object> adSelectQna(HttpServletRequest request) {
+        HashMap<String, Object> result = new HashMap<>();
+        HttpSession session = request.getSession();
+        int page=1;
+        if(request.getParameter("page") != null) {
+            page= Integer.parseInt(request.getParameter("page"));
+            session.setAttribute("page", page);
+        }else if(session.getAttribute("page") != null) {
+            page=(Integer)session.getAttribute("page");
+        }
+
+        Paging paging = new Paging();
+        paging.setPage(page);
+        int count= iadao.getAllcountQna();
+        paging.setTotalCount(count);
+        paging.calPaging();
+
+        List<QnaVO> list= iadao.adSelectQna(paging);
+
+
+        result.put("adSelectQna",list);
+        result.put("paging", paging);
+        return result;
+
     }
 
     public List<NoticeVO> adSelectNotice() {
         return iadao.adSelectNotice();
+    }
+
+
+    public int adAllCountMember() {
+        return iadao.adAllCountMember();
+    }
+
+    public int adAllCountWebtoon() {
+        return iadao.getAllcount();
     }
 }

@@ -1,9 +1,6 @@
 package com.example.webtoon.dao.admin;
 
-import com.example.webtoon.dto.AdminVO;
-import com.example.webtoon.dto.NoticeVO;
-import com.example.webtoon.dto.QnaVO;
-import com.example.webtoon.dto.WebtoonVO;
+import com.example.webtoon.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,9 +11,17 @@ public interface IAdminDao {
     AdminVO getAdmin(String adminid);
 
 
-    List<WebtoonVO> adSelectWebtoon();
+    List<WebtoonVO> adSelectWebtoon(Paging paging);
 
-    List<QnaVO> adSelectQna();
+    List<QnaVO> adSelectQna(Paging paging);
 
     List<NoticeVO> adSelectNotice();
+
+
+    int getAllcount();
+
+    int getAllcountQna();
+
+
+    int adAllCountMember();
 }
