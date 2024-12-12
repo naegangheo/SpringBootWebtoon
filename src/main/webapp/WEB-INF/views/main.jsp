@@ -55,7 +55,7 @@
         <div class="m_mid_left">
             <div class="mid_genre"> <%-- 장르별  best webtoon--%>
                 <div class="genre">
-                    <label>가장 핫한 ## 웹툰만 모아봤어요!</label><br>
+                    <label>가장 핫한 ${messageG} 웹툰만 모아봤어요!</label><br>
                     <div class="mid_genre_cate">   <%-- 장르 필요하면 더추가~--%>
                         <div>
                             <a href="javascript:void(0);" class="genre_button" data-genre="2">
