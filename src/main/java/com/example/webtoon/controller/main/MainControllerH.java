@@ -26,7 +26,7 @@ public class MainControllerH {
     MainServiceL sl;
 
 
-    @GetMapping("/genrecategory")
+    @GetMapping("/genreCategory")
     public ModelAndView genre(
             @RequestParam(value = "genre", defaultValue = "1") int genre,
             HttpServletRequest request) {
@@ -89,4 +89,6 @@ public class MainControllerH {
 
 
 
+
 }
+
