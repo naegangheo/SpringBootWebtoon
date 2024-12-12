@@ -59,11 +59,12 @@
                 <a href="/best">Best</a>&nbsp;
                 <a href="/genre" id="genre_link">Genre</a>&nbsp;
                 <c:choose>
-                    <c:when test="${empty loginUser}"> <%-- 로그아웃시 :  안 보임 --%>
-                        <a href="#"  id="mypage_link">Mypage</a>
-                   </c:when>
-                   <c:otherwise>    <%-- 로그인 시 : 보임 --%>
-                        <a href="#" id="mypage_link">Mypage</a>
+                    <c:when test="${empty loginUser}">
+                    <%-- 로그아웃시 :  안 보임 --%>
+                    </c:when>
+                    <c:otherwise>
+                    <%-- 로그인 시 : 보임 --%>
+                    <a href="#"  id="mypage_link">Mypage</a>
                     </c:otherwise>
                 </c:choose>
             </nav>

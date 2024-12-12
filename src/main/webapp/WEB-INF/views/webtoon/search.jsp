@@ -8,14 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
     <style>
+        /* 공통 스타일 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
         }
-        /*div{ border: solid 1px black}*/
 
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: text-decoration-color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-decoration-color: black;
+        }
+
+        /* 컨테이너 스타일 */
         .container {
             display: flex;
             justify-content: center;
@@ -24,70 +41,74 @@
 
         .content-wrap {
             display: flex;
-            justify-content: space-between; /* 양쪽 끝에 요소 배치 */
-            width: 1190px; /* 고정 너비 */
-            max-width: 100%; /* 화면이 작아질 때 반응형 */
+            justify-content: space-between;
+            width: 1190px;
+            max-width: 100%;
         }
 
+        /* 검색 결과 영역 */
         .search-container {
             width: 840px;
-            margin: 0 auto;
             background-color: #fff;
-            padding: 20px;
-            /*border-radius: 8px;*/
-            /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-            text-align: left;
+            padding: 0;
         }
 
-        .search-content-top {   }
-        .search-content-bottom {    }
-        .aside-wrap {
-            width: 300px; /* 오른쪽 영역의 고정 너비 */
-            margin: 0;
+        .search-content-top {
             display: flex;
-            flex-direction: column;
-            gap: 10px; /* 항목 간의 간격 */
-            text-align: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 600;
+            height: 50px;
+            margin-top: 20px;
         }
 
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .search-content-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #ebebeb;
         }
 
-        /* 검색 결과 리스트 */
         .search-results {
             list-style: none;
-            margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            row-gap: 20px;
+            margin-top: 20px;
         }
 
         .result-item {
             display: flex;
             align-items: flex-start;
             background-color: #fff;
-            padding: 16px;
-            /*
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            */
+            column-gap: 16px;
         }
 
-        .result-item img {
-            width: 100px;
-            height: 100px;
-            border-radius: 8px;
-            margin-right: 16px;
-            object-fit: cover;
+        .thumbnail {
+            width: 120px;
+            height: 156px;
+            overflow: hidden;
+            border-radius: 5px;
             border: 1px solid #eee;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .thumbnail img:hover {
+            transform: scale(1.05);
         }
 
         .result-info {
             flex: 1;
+            width: 704px;
         }
 
         .result-info h3 {
@@ -97,11 +118,13 @@
             color: #333;
         }
 
-        .result-info p {
+        .result-info .horizontal-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             margin: 0 0 8px;
             color: #666;
             font-size: 14px;
-            display: inline-block;
         }
 
         .tags span {
@@ -114,6 +137,74 @@
             font-size: 12px;
         }
 
+        /* 사이드바 영역 */
+        .aside-container {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+        }
+
+        .aside-box {
+            width: 300px;
+            border: 1px dashed #eee;
+        }
+
+        .aside-title {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .aside-item {
+            display: flex;
+            column-gap: 12px;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .aside-item img {
+            width: 60px;
+            height: 48px;
+            object-fit: cover;
+        }
+
+        .aside-item-rank {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            font-size: 14px;
+        }
+
+        .aside-item-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 115px;
+        }
+
+        /* 공지사항 영역 */
+        .notice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .notice-list {
+            list-style: none;
+            padding: 0 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+        }
+
+        .notice-list li {
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
@@ -122,46 +213,82 @@
     <div class="content-wrap">
         <div class="search-container">
             <div class="search-content-top">
-                <!-- 동적 검색 키워드 강조 -->
-                <h1 style="border-bottom: #5a6174">
-                    <span style="color:#00dc64;">'${keyword}'</span> 에 대한 검색결과입니다.
-                </h1>
+                <h2><span style="color:#00dc64;">'${keyword}'</span> 에 대한 검색결과입니다.</h2>
             </div>
-
+            <div class="search-content-head">
+                <span>웹툰 총 ${resultCount}개</span>
+            </div>
             <div class="search-content-bottom">
-                <!-- 검색 결과가 있을 경우 -->
                 <c:if test="${not empty searchResults}">
                     <ul class="search-results">
-                        <!-- 검색 결과를 반복하여 출력 -->
                         <c:forEach var="result" items="${searchResults}">
                             <li class="result-item">
-                                <!-- 썸네일 -->
-                                <img src="images/webtoon/webtoon_images/title_img/${result.image}" alt="${result.subject}">
-                                <!-- 웹툰 정보 -->
+                                <div class="thumbnail">
+                                    <a href="webtoon_view?wseq=${result.wseq}">
+                                        <img src="images/webtoon/webtoon_images/title_img/${result.image}" alt="${result.subject}">
+                                    </a>
+                                </div>
                                 <div class="result-info">
-                                    <h3>${result.subject}</h3>
-                                    <p>작가: ${result.userid}</p>
-                                    <p>ㅣ</p>
-                                    <p>최종 업데이트: ${result.indate}</p><br>
+                                    <h3><a href="webtoon_view?wseq=${result.wseq}">${result.subject}</a></h3>
+                                    <div class="horizontal-info">
+                                        <p>작가: ${result.userid}</p>
+                                        <p>ㅣ</p>
+                                        <p>최종 업데이트: ${result.indate.split(' ')[0]}</p>
+                                    </div>
                                     <p class="p-second">${result.content}</p>
                                 </div>
                             </li>
                         </c:forEach>
                     </ul>
                 </c:if>
-
-                <!-- 검색 결과가 없을 경우 -->
                 <c:if test="${empty searchResults}">
                     <p>No results found for '<span style="color:#00dc64;">${keyword}</span>'.</p>
                 </c:if>
             </div>
         </div>
 
-        <div class="aside-wrap">
-            <div style="width: 300px; height: 250px; border: 1px dashed #eee;">광고?</div>
-            <div style="width: 300px; height: 509px; border: 1px dashed #eee;">실시간 인기웹툰</div>
-            <div style="width: 300px; height: 509px; border: 1px dashed #eee;">실시간 신작랭킹</div>
-            <div style="width: 300px; height: 326px; border: 1px dashed #eee;">공지사항</div>
+        <div class="aside-container">
+            <div class="aside-box">
+                <div class="aside-title">실시간 인기웹툰</div>
+                <c:forEach begin="0" end="9" items="${webtoon}" var="wvo" varStatus="status">
+                    <div class="aside-item">
+                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
+                        <div class="aside-item-rank">${status.index + 1}</div>
+                        <div class="aside-item-info">
+                            <div>${wvo.subject}</div>
+                            <div>${wvo.userid}</div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+
+            <div class="aside-box">
+                <div class="aside-title">실시간 신작</div>
+                <c:forEach begin="0" end="9" items="${last}" var="wvo" varStatus="status">
+                    <div class="aside-item">
+                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
+                        <div class="aside-item-rank">${status.index + 1}</div>
+                        <div class="aside-item-info">
+                            <div>${wvo.subject}</div>
+                            <div>${wvo.userid}</div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+
+            <div class="aside-box">
+                <div class="notice-header">
+                    <div>공지사항</div>
+                    <div><a href="notice">더보기 ></a></div>
+                </div>
+                <div class="notice-list">
+                    <ul>
+                        <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="7">
+                            <li>${noticeVO.subject}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
