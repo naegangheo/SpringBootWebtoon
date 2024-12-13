@@ -134,4 +134,53 @@ $(function () {
     }
 });
 
+$(function () {
+    loadWebtoonsByGender('T');
+    $('.gender_button').click(function (event) {
+
+        event.preventDefault('T');
+
+        var gender=$(this).data('gender');
+        console.log(gender);
+
+        loadWebtoonsByGender(gender);
+
+    });
+
+    function loadWebtoonsByGender(gender){
+        $.ajax({
+            url:`/readCountByGender`,
+            type: 'GET',
+            async: true,
+            data: { gender:gender},
+            timeout: 10000,
+            success: function (response) {
+                console.log(response);
+
+                let html = '';
+                response.forEach(function (rbg, index) {
+                    html += `
+                        <div id="rank_list">
+                            <label>${index+1}</label>
+                            <div>
+                                <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}">
+                                    <img src="/images/webtoon/webtoon_images/title_img/${rbg.image}" style="width: 50px; padding-left: 10px;">
+                                </a>
+                                <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}">
+                                    ${rbg.subject}
+                                </a>
+                            </div>
+                        </div>`;
+                });
+
+                $("#rank").html(html);
+            },
+            error: function (error) {
+                console.log(error);
+            },
+        });
+    }
+
+});
+
 

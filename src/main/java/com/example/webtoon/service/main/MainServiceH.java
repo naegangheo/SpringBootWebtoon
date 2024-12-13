@@ -87,4 +87,16 @@ public class MainServiceH {
     }
 
 
+    public List<WebtoonVO> getReqdcountByGender(String gender) {
+
+        List<WebtoonVO> list = mdaoh.getReadCountByGender(gender);
+
+        return list;
+
+    }
+
+    public List<WebtoonVO> getAllReadcount() {
+
+        return mdaoh.getAllReadcount();
+    }
 }
