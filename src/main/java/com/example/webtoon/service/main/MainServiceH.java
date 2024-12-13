@@ -78,4 +78,13 @@ public class MainServiceH {
         return result;
 
     }
+
+    public List<WebtoonVO> getReadCountByGenre(int genre) {
+
+        List<WebtoonVO> list = mdaoh.getReadCountByGenre(genre);
+
+        return list;
+    }
+
+
 }
