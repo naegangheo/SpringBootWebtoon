@@ -1,12 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../admin_header.jsp"%>
-
 <style>
   .top_menu a:nth-child(1){
     opacity: 1;
     background-color: rgb(222, 246, 222);
   }
 </style>
+
+<script>
+    function adWebtoonDelete(wseq) {
+        if (confirm("정말 삭제하시겠습니까?")) {
+            location.href = `/adminWebtoonDelete?wseq=`+wseq;
+        }
+    }
+
+</script>
 
     <div class="bottom">
       <div class="list">
@@ -20,7 +28,7 @@
         <br>
         <div class="content">
           <c:forEach items="${adSelectWebtoon}" var="wvo">
-            <div class="content_title" >
+            <div class="content_title toggle-header" data-target="content-${wvo.wseq}" >
               <div class="col">
                   ${wvo.wseq}
               </div>
@@ -36,6 +44,11 @@
               <div class="col">
                 ${wvo.indate}
               </div>
+            </div>
+            <div id="content-${wvo.wseq}" class="toggle-content">
+                <div>${wvo.content}</div>
+                <button type="button" value="수정" onclick="location.href='/adminWebtoonUpdate?wseq=${wvo.wseq}'">수정</button>
+                <button type="button" value="삭제" onclick="adWebtoonDelete(${wvo.wseq})">삭제</button>
             </div>
           </c:forEach>
           <br>
@@ -60,8 +73,8 @@
   </div>
 </div>
 
+
+
 <%@ include file="../admin_footer.jsp"%>
 
-<script>
 
-</script>

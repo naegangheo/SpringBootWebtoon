@@ -8,6 +8,10 @@
         select * from admin where adminid=#{param1}
     </select>
 
+    <select id="adGetWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where wseq=#{wseq}
+    </select>
+
     <select id="adSelectWebtoon" resultType="com.example.webtoon.dto.WebtoonVO" parameterType="com.example.webtoon.dto.WebtoonVO">
         select*from webtoon order by wseq desc limit #{displayRow} offset #{startNum}
     </select>
@@ -17,7 +21,7 @@
     </select>
 
     <select id="adSelectNotice" resultType="com.example.webtoon.dto.NoticeVO">
-        select*from notice order by nseq desc
+        select*from notice order by nseq desc limit #{displayRow} offset #{startNum}
     </select>
 
     <select id="getAllcount" resultType="_int">
@@ -31,6 +35,14 @@
     <select id="adAllCountMember" resultType="_int">
         select count(*) from member
     </select>
+
+    <select id="getAllcountNotice" resultType="_int">
+        select count(*) from notice
+    </select>
+
+    <delete id="adminWebtoonDelete">
+        delete from webtoon where wseq=#{wseq}
+    </delete>
 
 
 </mapper>

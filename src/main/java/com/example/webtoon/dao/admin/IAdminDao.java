@@ -15,7 +15,7 @@ public interface IAdminDao {
 
     List<QnaVO> adSelectQna(Paging paging);
 
-    List<NoticeVO> adSelectNotice();
+    List<NoticeVO> adSelectNotice(Paging paging);
 
 
     int getAllcount();
@@ -24,4 +24,14 @@ public interface IAdminDao {
 
 
     int adAllCountMember();
+
+    int getAllcountNotice();
+
+
+    void adminWebtoonDelete(int wseq);
+
+
+    WebtoonVO adGetWebtoon(int wseq);
+
+
 }

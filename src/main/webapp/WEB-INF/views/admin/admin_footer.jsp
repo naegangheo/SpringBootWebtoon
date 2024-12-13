@@ -8,4 +8,25 @@
 </footer>
 <!-- <%--  여기까지 footer  --%> -->
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleHeaders = document.querySelectorAll('.toggle-header');
+
+        toggleHeaders.forEach(header => {
+            header.addEventListener('click', function () {
+                const targetId = this.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+
+                document.querySelectorAll('.toggle-content.visible').forEach(el => {
+                    if (el !== content) {
+                        el.classList.remove('visible');
+                    }
+                });
+
+                content.classList.toggle('visible');
+            });
+        });
+    });
+</script>
+
 </html>

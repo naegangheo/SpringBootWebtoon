@@ -31,7 +31,7 @@
                   ${qna.subject}
               </div>
               <div class="col">
-                  ${qna.indate}
+                  <fmt:formatDate value="${qna.indate}" pattern="yyyy-MM-dd"/>
               </div>
             </div>
           </c:forEach>
