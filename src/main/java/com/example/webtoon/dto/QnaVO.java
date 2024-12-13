@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class QnaVO {
 
-    private int qseq;      // Q&A 번호
+    private Integer qseq;     // Q&A 번호
     private String userid; // 사용자 ID
     private String pwd;    // 비밀번호
     private String subject; // 제목

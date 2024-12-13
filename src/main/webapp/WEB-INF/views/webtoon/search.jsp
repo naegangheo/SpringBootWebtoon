@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
     <style>
+        div, ul, li { border: 1px dashed grey;}
         /* 공통 스타일 */
         body {
             font-family: Arial, sans-serif;
@@ -144,16 +145,21 @@
             flex-direction: column;
             gap: 10px;
             text-align: center;
+            margin-top: 20px;
         }
 
         .aside-box {
             width: 300px;
+            height: 509px;
             border: 1px dashed #eee;
         }
 
         .aside-title {
-            margin-bottom: 20px;
-            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ebebeb;
         }
 
         .aside-item {
@@ -184,6 +190,11 @@
             width: 115px;
         }
 
+        .ad-item {
+            width: 300px;
+            height: 250px;
+        }
+
         /* 공지사항 영역 */
         .notice-header {
             display: flex;
@@ -200,13 +211,13 @@
             display: flex;
             flex-direction: column;
             row-gap: 5px;
+            text-align: left;
         }
 
         .notice-list li {
             font-size: 12px;
         }
     </style>
-</head>
 <body>
 
 <div class="container">
@@ -248,47 +259,77 @@
         </div>
 
         <div class="aside-container">
-            <div class="aside-box">
-                <div class="aside-title">실시간 인기웹툰</div>
-                <c:forEach begin="0" end="9" items="${webtoon}" var="wvo" varStatus="status">
-                    <div class="aside-item">
-                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
-                        <div class="aside-item-rank">${status.index + 1}</div>
-                        <div class="aside-item-info">
-                            <div>${wvo.subject}</div>
-                            <div>${wvo.userid}</div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
+
+            <div class="ad-item">광고?</div>
 
             <div class="aside-box">
-                <div class="aside-title">실시간 신작</div>
-                <c:forEach begin="0" end="9" items="${last}" var="wvo" varStatus="status">
-                    <div class="aside-item">
-                        <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
-                        <div class="aside-item-rank">${status.index + 1}</div>
-                        <div class="aside-item-info">
-                            <div>${wvo.subject}</div>
-                            <div>${wvo.userid}</div>
-                        </div>
-                    </div>
-                </c:forEach>
+    <div class="aside-title">
+        <div>실시간 인기웹툰</div>
+        <div>
+            <a href="#">전체</a>
+            <a href="#">여성</a>
+            <a href="#">남성</a>
+        </div>
+    </div>
+    <c:forEach begin="0" end="4" items="${webtoon}" var="wvo" varStatus="status">
+        <div class="aside-item">
+            <a href="webtoon_view?wseq=${wvo.wseq}">
+                <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
+            </a>
+            <div class="aside-item-rank">${status.index + 1}</div>
+            <div class="aside-item-info">
+                <div>
+                    <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
+                </div>
+                <div>${wvo.userid}</div>
             </div>
+        </div>
+    </c:forEach>
+</div>
 
-            <div class="aside-box">
-                <div class="notice-header">
-                    <div>공지사항</div>
-                    <div><a href="notice">더보기 ></a></div>
+<div class="aside-box">
+    <div class="aside-title">
+        <div>실시간 신작</div>
+        <div>
+            <a href="#">전체</a>
+            <a href="#">여성</a>
+            <a href="#">남성</a>
+        </div>
+    </div>
+    <c:forEach begin="0" end="4" items="${last}" var="wvo" varStatus="status">
+        <div class="aside-item">
+            <a href="webtoon_view?wseq=${wvo.wseq}">
+                <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
+            </a>
+            <div class="aside-item-rank">${status.index + 1}</div>
+            <div class="aside-item-info">
+                <div>
+                    <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
                 </div>
-                <div class="notice-list">
-                    <ul>
-                        <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="7">
-                            <li>${noticeVO.subject}</li>
-                        </c:forEach>
-                    </ul>
-                </div>
+                <div>${wvo.userid}</div>
             </div>
+        </div>
+    </c:forEach>
+</div>
+
+
+<div class="aside-box">
+    <div class="notice-header">
+        <div>공지사항</div>
+        <div><a href="notice">더보기 ＞</a></div>
+    </div>
+    <div class="notice-list">
+        <ul>
+            <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="7">
+                <li>
+                    <a href="notice_view?nseq=${noticeVO.nseq}">
+                        ${noticeVO.subject}
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
         </div>
     </div>
 </div>
