@@ -55,11 +55,11 @@
 
         <div class="genre">
             <div class="sub">장르</div>
-            <label><input type="radio" name="genre" value="1" <c:if test="${webtoon.genre == 1}">checked</c:if>> 로맨스</label>
-            <label><input type="radio" name="genre" value="2" <c:if test="${webtoon.genre == 2}">checked</c:if>> 판타지</label>
-            <label><input type="radio" name="genre" value="3" <c:if test="${webtoon.genre == 3}">checked</c:if>> 액션</label>
-            <label><input type="radio" name="genre" value="4" <c:if test="${webtoon.genre == 4}">checked</c:if>> 일상</label>
-            <label><input type="radio" name="genre" value="5" <c:if test="${webtoon.genre == 5}">checked</c:if>> 스릴러</label>
+            <label><input type="radio" name="genre" value="2" <c:if test="${webtoon.genre == 2}">checked</c:if>> 로맨스</label>
+            <label><input type="radio" name="genre" value="3" <c:if test="${webtoon.genre == 3}">checked</c:if>> 판타지</label>
+            <label><input type="radio" name="genre" value="4" <c:if test="${webtoon.genre == 4}">checked</c:if>> 액션</label>
+            <label><input type="radio" name="genre" value="5" <c:if test="${webtoon.genre == 5}">checked</c:if>> 일상</label>
+            <label><input type="radio" name="genre" value="6" <c:if test="${webtoon.genre == 6}">checked</c:if>> 스릴러</label>
         </div>
 
         <div class="week">

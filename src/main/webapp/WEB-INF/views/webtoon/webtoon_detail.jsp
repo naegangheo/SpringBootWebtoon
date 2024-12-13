@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../header.jsp"%>
-<link rel="stylesheet" href="/css/webtoon/webtoon_view.css" />
+<link rel="stylesheet" href="/css/webtoon/webtoon_detail.css" />
+<script src="/script/jquery-3.7.1.min.js"></script>
+<script src="/script/reply.js"></script>
 
-    <br/>
     <div class="container">
         <div class="left">
             <div id="content">
-
                 <%-- 제목,이미지--%>
                 <div class="title">
                     <div class="title_image">
@@ -14,11 +14,8 @@
                     </div>
                     <div class="title_right">
                         <div class="subtitle" style="font-size: 26px; font-weight: bold;">${webtoonVO.subject}</div>
-                        <br/>
                         <div class="title_name" id="tag">작가 : ${webtoonVO.userid}</div>
-                        <br/>
                         <div class="title_content" id="tag">내용 : ${webtoonVO.content}</div>
-                        <br/>
                         <div class="title_content" id="tag">
                             <c:choose>
                                 <c:when test ="${webtoonVO.genre == 1}">장르 : 전체</c:when>
@@ -33,37 +30,49 @@
                         <input type="button" value="목록보기" onClick="history.go(-1)"/>
                     </div>
                 </div>
-                <br>
+
                 <%-- 내용 --%>
                 <div class="list" >
-                    <img src="../images/webtoon/webtoon_images/content_img/content_img01.png" width="840px;" height="1080px" />
+                    <img src="../images/webtoon/webtoon_images/content_img/content_img1.png" width="830px;" height="1080px" />
                 </div>
 
                 <div class="reply">
                     <h2>댓글</h2>
-                    <form mehod="post" action="" class="replyform">
-                        <div>#아이디</div>
-                        <textarea id="reply_input" placeholder="댓글을 입력하세요..." rows="4" cols="100"></textarea>
-                        <input type="submit" value="댓글추가" onclick=""/>
+                    <form method="post" class="replyform">
+                       <c:choose>
+                            <c:when test="${not empty loginUser}">
+                                <form class="replyform">
+                                    <div>${loginUser.userid}</div>
+                                    <textarea id="reply_input" name="rcontent" placeholder="댓글을 입력하세요..." rows="4" cols="100" maxlength="500"></textarea>
+                                    <div class="reply-actions">
+                                        <span id="reply_counter">0/500</span>
+                                        <input type="submit" value="댓글 추가" />
+                                    </div>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <div>댓글 작성은 로그인이 필요합니다.</div>
+                            </c:otherwise>
+                       </c:choose>
                     </form>
-                    <br>
-                    <div>
-                        <div class="replylist_row">
-                            <div class="replylist_title">작성자</div>
-                            <div class="replylist_title">내용</div>
-                            <div class="replylist_title">작성일시</div>
-                        </div>
-                        <div class="replylist">
-<%--                            댓글리스트--%>
-                        </div>
 
+                    <div class="reply-list">
+                        <div class="replylist">
+                            <c:forEach items="${replyList}" var="reply">
+                                <div class="reply-item">
+                                    <div class="reply-author">${reply.userid}</div>
+                                    <div class="reply-content">${reply.rcontent}</div>
+                                    <div class="reply-date">
+                                        <fmt:formatDate value="${reply.indate}" pattern="yyyy-MM-dd HH:mm:ss" />
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
-        <br/>
 
 
 <%-- 오른쪽 광고 및 공지사항--%>
@@ -90,8 +99,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 

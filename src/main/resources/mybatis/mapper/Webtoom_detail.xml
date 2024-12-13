@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.webtoon_detail.ReplyDao">
+
+    <!-- 댓글 추가 -->
+    <insert id="insertReply" parameterType="com.example.webtoon.dto.ReplyVO">
+        INSERT INTO reply (wseq, userid, rcontent, indate)
+        VALUES (#{wseq}, #{userid}, #{rcontent}, NOW())
+    </insert>
+
+
+    <!-- 댓글 리스트 조회 -->
+    <select id="selectReplyList" parameterType="int" resultType="com.example.webtoon.dto.ReplyVO">
+        SELECT reseq, wseq, userid, rcontent, indate
+        FROM reply
+        WHERE wseq = #{wseq}
+        ORDER BY indate DESC
+    </select>
+
+    <!-- 댓글 수정 -->
+    <update id="updateReply" parameterType="com.example.webtoon.dto.ReplyVO">
+        UPDATE reply
+        SET rcontent = #{rcontent}, indate = NOW()
+        WHERE reseq = #{reseq}
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="deleteReply" parameterType="int">
+        DELETE FROM reply
+        WHERE reseq = #{reseq}
+    </delete>
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
