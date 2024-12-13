@@ -25,7 +25,7 @@
         select count(*) from webtoon where genre=#{genre} or #{genre}=1;
     </select>
 
-    <select id="getReadCount" resultType="com.example.webtoon.dto.WebtoonVO">
+    <select id="getReadCountByGenre" resultType="com.example.webtoon.dto.WebtoonVO">
         select * from webtoon where genre=#{genre} order by (readcountF + readcountM + readcountN) desc limit 5
     </select>
 

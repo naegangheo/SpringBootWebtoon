@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" href="/css/main.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 <div class="main">
     <div class="m_top">
         <div class="m_top_week"> <%-- 요일별  best webtoon--%>
@@ -55,7 +55,7 @@
         <div class="m_mid_left">
             <div class="mid_genre"> <%-- 장르별  best webtoon--%>
                 <div class="genre">
-                    <label>가장 핫한 ${messageG} 웹툰만 모아봤어요!</label><br>
+                    <label>가장 핫한 ${genre} 웹툰만 모아봤어요!</label><br>
                     <div class="mid_genre_cate">   <%-- 장르 필요하면 더추가~--%>
                         <div>
                             <a href="#" class="genre_button" data-genre="2">
@@ -84,23 +84,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="genre_img">
+                <div class="genre_img" id="genreForm">
+                    <c:forEach begin="0" end="4"  items="${readCountByGenre}" var="rcg">
                     <%-- AJAX로 웹툰 구현--%>
-                    <c:forEach begin="0" end="4"  items="${webtoon}" var="wvo">
                         <div class="genre_item">
-                            <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
-                                <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}"  style="width: 150px"/>
+                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}">
+                                <img src="/images/webtoon/webtoon_images/title_img/${rcg.image}"  style="width: 150px"/>
                             </a>
-                            <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
-                                제목 ${wvo.subject}
+                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}">
+                                제목 ${rcg.subject}
                             </a>
                             <div class="author">
-                                <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
-                                   저자 ${wvo.userid}
+                                <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}">
+                                   저자 ${rcg.userid}
                                 </a>
                             </div>
                             <div class="views">
-                                👁 조회수 ${wvo.readcountM + wvo.readcountF + wvo.readcountN}
+                                👁 조회수 ${rcg.readcountM + rcg.readcountF + rcg.readcountN}
                             </div>
                         </div>
                     </c:forEach>
@@ -223,56 +223,8 @@
             $('.prev').toggle(currentIndex !== 0);
             $('.next').toggle(currentIndex !== totalSlides - 1);
         }
-
         checkButtons();  // 초기 버튼 상태 설정
-
     });
 
 
-    // 장르 버튼 클릭 이벤트 처리
-    document.querySelectorAll(".genre_button").forEach(button => {
-        button.addEventListener("click", event => {
-            event.preventDefault(); // 기본 동작 방지
-            const genre = button.getAttribute("data-genre");  // data-genre 속성에서 장르 값 가져오기
-            console.log("Selected Genre ID:", genre);  // 장르 값 출력
-            // genre가 비어있으면 처리 방지
-            if (!genre) {
-                console.error("장르 값이 비어 있습니다!");
-                return;
-            }
-            const url = '/readCountByGenre?genre=${genre}';
-            console.log("Request URL:", url);  // 요청 URL을 로그로 출력
-            loadGenreWebtoons(url);  // AJAX 요청
-        });
-    });
-
-    function loadGenreWebtoons(url) {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log("Received data:", data);  // 받아온 데이터 출력
-                const container = document.querySelector(".genre_img");
-                container.innerHTML = data.length
-                    ? data.map(wvo => `
-                    <div class="genre_item">
-                        <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
-                            <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" style="width: 150px"/>
-                        </a>
-                        <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
-                            제목 ${wvo.subject}
-                        </a>
-                        <div class="author">
-                            <a href="webtoon_view?wseq=${wvo.wseq}&gender=${loginUser.gender}">
-                                저자 ${wvo.userid}
-                            </a>
-                        </div>
-                        <div class="views">
-                            👁 조회수 ${wvo.readcountM + wvo.readcountF + wvo.readcountN}
-                        </div>
-                    </div>
-                `).join("")
-                    : "<p>해당 장르에 웹툰이 없습니다.</p>";
-            })
-            .catch(console.error);
-    }
 </script>

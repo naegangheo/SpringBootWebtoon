@@ -87,17 +87,35 @@ public class MainControllerH {
 
     @GetMapping("/readCountByGenre")
     @ResponseBody
-    public List<WebtoonVO> readCount(@RequestParam(value = "genre", defaultValue = "0") int genre) {
-        // genre가 0일 경우 적절히 처리
-        if (genre == 0) {
-            System.out.println("잘못된 장르 값: " + genre);
-            return Collections.emptyList();  // 빈 리스트 반환
-        }
+    public List<WebtoonVO> readCountByGenre(
+            @RequestParam(value = "genre", required = true, defaultValue = "2") int genre,
+            @RequestParam(value="gender", required = false) String gender,
+            Model model, HttpSession session) {
 
+
+        // 세션에서 로그인 유저 가져오기
+        MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+
+        // 성별 결정 로직
+        if (loginUser == null) {
+            gender = "N";  // 로그인하지 않음
+        } else {
+            gender = loginUser.getGender();  // 세션의 성별 가져오기
+            if (!"M".equals(gender) && !"F".equals(gender)) {
+                gender = "N";  // 유효하지 않은 값일 경우 "N"
+            }
+        }
+        // 장르와 성별 출력 (디버그)
         System.out.println("선택된 장르: " + genre);
-        List<WebtoonVO> list = msh.getReadCount(genre);
+        System.out.println("gender: " + gender);
+
+        // 장르 기반 조회수 목록 가져오기
+        List<WebtoonVO> list = msh.getReadCountByGenre(genre);
+
+        // 조회 결과 출력 (디버그)
         System.out.println("조회된 웹툰 리스트: " + list);
 
+        // JSON 응답으로 반환
         return list;
     }
 
