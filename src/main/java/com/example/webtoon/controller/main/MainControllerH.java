@@ -121,6 +121,23 @@ public class MainControllerH {
         return list;
     }
 
+    @GetMapping("/readCountByGender")
+    @ResponseBody
+    public List<WebtoonVO> readCountByGender(@RequestParam("gender")String gender){
+
+        List<WebtoonVO> list;
+        if("T".equals(gender)){
+            list=msh.getAllReadcount();
+        }else{
+            list=msh.getReqdcountByGender(gender);
+        }
+
+
+        System.out.println("성별로 구분된 리스트: "+list);
+
+        return list;
+    }
+
 
 
 

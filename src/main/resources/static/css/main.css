@@ -240,38 +240,89 @@ a.next:hover {
 }
 
 ul{
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     border: 1px solid #00DC64;;
 }
+
 
 
 li{
     list-style-type: none;
     display: flex;
-    padding: 10px;
+    padding: 5px;
     border: 1px dotted #00DC64;;
     justify-content: space-between;
     align-items: center;
     transition: transform 0.3s ease;
 }
+
 li:hover{
     transform: scale(1.05);
 }
+#rank{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border: 1px solid #00DC64;
+    margin: 0;
+}
+
+#rank_list {
+
+    display: flex;
+    padding: 5px;
+    border: 1px dotted #00DC64;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+#rank_list:hover{
+    transform: scale(1.05);
+}
+
+#rank_list div{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #00DC64;
+    align-items: center;
+}
+
+#rank_list div a{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 20px;
+}
+
 
 .title{
+    width: 100%;
     padding: 5px;
-    border: 1px solid #00DC64;;
+    border: 1px solid #00DC64;
     width: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+
 }
+
+
+.title a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    border: 1px solid #00DC64;
+}
+
 .title a:hover{
     color: #00DC64;
 }
 
-li div {
-    display: flex;
-    justify-content: space-between;
-}
+
 
 li >div >label{
     font-weight: bold;

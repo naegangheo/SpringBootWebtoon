@@ -29,4 +29,8 @@ public interface IMainDaoH {
     int getAllcount(int genre);
 
     List<WebtoonVO> getReadCountByGenre(@Param("genre")int genre);
+
+    List<WebtoonVO> getReadCountByGender(@Param("gender")String gender);
+
+    List<WebtoonVO> getAllReadcount();
 }

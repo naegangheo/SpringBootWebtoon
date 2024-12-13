@@ -158,30 +158,20 @@
                 <div class="list_title">
                     <label>실시간 인기 웹툰</label>
                     <div>
-                        <a href="#">
+                        <a href="#" class="gender_button" data-gender="T">
                             전체
                         </a>
-                        <a href="#">
+                        <a href="#" class="gender_button" data-gender="F">
                             여성
                         </a>
-                        <a href="#">
+                        <a href="#" class="gender_button" data-gender="M">
                             남성
                         </a>
                     </div>
                 </div>
-                <ul>
-                    <c:forEach begin="0" end="4" var="index">
-                        <li id="rank_list">
-                            <div>
-                                <label>${index+1}</label>
-                                <a href="#">
-                                    <img src="images/main/noname.jpg" style="width: 50px; padding-left: 10px;">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="#">title${index+1}</a>
-                            </div>
-                        </li>
+                <ul id="rank">
+                    <c:forEach begin="0" end="4" var="rbg" items="${readCountByGender}">
+                        <%--  AJax로 구현--%>
                     </c:forEach>
                 </ul>
             </div>
