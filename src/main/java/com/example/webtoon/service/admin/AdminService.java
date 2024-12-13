@@ -72,7 +72,9 @@ public class AdminService {
 
     }
 
-
+    public List<NoticeVO> adSelectNotice() {
+        return iadao.adSelectNotice();
+    }
 
 
     public int adAllCountMember() {
@@ -118,4 +120,30 @@ public class AdminService {
 
 
 
+
+    /*userid로 myqnalist 가져오는 작업*/
+    public HashMap<String, Object> getUserSpecificQnaList(HttpServletRequest request, String userId) {
+        HashMap<String, Object> result = new HashMap<>();
+        HttpSession session = request.getSession();
+        int page = 1;
+
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+            session.setAttribute("page", page);
+        } else if (session.getAttribute("page") != null) {
+            page = (Integer) session.getAttribute("page");
+        }
+
+        Paging paging = new Paging();
+        paging.setPage(page);
+        int count = iadao.getCountQnaByUserId(userId); // 사용자별 Q&A 총 개수
+        paging.setTotalCount(count);
+        paging.calPaging();
+
+        List<QnaVO> list = iadao.selectQnaByUserId(userId, paging); // 사용자별 Q&A 데이터 가져오기
+
+        result.put("qnaList", list);
+        result.put("paging", paging);
+        return result;
+    }
 }

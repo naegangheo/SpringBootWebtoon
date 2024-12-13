@@ -15,7 +15,7 @@ public interface IAdminDao {
 
     List<QnaVO> adSelectQna(Paging paging);
 
-    List<NoticeVO> adSelectNotice(Paging paging);
+    List<NoticeVO> adSelectNotice();
 
 
     int getAllcount();
@@ -34,4 +34,12 @@ public interface IAdminDao {
     WebtoonVO adGetWebtoon(int wseq);
 
 
+
+    /*mypage qna 작업*/
+    List<QnaVO> selectQnaByUserId(@Param("userId") String userId, @Param("paging") Paging paging);
+    int getCountQnaByUserId(@Param("userId") String userId);
+    void insertQna(QnaVO qnaVO);
+    void updateQna(QnaVO qnaVO);
+    void deleteQna(@Param("qseq") int qseq, @Param("userid") String userid);
+    /*mypage qna 끝*/
 }

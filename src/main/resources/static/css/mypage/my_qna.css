@@ -30,11 +30,18 @@ section {
 
 /* 공지사항 헤더 */
 .notice h1 {
+    width: 750px;
     font-size: 24px;
     margin-bottom: 10px;
     border-bottom: 2px solid #00DC64;
     padding-bottom: 5px;
     color: #00DC64;
+}
+
+.openFormButton {
+    margin-top: 30px;
+    width: 70px;
+    height: 25px;
 }
 
 /* 공지사항 목록 */
@@ -171,16 +178,34 @@ form div {
     margin-bottom: 15px;
 }
 
-/* 반응형 디자인 */
-/*@media (max-width: 768px) {*/
-
-/*    .aside_banner {*/
-/*        flex-direction: row;*/
-/*        flex-wrap: wrap;*/
-/*        justify-content: center;*/
-/*    }*/
-
-/*    .adimg {*/
-/*        width: 45%;*/
-/*    }*/
+/*div, ul, ui {*/
+/*    border: 1px dashed grey;*/
 /*}*/
+
+.qna-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.qna-text {
+    width: 700px;
+}
+
+.qna-edit-delete-button{
+    width: 80px;
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: center; /* 버튼 중앙 정렬 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    /*gap: 10px; !* 버튼 간 간격 *!*/
+}
+.qna-edit-delete-button button {
+    all: unset;
+    cursor: pointer;
+    color: inherit;
+}
+
+.qna-edit-delete-button button:hover {
+    text-decoration: underline;
+}
