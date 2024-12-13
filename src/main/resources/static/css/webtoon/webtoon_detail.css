@@ -9,7 +9,8 @@
 
 }
 .left{
-
+    border: 1px solid #757575;
+    width: 840px;
 }
 
 #content{
@@ -109,6 +110,7 @@ ul{
 }
 
 input[type=submit]{
+    border: 1px solid #757575;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -125,7 +127,7 @@ input[type=submit]{
 .replylist{
     width: 840px;
     height: 100px;
-    background: blue;
+    border: 1px solid #757575;
 }
 
 

@@ -12,18 +12,26 @@ import java.util.List;
 public interface IMainDaoK {
 
 
-
-    // 등록 날짜가 빠른 순서로 웹툰 리스트 조회
-    List<WebtoonVO> getDayList();
-
-    // 작품 이름이 가나다순으로 정렬된 웹툰 리스트 조회
-    List<WebtoonVO> getNameList();
-
-       // 조회수 기준 상위 N개의 웹툰 가져오기
+    // 조회수 기준 상위 N개의 웹툰 가져오기
     List<WebtoonVO> getBestListTop(int limit);
 
+    // 등록 날짜가 빠른 순서로 웹툰 리스트 조회
+    List<WebtoonVO> getDayList(@Param("pageSize") int pageSize, @Param("offset") int offset);
+
+    // 작품 이름이 가나다순으로 정렬된 웹툰 리스트 조회
+    List<WebtoonVO> getNameList(@Param("pageSize") int pageSize, @Param("offset") int offset);
+
     // 조회수가 높은 순서로 웹툰 리스트 조회
-    List<WebtoonVO> getbestlist();
+    List<WebtoonVO> getbestlist(@Param("pageSize") int pageSize, @Param("offset") int offset);
+
+    int getTotalCount();
+
+
+
+
+
+
+
 
 
 

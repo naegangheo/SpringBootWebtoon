@@ -19,28 +19,38 @@ public class MainControllerK {
 
 
     @GetMapping("/best")
-    public ModelAndView bestList(@RequestParam(value = "filter", required = false, defaultValue = "update") String filter) {
+    public ModelAndView bestList(
+            @RequestParam(value = "filter", required = false, defaultValue = "update") String filter,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "21") int pageSize
+
+    ) {
         ModelAndView mav = new ModelAndView();
-
-
         List<WebtoonVO> BestListTop = msk.getBestListTop(3);
         List<WebtoonVO> list ;
+        int totalCount = msk.getTotalCount(); // 전체 데이터 수 가져오기
+        int totalPages = (int) Math.ceil((double) totalCount / pageSize);
 
         // 정렬 기준에 따라 서비스 메서드 호출
         switch (filter) {
             case "read":
-                list = msk.getbestlist();
+                list = msk.getbestlist(page, pageSize);
                 break;
             case "name":
-                list = msk.getNameList();
+                list = msk.getNameList(page, pageSize);
                 break;
             default:
-                list = msk.getDayList();
+                list = msk.getDayList(page, pageSize);
                 break;
         }
 
+
+
         mav.addObject("BestListTop", BestListTop);
         mav.addObject("webtoonList", list);
+        mav.addObject("currentPage", page);
+        mav.addObject("pageSize", pageSize);
+        mav.addObject("totalPages", totalPages);
         mav.setViewName("webtoon/best_list");
 
 

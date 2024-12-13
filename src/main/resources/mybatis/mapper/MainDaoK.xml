@@ -29,6 +29,7 @@
             webtoon
         ORDER BY
             indate ASC
+            LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
     <!-- 2. 조회수가 높은 순서로 웹툰 리스트 조회 -->
@@ -42,6 +43,7 @@
             webtoon
         ORDER BY
             total_readcount DESC
+            LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
 
@@ -55,6 +57,7 @@
             webtoon
         ORDER BY
             subject COLLATE utf8mb4_general_ci ASC
+            LIMIT #{pageSize} OFFSET #{offset}
     </select>
 
 <!--  특정 웹툰 조회
@@ -72,6 +75,12 @@
         VALUES (#{subject}, #{genre},  #{week}, #{content}, #{savefilename}, #{savefilename2}, #{image}, #{image2}, #{userid},
                    NOW() )
     </insert>
+
+<!--전체 데이터 개수를 계산    -->
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*)
+        FROM webtoon
+    </select>
 
 
   <!--  <update id="updateWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
