@@ -124,6 +124,8 @@ a{
 }
 
 
+
+
 .info{
     position: absolute;
     bottom: 0;
@@ -159,6 +161,12 @@ a{
     text-decoration: none;
 }
 
+.toggle-content {
+    display: none;
+}
+.toggle-content.visible {
+    display: block;
+}
 
 
 

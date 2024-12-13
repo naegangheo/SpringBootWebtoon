@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,19 +94,41 @@ public class AdminController {
     }
 
     @GetMapping("/adminNoticelist")
-    public ModelAndView adminNoticelist(Model model) {
+    public ModelAndView adminNoticelist(HttpServletRequest request,Model model) {
 
         ModelAndView mav = new ModelAndView();
-        List<NoticeVO> notice = ads.adSelectNotice();
+        HashMap<String, Object> result = ads.adSelectNotice(request);
         int mCount= ads.adAllCountMember();
         int wCount = ads.adAllCountWebtoon();
 
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
-        model.addAttribute("notice", notice);
+        mav.addObject("adSelectNotice", result.get("adSelectNotice"));
+        mav.addObject("paging", result.get("paging"));
         mav.setViewName("admin/notice/admin_noticelist");
 
         return mav;
+    }
+
+    @GetMapping("/adminWebtoonDelete")
+    public String adminWebtoonDelete(@RequestParam("wseq") int wseq) {
+        ads.adminWebtoonDelete(wseq);
+
+        return "redirect:/admin";
+
+    }
+
+    @GetMapping("/adminWebtoonUpdate")
+    public ModelAndView adminWebtoonUpdate(@RequestParam("wseq") int wseq, Model model) {
+
+        ModelAndView mav = new ModelAndView();
+        WebtoonVO wvo = ads.adGetWebtoon(wseq);
+
+        mav.addObject("webtoon", wvo);
+        mav.setViewName("admin/webtoon/admin_webtoon_update");
+
+        return mav;
+
     }
 
 }
