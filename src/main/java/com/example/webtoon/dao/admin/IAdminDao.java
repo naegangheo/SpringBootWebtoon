@@ -2,6 +2,7 @@ package com.example.webtoon.dao.admin;
 
 import com.example.webtoon.dto.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,7 +16,8 @@ public interface IAdminDao {
 
     List<QnaVO> adSelectQna(Paging paging);
 
-    List<NoticeVO> adSelectNotice();
+    List<NoticeVO> adSelectNotice(Paging paging);
+
 
 
     int getAllcount();
