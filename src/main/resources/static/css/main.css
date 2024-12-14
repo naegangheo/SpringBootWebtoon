@@ -5,14 +5,14 @@
 
 .wrap .main{
     width: 1200px;
-    border:1px dotted #00DC64;;
+
     margin: 0 auto;
 }
 
 .m_top{
     width: 1200px;
     height: 450px;
-    border: 1px dotted #00DC64;;
+
 }
 
 .m_top_week{
@@ -70,7 +70,7 @@ a.prev, a.next {
     z-index: 10;
     padding: 10px;
     border-radius: 50%;
-    border: 0.5px solid #00DC64;
+
     background: #00DC64;
     cursor: pointer;
     transition: opacity 0.3s ease;
@@ -102,17 +102,17 @@ a.next:hover {
 
 .m_mid_left{
     width : 795px;
-    border: 1px dotted #00DC64;;
+
     padding: 10px;
 }
 
 .mid_genre{
     height: 320px;
-    border: 1px solid #00DC64;;
+
 }
 
 .genre{
-    border: 1px dotted #00DC64;;
+
 }
 
 .mid_genre_cate{
@@ -126,14 +126,14 @@ a.next:hover {
     display: flex;
     justify-content: space-evenly;
     padding: 5px;
-    border: 1px dotted #00DC64;;
+
 }
 
 .genre_item{
     display: block;
     align-items: center;
     transition: transform 0.3s ease;
-    border: 1px dotted #00DC64;;
+
 }
 .genre_item:hover{
     transform: scale(1.05);
@@ -150,14 +150,14 @@ a.next:hover {
 .mid_new {
     height: 320px;
     display: block;
-    border: 1px dotted #00DC64;;
+
 
 }
 
 .new {
     display: block;
     width: 795px;
-    border: 1px dotted #00DC64;;
+
 
 }
 
@@ -173,7 +173,7 @@ a.next:hover {
     display: flex;
     justify-content: space-evenly;
     height: 200px;
-    border: 1px solid #00DC64;;
+
 
 }
 
@@ -210,7 +210,7 @@ a.next:hover {
 
 .m_mid_right{
     width: 395px;
-    border: 1px dotted #00DC64;;
+
     padding: 10px;
 }
 
@@ -220,7 +220,7 @@ a.next:hover {
 }
 
 .mid_right_list{
-    border: 1px dotted #00DC64;;
+
     padding: 15px;
 
 }
@@ -243,7 +243,7 @@ ul{
     display: flex;
     flex-direction: column;
     padding: 10px;
-    border: 1px solid #00DC64;;
+
 }
 
 
@@ -252,7 +252,7 @@ li{
     list-style-type: none;
     display: flex;
     padding: 5px;
-    border: 1px dotted #00DC64;;
+
     justify-content: space-between;
     align-items: center;
     transition: transform 0.3s ease;
@@ -265,7 +265,7 @@ li:hover{
     display: flex;
     flex-direction: column;
     padding: 5px;
-    border: 1px solid #00DC64;
+
     margin: 0;
 }
 
@@ -273,7 +273,7 @@ li:hover{
 
     display: flex;
     padding: 5px;
-    border: 1px dotted #00DC64;
+
     justify-content: flex-start;
     align-items: center;
     transition: transform 0.3s ease;
@@ -288,7 +288,7 @@ li:hover{
     padding: 5px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid #00DC64;
+
     align-items: center;
 }
 
@@ -302,7 +302,7 @@ li:hover{
 .title{
     width: 100%;
     padding: 5px;
-    border: 1px solid #00DC64;
+
     width: 150px;
     text-align: center;
     display: flex;
@@ -315,7 +315,7 @@ li:hover{
     text-decoration: none;
     color: #333;
     font-size: 14px;
-    border: 1px solid #00DC64;
+
 }
 
 .title a:hover{
@@ -327,7 +327,7 @@ li:hover{
 li >div >label{
     font-weight: bold;
     font-size: 200%;
-    border: 1px solid #00DC64;;
+
     text-align: center;
     line-height: 60px;
 }

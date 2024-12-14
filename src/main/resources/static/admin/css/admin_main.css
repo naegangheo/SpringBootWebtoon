@@ -1,142 +1,204 @@
 body{
-    margin: 0 auto;
-    width: 1800px;
+    width: 100%;
     background-color: rgb(180, 180, 180);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
 .wrap{
-    width: 1780px;
+    width: 1900px;
     padding: 10px;
+    background-color: white;
     border-radius: 5px;
     display: flex;
     flex: 0.5;
-    gap: 10px;
-    position: relative;
+    height: 1000px;
 }
 
+.side_bar div h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 250%;
+    font-weight: bold;
+}
 
+#adminid{
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 120%;
+    font-weight: bold;
+    justify-content: flex-end
+}
 
 .side_bar{
-    width: 230px;
-    height: 130px;
-    background-color: rgb(222, 246, 222);
-    border-radius: 10px;
-    padding: 5px;
-
-}
-
-.side_title{
-    line-height: 80px;
-    text-align: center;
-}
-
-
-
-.top{
-    display: flex;
-    justify-content: space-between;
-}
-
-.top_menu{
-    border-radius: 10px;
-    display: flex;
-    margin:10px;
-    padding: 5px;
-    transition: all 0.5s ease;
-    font-size: 200%;
-    line-height: 100px;
-    align-items: center;
-    height: 120px;
-    gap: 20px;
-}
-
-.top_menu a{
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    padding: 5px;
-    font-weight: bold;
-    opacity: 0.5;
-    color: cornflowerblue;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 150%;
-}
-
-.top_menu a:hover{
-    opacity: 1;
-    cursor: pointer;
-    transition: 0.3s;
-    scale: 1.1;
-}
-
-
-a{
-    text-decoration: none;
-}
-
-.admin_view{
-    width: 1550px;
+    position: relative;
+    width: 310px;
+    background-color: rgb(235, 248, 235);
     border-radius: 5px;
-}
-
-
-
-.logo{
-    display: flex;
-
-}
-
-.list{
-    border-radius: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size:18px;
-    line-height: 1.0;
-    color: #333;
     padding: 10px;
-    gap:30px;
-}
-
-
-.title{
     display: flex;
-    background-color: aliceblue;
-    border-radius: 10px;
-    padding: 5px;
-    border-bottom: 2px solid #00DC64 ;
-    justify-content: space-between;
-    font-size: 120%;
+    flex-direction: column;
+
+    box-shadow: 5px 5px 0 0 gray;
+
 }
 
-.content_title{
-    display: flex;
-    background-color: aliceblue;
-    padding:5px;
-    border-radius: 10px;
-    border-bottom: 2px solid #00DC64 ;
-    justify-content: space-between;
-    font-size: 120%;
-}
+.side_bar div{
 
-
-.content_title:nth-child(even){
+    padding: 10px;
+    border-radius: 5px;
     background: white;
+    box-shadow: 5px 5px 0 0 gray;
 }
 
+.side_menu{
+    height: 1800px;
+    top: 100px;
 
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 0 0 gray;
+}
 
+.side_menu a{
+    margin-top: 60px;
+    text-decoration: none;
+    width: 250px;
+    font-size: 200%;
+    font-weight: bold;
+    line-height: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #00DC64;;
+    align-items: center;
+
+    box-shadow: 5px 5px 0 0 gray;
+    padding: 20px;
+
+}
 
 .info{
-    position: absolute;
-    bottom: 0;
-    background-color: rgb(222, 246, 222);
-    width: 230px;
-    border-radius: 10px;
+
+    margin-top: 50px;
+    margin-right: 5px;
+    border: 1px solid blue;
+    border-radius: 5px;
+    justify-content: flex-end;
+    background: white;
+    width: 150px;
 }
 
 .info div{
-    padding-left:10px;
+    font-weight: bold;
+    font-size: 80%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.side_menu a{
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+a{
+    text-decoration: none;
+
+}
+/* ------------------------------------ */
+.admin_view{
+    width: 100%;
+    background-color: rgb(235, 248, 235);
+    border-radius: 5px;
+    margin-left: 10px;
+
+    padding: 10px;
+    box-shadow: 5px 5px 0 0 gray;
+}
+
+.top{
+
+    height: 155px;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 0 0 gray;
+    align-items: center;
+}
+
+.top div{
+
+    font-size: 200%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    box-shadow: 5px 5px 0 0 gray;
+    height: 50px;
+    font-size: 200%;
+    font-weight: bold;
+    line-height: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #00DC64;;
+    border-radius: 5px;
+
+}
+
+.bottom{
+    padding: 10px;
+
+    margin-top: 20px;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 5px 5px 0 0 gray;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title{
+    display: flex;
+    justify-content: space-evenly;
+    background: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+#title{
+    display: flex;
+    justify-content: space-evenly;
+    background: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.title:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+#title:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.col {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+
+
 
 
 
@@ -145,9 +207,6 @@ a{
     background-color: rgb(180, 180, 180);
 }
 
-.col{
-    text-align: center;
-}
 
 .pagebutton{
     align-items: center;
@@ -168,6 +227,9 @@ a{
     display: block;
 }
 
+.title:nth-child(odd) {
+    background: #f9f9f9;
+}
 
 
 .col:nth-child(1) { flex: 1; }
