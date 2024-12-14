@@ -7,14 +7,14 @@ body{
 
 .wrap{
     width:100%;
-    border:2px dotted red;
+
     margin: 0 auto;
 
 }
 
 header{
     width: 1200px;
-    border:1px dotted black;
+
     margin: 0 auto;
     display: flex;
     justify-content:space-between;
@@ -26,14 +26,14 @@ a{text-decoration: none;}
 
 .h_left{
     flex: 1;
-    border: 1px dotted blue;
+
 }
 .h_left a img{
     height: 40px;
 }
 
 .h_right {
-    border: 2px dotted blue;
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -41,7 +41,7 @@ a{text-decoration: none;}
 }
 
 .h_search{
-    border: 1px solid gray;
+
     display: flex;
     border-radius: 5px;
     overflow: hidden;
@@ -62,7 +62,7 @@ a{text-decoration: none;}
 .nav_area{
     width: 1200px;
     margin: 0 auto;
-    border: 1px dotted pink;
+
 }
 
 .main_category{

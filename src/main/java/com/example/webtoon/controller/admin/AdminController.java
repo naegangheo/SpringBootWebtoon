@@ -58,6 +58,7 @@ public class AdminController {
         return response;
     }
 
+//========webtoonList==================================
 
     @GetMapping("/admin")
     public ModelAndView admin(HttpServletRequest request, Model model) {
@@ -74,6 +75,29 @@ public class AdminController {
 
         return mav;
     }
+
+    @GetMapping("/adminWebtoonDelete")
+    public String adminWebtoonDelete(@RequestParam("wseq") int wseq) {
+        ads.adminWebtoonDelete(wseq);
+
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/adminWebtoonUpdate")
+    public ModelAndView adminWebtoonUpdate(@RequestParam("wseq") int wseq, Model model) {
+
+        ModelAndView mav = new ModelAndView();
+        WebtoonVO wvo = ads.adGetWebtoon(wseq);
+
+        mav.addObject("webtoon", wvo);
+        mav.setViewName("admin/webtoon/admin_webtoon_update");
+
+        return mav;
+
+    }
+
+
+//========Q&AList=====================================
 
     @GetMapping("/adminQnalist")
     public ModelAndView adminQnalist(HttpServletRequest request, Model model) {
@@ -93,6 +117,8 @@ public class AdminController {
         return mav;
     }
 
+//========NoticeList==================================
+
     @GetMapping("/adminNoticelist")
     public ModelAndView adminNoticelist(HttpServletRequest request,Model model) {
 
@@ -109,28 +135,6 @@ public class AdminController {
 
         return mav;
     }
-
-    @GetMapping("/adminWebtoonDelete")
-    public String adminWebtoonDelete(@RequestParam("wseq") int wseq) {
-        ads.adminWebtoonDelete(wseq);
-
-        return "redirect:/admin";
-
-    }
-
-    @GetMapping("/adminWebtoonUpdate")
-    public ModelAndView adminWebtoonUpdate(@RequestParam("wseq") int wseq, Model model) {
-
-        ModelAndView mav = new ModelAndView();
-        WebtoonVO wvo = ads.adGetWebtoon(wseq);
-
-        mav.addObject("webtoon", wvo);
-        mav.setViewName("admin/webtoon/admin_webtoon_update");
-
-        return mav;
-
-    }
-
 
 
 }

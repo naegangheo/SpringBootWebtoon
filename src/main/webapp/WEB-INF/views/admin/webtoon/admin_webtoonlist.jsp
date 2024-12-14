@@ -1,11 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../admin_header.jsp"%>
-<style>
-  .top_menu a:nth-child(1){
-    opacity: 1;
-    background-color: rgb(222, 246, 222);
-  }
-</style>
 
 <script>
     function adWebtoonDelete(wseq) {
@@ -16,8 +10,16 @@
 
 </script>
 
+
+<div class="admin_view">
+
+    <div class="top">
+        <div>Webtoon List</div>
+        <div>LOGO</div>
+    </div>
+
     <div class="bottom">
-      <div class="list">
+      <div class="content">
         <div class="title">
           <div class="col">번호</div>
           <div class="col">작가</div>
@@ -28,7 +30,7 @@
         <br>
         <div class="content">
           <c:forEach items="${adSelectWebtoon}" var="wvo">
-            <div class="content_title toggle-header" data-target="content-${wvo.wseq}" >
+            <div class="content_title toggle-header" data-target="content-${wvo.wseq}" id="title">
               <div class="col">
                   ${wvo.wseq}
               </div>

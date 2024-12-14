@@ -11,23 +11,19 @@
 <!-- <%--  여기부터가 header  --%> -->
 <div class="wrap">
     <div class="side_bar">
-        <div class="side_title">
+        <div id="admin_container">
             <h1>관리자 페이지</h1>
+            <div id="adminid">${loginAdmin.name}님</div>
         </div>
-        <br>
-        <div>${loginAdmin.name}님</div>
-        <div class="info">
-            <div>총 회원 수 :  ${memberCount}</div>
-            <div>총 웹툰 수 :  ${webtoonCount}</div>
+        <div class="side_menu">
+            <a href="/admin">WebtoonList</a>
+            <a href="/adminQnalist">Q&AList</a>
+            <a href="/adminNoticelist">NoticeList</a>
+
+            <div class="info">
+                <div>총 회원 수 : ${memberCount}</div>
+                <div>총 웹툰 수 : ${webtoonCount}</div>
+            </div>
         </div>
     </div>
 
-    <div class="admin_view">
-        <div class="top">
-            <div class="top_menu">
-                <a href="/admin">WebtoonList</a>
-                <a href="/adminQnalist">Q&AList</a>
-                <a href="/adminNoticelist">NoticeList</a>
-            </div>
-            <div class="logo">LOGO</div>
-        </div>

@@ -72,6 +72,7 @@ public class MainControllerH {
 
         mav.setViewName("/webtoon/genre_list");
 
+
         return mav;
     }
 
@@ -137,6 +138,10 @@ public class MainControllerH {
 
         return list;
     }
+
+
+
+
 
 
 

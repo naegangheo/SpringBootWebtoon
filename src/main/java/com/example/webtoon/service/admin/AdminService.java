@@ -19,9 +19,19 @@ public class AdminService {
     IAdminDao iadao;
 
 
-    public AdminVO getAdmin(String adminid) {return iadao.getAdmin(adminid);
+    public AdminVO getAdmin(String adminid) {
+        return iadao.getAdmin(adminid);
     }
 
+    public int adAllCountMember() {
+        return iadao.adAllCountMember();
+    }
+
+    public int adAllCountWebtoon() {
+        return iadao.getAllcount();
+    }
+
+    //===========webtoon==========================================
     public HashMap<String, Object> adSelectWebtoon(HttpServletRequest request) {
         HashMap<String, Object> result = new HashMap<>();
         HttpSession session = request.getSession();
@@ -46,6 +56,17 @@ public class AdminService {
         result.put("paging", paging);
         return result;
     }
+
+    public void adminWebtoonDelete(int wseq) {
+        iadao.adminWebtoonDelete(wseq);
+    }
+
+    public WebtoonVO adGetWebtoon(int wseq) {
+        return iadao.adGetWebtoon(wseq);
+    }
+
+
+    // Q&A=================================================
 
     public HashMap<String, Object> adSelectQna(HttpServletRequest request) {
         HashMap<String, Object> result = new HashMap<>();
@@ -73,17 +94,9 @@ public class AdminService {
 
     }
 
+    //Notice=========================================
     public List<NoticeVO> adSelectNotice(Paging paging) {
         return iadao.adSelectNotice(paging);
-    }
-
-
-    public int adAllCountMember() {
-        return iadao.adAllCountMember();
-    }
-
-    public int adAllCountWebtoon() {
-        return iadao.getAllcount();
     }
 
     public HashMap<String, Object> adSelectNotice(HttpServletRequest request) {
@@ -111,17 +124,7 @@ public class AdminService {
         return result;
     }
 
-    public void adminWebtoonDelete(int wseq) {
-        iadao.adminWebtoonDelete(wseq);
-    }
-
-    public WebtoonVO adGetWebtoon(int wseq) {
-        return iadao.adGetWebtoon(wseq);
-    }
-
-
-
-
+    //==>Q&A List를 보여주면되는데 사용자별 총개수가 왜필요한지 모르겟다요
     /*userid로 myqnalist 가져오는 작업*/
     public HashMap<String, Object> getUserSpecificQnaList(HttpServletRequest request, String userId) {
         HashMap<String, Object> result = new HashMap<>();
@@ -147,4 +150,9 @@ public class AdminService {
         result.put("paging", paging);
         return result;
     }
+    
+    //===========계속 추가가되겟지? 그러니까 여기 밑에 추가될테니까 list별로 구분해주세요
+    
+    
+    
 }

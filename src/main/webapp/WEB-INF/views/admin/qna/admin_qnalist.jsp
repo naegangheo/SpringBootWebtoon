@@ -1,16 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="../admin_header.jsp"%>
 
-<style>
-  .top_menu a:nth-child(2){
-    opacity: 1;
-    background-color: rgb(222, 246, 222);
-  }
-</style>
+
+<div class="admin_view">
+
+    <div class="top">
+        <div>Q&A List</div>
+        <div>LOGO</div>
+    </div>
 
     <div class="bottom">
       <!-- <%--webtoonlist--%> -->
-      <div class="list">
+      <div class="content">
         <div class="title">
           <div class="col">번호</div>
           <div class="col">작성자</div>
@@ -20,7 +21,7 @@
         <br>
         <div class="content">
           <c:forEach items="${adSelectQna}" var="qna">
-            <div class="content_title">
+            <div class="title">
               <div class="col">
                   ${qna.qseq}
               </div>

@@ -39,6 +39,7 @@ public class WebtoonController {
         List<WebtoonVO> list = msh.getNoticeList();
         List<WebtoonVO> last = sl.lastWebtoon();
 
+
         model.addAttribute("webtoon", webtoon);
         model.addAttribute("noticeList", list);
         model.addAttribute("last", last);
@@ -48,6 +49,8 @@ public class WebtoonController {
         return mav;
 
     }
+
+
 
 
 //    @GetMapping("/webtoonview")
