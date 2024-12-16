@@ -99,6 +99,13 @@ public class AdminController {
 
 //========Q&AList=====================================
 
+    @GetMapping("adminQnaWriteForm")
+    public String adminQnaWriteForm(HttpServletRequest request, Model model) {
+
+
+        return "admin/qna/qna_insert";
+    }
+
     @GetMapping("/adminQnalist")
     public ModelAndView adminQnalist(HttpServletRequest request, Model model) {
 
@@ -117,7 +124,11 @@ public class AdminController {
         return mav;
     }
 
+
+
 //========NoticeList==================================
+
+
 
     @GetMapping("/adminNoticelist")
     public ModelAndView adminNoticelist(HttpServletRequest request,Model model) {
@@ -134,7 +145,89 @@ public class AdminController {
         mav.setViewName("admin/notice/admin_noticelist");
 
         return mav;
+
     }
+
+    @GetMapping("adminNoticeWriteForm")
+    public String adminNoticeWriteForm(HttpServletRequest request, Model model) {
+        return "admin/notice/notice_insert";
+    }
+
+    @PostMapping("/adminNoticeWrite")
+    public String adminNoticeWrite(@ModelAttribute("dto") @Valid NoticeVO noticevo, BindingResult result,
+                                   HttpSession session, Model model) {
+
+        String url="admin/notice/notice_insert";
+
+        AdminVO adminLogin=(AdminVO)session.getAttribute("loginAdmin");
+        model.addAttribute("adminLogin", adminLogin);
+        if(adminLogin==null){
+            return "redirect:/admin/admin_login";
+        }
+
+        if(result.getFieldError("adminid")!=null){
+            model.addAttribute("message",result.getFieldError("adminid").getDefaultMessage());
+        } else if(result.getFieldError("pwd")!=null){
+            model.addAttribute("message",result.getFieldError("pwd").getDefaultMessage());
+        } else if(result.getFieldError("subject")!=null){
+            model.addAttribute("message",result.getFieldError("subject").getDefaultMessage());
+        }else if(result.getFieldError("content")!=null){
+            model.addAttribute("message",result.getFieldError("content").getDefaultMessage());
+        } else{
+            ads.insertNotice(noticevo);
+             return url="redirect:/adminNoticelist";
+        }
+        return url;
+
+    }
+
+    @GetMapping("/adminNoticeUpdateForm")
+    public ModelAndView adminNoticeUpdate(@RequestParam("nseq") int nseq, HttpServletRequest request, Model model) {
+        System.out.println("nseq: " + nseq);
+        ModelAndView mav = new ModelAndView();
+        NoticeVO nvo = ads.getNoticeUpdate(nseq);
+        if (nvo == null) {
+            System.out.println("공지사항을 찾을 수 없습니다.");
+        } else {
+            System.out.println("조회된 공지사항: " + nvo);
+        }
+        mav.addObject("nvo", nvo);
+        mav.setViewName("admin/notice/notice_update");
+
+        return mav;
+
+    }
+
+    @PostMapping("/adminNoticeUpdate")
+    public String adminNoticeUpdate(@ModelAttribute("nvo") @Valid NoticeVO noticevo, BindingResult result, Model model){
+        String url="admin/notice/notice_update";
+
+        NoticeVO nvo = ads.getNoticeUpdate(noticevo.getNseq());
+        System.out.println("nseq1:"+noticevo.getNseq());
+        System.out.println("조회된 공지사항 nvo: " + nvo);  // nvo 값 확인
+        if(!nvo.getPwd().equals(noticevo.getPwd())){
+            model.addAttribute("message","수정 비밀 번호가 맞지 않음");
+        }else if(result.getFieldError("pwd")!=null){
+            model.addAttribute("message",result.getFieldError("pwd").getDefaultMessage());
+        }else if(result.getFieldError("subject")!=null){
+            model.addAttribute("message",result.getFieldError("subject").getDefaultMessage());
+        }else if(result.getFieldError("content")!=null){
+            model.addAttribute("message",result.getFieldError("content").getDefaultMessage());
+        }else{
+            ads.updateNotice(noticevo);
+            url="redirect:/adminNoticelist";
+        }
+        return url;
+    }
+
+    @GetMapping("/adminNoticeDelete")
+    public String adminNoticeDelete(@RequestParam("nseq") int nseq) {
+        ads.adminNoticeDelete(nseq);
+        return "redirect:/adminNoticelist";
+    }
+
+
+
 
 
 }

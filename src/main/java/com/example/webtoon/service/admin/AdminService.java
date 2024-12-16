@@ -4,6 +4,7 @@ import com.example.webtoon.dao.admin.IAdminDao;
 import com.example.webtoon.dto.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -150,6 +151,10 @@ public class AdminService {
         result.put("paging", paging);
         return result;
     }
+
+
+
+
     //==========WebtoonList=========================
 
 
@@ -157,8 +162,32 @@ public class AdminService {
 
 
     //==========NoticeList=============================
+
+    public void insertNotice(NoticeVO noticevo) {
+        iadao.insertNotice(noticevo);
+    }
+
+    public NoticeVO getNoticeUpdate(int nseq) {
+
+        NoticeVO nvo= iadao.selectNoticeOne(nseq);
+        return nvo;
+
+    }
+
+    public void updateNotice(NoticeVO noticevo) {
+
+        iadao.updateNotice(noticevo);
+
+    }
+
+    public void adminNoticeDelete(int nseq) {
+        iadao.adminNoticeDelete(nseq);
+    }
+
+
     //===========계속 추가가되겟지? 그러니까 여기 밑에 추가될테니까 list별로 구분해주세요
-    
-    
-    
+
+
+
+
 }
