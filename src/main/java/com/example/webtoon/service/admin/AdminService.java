@@ -150,7 +150,13 @@ public class AdminService {
         result.put("paging", paging);
         return result;
     }
-    
+    //==========WebtoonList=========================
+
+
+    //==========Q&AList=============================
+
+
+    //==========NoticeList=============================
     //===========계속 추가가되겟지? 그러니까 여기 밑에 추가될테니까 list별로 구분해주세요
     
     
