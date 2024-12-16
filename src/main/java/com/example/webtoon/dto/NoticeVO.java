@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -23,5 +24,5 @@ public class NoticeVO {
     @NotEmpty(message="내용을 입력하세요")
     @NotNull(message="내용을 입력하세요")
     private String content; // 공지사항 내용
-    private Date indate;    // 작성일 (기본값: 현재 시간)
+    private Timestamp indate;    // 작성일 (기본값: 현재 시간)
 }

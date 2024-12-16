@@ -125,7 +125,6 @@ public class AdminService {
         return result;
     }
 
-    //==>Q&A List를 보여주면되는데 사용자별 총개수가 왜필요한지 모르겟다요
     /*userid로 myqnalist 가져오는 작업*/
     public HashMap<String, Object> getUserSpecificQnaList(HttpServletRequest request, String userId) {
         HashMap<String, Object> result = new HashMap<>();

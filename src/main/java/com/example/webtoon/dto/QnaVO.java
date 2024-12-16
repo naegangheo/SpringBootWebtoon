@@ -2,6 +2,7 @@ package com.example.webtoon.dto;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -12,5 +13,5 @@ public class QnaVO {
     private String pwd;    // 비밀번호
     private String subject; // 제목
     private String content; // 내용
-    private Date indate;   // 작성일 (기본값: 현재 시간)
+    private Timestamp indate;   // 작성일 (기본값: 현재 시간)
 }
