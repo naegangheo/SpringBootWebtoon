@@ -35,6 +35,8 @@ public interface IAdminDao {
 
     WebtoonVO adGetWebtoon(int wseq);
 
+    void adminUpdateWebtoon(WebtoonVO webtoonvo);
+
 
 
     /*mypage qna 작업*/
@@ -43,5 +45,7 @@ public interface IAdminDao {
     void insertQna(QnaVO qnaVO);
     void updateQna(QnaVO qnaVO);
     void deleteQna(@Param("qseq") int qseq, @Param("userid") String userid);
+
+
     /*mypage qna 끝*/
 }

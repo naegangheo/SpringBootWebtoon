@@ -17,6 +17,7 @@
     <form method="POST" action="updateWebtoon" enctype="multipart/form-data" onsubmit="return validateForm()"  novalidate>
         <h2>작품 수정</h2>
         <div class="updateinfo">
+            <input type="hidden" name="wseq" value="${webtoon.wseq}">
             <div class="subject">
                 <div class="sub">작품명</div>
                 <div class="text-container">
@@ -59,7 +60,8 @@
         </div>
     </form>
 
-    <form method="POST" action="updateFile" enctype="multipart/form-data">
+    <form method="POST" action="fileup" enctype="multipart/form-data">
+        <input type="hidden" name="wseq" value="${webtoon.wseq}">
         <div class="images">
             <!-- 대표 이미지 -->
             <div class="sub">대표 이미지</div>
@@ -82,7 +84,7 @@
         </div>
         <div class="bottom_button">
             <button type="submit">웹툰 저장</button>
-            <button type="button" value="돌아가기" onclick="location.href='/'">돌아가기</button>
+            <button type="button" value="돌아가기" onclick="location.href='/admin'">돌아가기</button>
         </div>
     </form>
 </div>

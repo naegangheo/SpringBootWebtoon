@@ -64,28 +64,25 @@ function triggerFileInput(inputId) {
     document.getElementById(inputId).click();
 }
 
-// 파일 업로드
 $(document).ready(function () {
-    $('.bottom_button button[type="submit"]').click(function (event) {
+    $('#uploadBtn').click(function (event) {
+        event.preventDefault();  // 폼 기본 제출 방지
 
-        // 대표 이미지와 웹툰 이미지 업로드
         const mainImage = $('#mainImage')[0].files[0];
-        alert(mainImage.name);
         const contentImage = $('#contentImage')[0].files[0];
-        alert(contentImage.name)
 
-
-        const existingMainImage = $('#mainImagePreview').attr('src').split('/').pop();
-        const existingContentImage = $('#contentImagePreview').attr('src').split('/').pop();
+        if (!mainImage || !contentImage) {
+            alert("모든 이미지를 선택하세요.");
+            return;
+        }
 
         const formData = new FormData();
-
-        if (mainImage) formData.append('mainImage', existingMainImage);
-        if (contentImage) formData.append('contentImage', existingContentImage);
+        formData.append("mainImage", mainImage);
+        formData.append("contentImage", contentImage);
 
         // 파일 업로드 AJAX 요청
         $.ajax({
-            url: '/updateFile',
+            url: '/fileup',
             type: 'POST',
             data: formData,
             processData: false,

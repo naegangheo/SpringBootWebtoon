@@ -4,6 +4,7 @@ import com.example.webtoon.dao.admin.IAdminDao;
 import com.example.webtoon.dto.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -150,8 +151,12 @@ public class AdminService {
         result.put("paging", paging);
         return result;
     }
-    //==========WebtoonList=========================
 
+
+    //==========WebtoonList=========================
+    public void adminUpdateWebtoon(WebtoonVO webtoonvo) {
+        iadao.adminUpdateWebtoon(webtoonvo);
+    }
 
     //==========Q&AList=============================
 
