@@ -46,8 +46,10 @@
             </div>
             <div id="content-${ntc.nseq}" class="toggle-content">
               <div>${ntc.content}</div>
-              <button type="button" value="수정" onclick="location.href='/adminNoticeUpdateForm?nseq=${ntc.nseq}'">수정</button>
-              <button type="button" value="삭제" onclick="NocieDelete(${ntc.nseq})">삭제</button>
+              <div>
+                <button type="button" value="수정" onclick="location.href='/adminNoticeUpdateForm?nseq=${ntc.nseq}'">수정</button>
+                <button type="button" value="삭제" onclick="NocieDelete(${ntc.nseq})">삭제</button>
+              </div>
             </div>
           </c:forEach>
           <br>

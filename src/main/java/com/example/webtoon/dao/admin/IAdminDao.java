@@ -55,4 +55,12 @@ public interface IAdminDao {
     void updateNotice(NoticeVO noticevo);
 
     void adminNoticeDelete(int nseq);
+
+    QnaVO selectQnaOne(int qseq);
+
+    List<QreplyVO> selectQreply(int qseq);
+
+    // Q&A==============================================
+
+
 }

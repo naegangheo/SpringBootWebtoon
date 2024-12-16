@@ -89,7 +89,7 @@ public class AdminService {
         List<QnaVO> list= iadao.adSelectQna(paging);
 
 
-        result.put("adSelectQna",list);
+        result.put("qnaList",list);
         result.put("paging", paging);
         return result;
 
@@ -181,6 +181,21 @@ public class AdminService {
 
     public void adminNoticeDelete(int nseq) {
         iadao.adminNoticeDelete(nseq);
+    }
+
+
+
+
+    public HashMap<String, Object> getAdminQna(int qseq) {
+        HashMap<String, Object> result = new HashMap<>();
+
+        QnaVO qvo = iadao.selectQnaOne(qseq);
+        result.put("qna",qvo);
+
+        List<QreplyVO> list= iadao.selectQreply(qseq);
+        result.put("QreplyList",list);
+
+        return result;
     }
 
 

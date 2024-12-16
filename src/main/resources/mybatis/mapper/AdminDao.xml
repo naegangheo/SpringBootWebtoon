@@ -90,9 +90,6 @@
 <!-- WebtoonList================   -->
 
 
-<!-- Q&AList===================   -->
-
-
 <!-- NoticeList==================   -->
     <insert id="insertNotice" parameterType="com.example.webtoon.dto.NoticeVO">
         insert into notice(adminid,pwd, subject, content) values(#{adminid},#{pwd},#{subject},#{content})
@@ -109,6 +106,16 @@
     <delete id="adminNoticeDelete">
         delete from notice where nseq=#{nseq}
     </delete>
+
+    <!-- Q&AList===================   -->
+
+    <select id="selectQnaOne" resultType="com.example.webtoon.dto.QnaVO">
+        select * from qna where qseq=#{qseq}
+    </select>
+
+    <select id="selectQreply" resultType="com.example.webtoon.dto.QreplyVO">
+        select * from qreply where qseq=#{qseq} order by qrseq desc
+    </select>
 
 
 </mapper>

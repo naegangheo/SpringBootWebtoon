@@ -99,12 +99,6 @@ public class AdminController {
 
 //========Q&AList=====================================
 
-    @GetMapping("adminQnaWriteForm")
-    public String adminQnaWriteForm(HttpServletRequest request, Model model) {
-
-
-        return "admin/qna/qna_insert";
-    }
 
     @GetMapping("/adminQnalist")
     public ModelAndView adminQnalist(HttpServletRequest request, Model model) {
@@ -113,16 +107,30 @@ public class AdminController {
         HashMap<String, Object> result = ads.adSelectQna(request);
         int mCount= ads.adAllCountMember();
         int wCount = ads.adAllCountWebtoon();
-
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
-        mav.addObject("adSelectQna", result.get("adSelectQna"));
+
+        mav.addObject("qnaList", result.get("qnaList"));
         mav.addObject("paging", result.get("paging"));
         mav.setViewName("admin/qna/admin_qnalist");
 
 
         return mav;
     }
+
+    @GetMapping("/adminQreplyList")
+    public ModelAndView adminQreplyList(@RequestParam("qseq")int qseq) {
+        ModelAndView mav = new ModelAndView("admin/qna/admin_qnalist");
+
+        HashMap<String, Object> result=ads.getAdminQna(qseq);
+        mav.addObject("qna", result.get("qna"));
+        mav.addObject("qreplyList", result.get("qreplyList"));
+        System.out.println("qreply : "+result.get("qreplyList"));
+
+        return mav;
+    }
+
+
 
 
 
@@ -140,6 +148,7 @@ public class AdminController {
 
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
+
         mav.addObject("adSelectNotice", result.get("adSelectNotice"));
         mav.addObject("paging", result.get("paging"));
         mav.setViewName("admin/notice/admin_noticelist");
