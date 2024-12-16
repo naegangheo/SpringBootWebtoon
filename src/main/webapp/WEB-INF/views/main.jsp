@@ -137,7 +137,9 @@
                         <ul>
                             <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="4">
                                 <li>
-                                    ${noticeVO.subject}
+                                    <a href="/notice?nseq=${noticeVO.nseq}">
+                                        ${noticeVO.subject}
+                                    </a>
                                 </li>
                             </c:forEach>
                         </ul>
@@ -148,7 +150,7 @@
 
         <div class="m_mid_right">
 
-            <div id="ad" style="border: 3px solid red; display: flex">
+            <div id="ad" style="display: flex">
                 <img src="images/main/ad_image2.png" style="width: 310px; height: 310px;">
                 <%-- ad광고 란~  (이것의 크기는 높이를 장르별 테그의 높이와 동일하게 작성 )--%>
             </div>
