@@ -121,10 +121,10 @@ public class ReplyController {
         int displayRow = 5;  // 한 페이지에 보여줄 공지사항 개수
         int startNum = 0;  // 첫 페이지에서 시작
 
-        List<NoticeVO> list = msh.getNoticeList(displayRow, startNum);
+        /*List<NoticeVO> list = msh.getNoticeList(displayRow, startNum);*/
 
-        System.out.println("공지사항 목록: " + (list != null ? list : "null"));
-        System.out.println("공지사항 목록 크기: " + (list != null ? list.size() : "null"));
+        /*System.out.println("공지사항 목록: " + (list != null ? list : "null"));
+        System.out.println("공지사항 목록 크기: " + (list != null ? list.size() : "null"));*/
 
         // JSP에 사용할 데이터 추가
         model.addAttribute("loginUser", loginUser);
@@ -134,7 +134,7 @@ public class ReplyController {
 
         model.addAttribute("replyList", replyList);
         model.addAttribute("wseq", wseq);
-        model.addAttribute("noticeList", list);
+        /*model.addAttribute("noticeList", list);*/
 
 
         return "webtoon_detail"; // JSP 파일 이름
