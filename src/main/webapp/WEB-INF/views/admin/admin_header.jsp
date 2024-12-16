@@ -4,8 +4,8 @@
 <html>
 <head>
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="admin/css/admin_main.css">
-    <script src="script/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="/admin/css/admin_main.css">
+    <script src="/script/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <!-- <%--  여기부터가 header  --%> -->

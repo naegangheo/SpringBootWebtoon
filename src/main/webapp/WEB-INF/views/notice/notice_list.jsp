@@ -82,6 +82,17 @@
                 content.classList.toggle('visible');
             });
         });
-    });
 
+        // URL에서 targetNseq 값을 가져와 해당 공지사항을 펼치게 함
+        const targetNseq = '${targetNseq}';
+        if (targetNseq) {
+            const targetContent = document.getElementById('content-' + targetNseq);
+            const targetHeader = document.querySelector(`[data-target="content-${targetNseq}"]`);
+
+            if (targetContent && targetHeader) {
+                targetContent.classList.add('visible');
+                targetHeader.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
 </script>

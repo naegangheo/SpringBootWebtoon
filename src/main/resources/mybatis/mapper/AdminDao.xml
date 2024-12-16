@@ -94,8 +94,21 @@
 
 
 <!-- NoticeList==================   -->
+    <insert id="insertNotice" parameterType="com.example.webtoon.dto.NoticeVO">
+        insert into notice(adminid,pwd, subject, content) values(#{adminid},#{pwd},#{subject},#{content})
+    </insert>
 
+    <select id="selectNoticeOne" resultType="com.example.webtoon.dto.NoticeVO">
+        select * from notice where nseq=#{nseq}
+    </select>
 
+    <update id="updateNotice" parameterType="com.example.webtoon.dto.NoticeVO">
+        update notice set pwd=#{pwd} , subject=#{subject}, content=#{content} where nseq=#{nseq}
+    </update>
+
+    <delete id="adminNoticeDelete">
+        delete from notice where nseq=#{nseq}
+    </delete>
 
 
 </mapper>
