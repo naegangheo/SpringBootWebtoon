@@ -1,8 +1,13 @@
 package com.example.webtoon.dto;
 
+
 import lombok.Data;
 
 import java.sql.Timestamp;
+
+
+
+
 
 @Data
 public class WebtoonVO {

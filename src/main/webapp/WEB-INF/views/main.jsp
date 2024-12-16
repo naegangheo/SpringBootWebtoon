@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-
+ㅁ
         <div class="m_mid_right">
 
             <div id="ad" style="display: flex">
