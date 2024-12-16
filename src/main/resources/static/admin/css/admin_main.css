@@ -223,7 +223,17 @@ a{
     display: none;
 }
 .toggle-content.visible {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.toggle-contentq{
+    display: none;
+}
+.toggle-contentq.visible{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .title:nth-child(odd) {

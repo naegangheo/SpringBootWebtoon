@@ -12,10 +12,10 @@
 </head>
 <body>
 
-<script type="text/javascript">
-    alert("파일이 없습니다");
-    location.href='/';
-</script>
+<%--<script type="text/javascript">--%>
+<%--    alert("파일이 없습니다");--%>
+<%--    location.href='/';--%>
+<%--</script>--%>
 
 </body>
 </html>
