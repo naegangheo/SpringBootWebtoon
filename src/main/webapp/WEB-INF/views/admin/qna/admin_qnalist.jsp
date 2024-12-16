@@ -5,7 +5,9 @@
 <div class="admin_view">
 
     <div class="top">
-        <div>Q&A List</div>
+        <div>
+            <a href="/adminQnaWriteForm" style="text-decoration: none;">Qna List</a>
+        </div>
         <div>LOGO</div>
     </div>
 
@@ -21,7 +23,7 @@
         <br>
         <div class="content">
           <c:forEach items="${adSelectQna}" var="qna">
-            <div class="title">
+            <div class="content_title toggle-header" data-target="content-${qna.qseq}" id="title">
               <div class="col">
                   ${qna.qseq}
               </div>
@@ -34,6 +36,11 @@
               <div class="col">
                   <fmt:formatDate value="${qna.indate}" pattern="yyyy-MM-dd"/>
               </div>
+            </div>
+            <div id="content-${qna.qseq}" class="toggle-content">
+              <div>${qna.content}</div>
+              <button type="button" value="수정" onclick="location.href='/adminQnaUpdate?wseq=${qna.qseq}'">수정</button>
+              <button type="button" value="삭제" onclick="adQnaDelete(${qna.qseq})">삭제</button>
             </div>
           </c:forEach>
           <br>
