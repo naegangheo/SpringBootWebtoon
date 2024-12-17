@@ -155,6 +155,7 @@ public class AdminService {
 
     //==========WebtoonList=========================
     public void adminUpdateWebtoon(WebtoonVO webtoonvo) {
+        System.out.println(webtoonvo);
         iadao.adminUpdateWebtoon(webtoonvo);
     }
 

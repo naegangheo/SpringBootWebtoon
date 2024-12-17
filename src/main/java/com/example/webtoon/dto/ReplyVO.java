@@ -2,6 +2,7 @@ package com.example.webtoon.dto;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -11,6 +12,6 @@ public class ReplyVO {
     private int wseq; // 웹툰 번호
     private String userid;  // 사용자 ID
     private String rcontent; // 댓글 내용
-    private Date indate; // 등록 날짜
+    private Timestamp indate; // 등록 날짜
 
 }
