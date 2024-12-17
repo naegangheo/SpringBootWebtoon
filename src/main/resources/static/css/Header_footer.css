@@ -117,10 +117,12 @@ a{text-decoration: none;}
 .main_category a:hover {
     background-color: #00DC64;
     color: white;
+    text-decoration: none
 }
 .week_selector a:hover {
     color: #00DC64;
     background-color: white;
+    text-decoration: none
 }
 /*=============================*/
 
@@ -161,6 +163,7 @@ a{text-decoration: none;}
 .genre_selector a:hover {
     color: #00DC64;
     background-color: white;
+    text-decoration: none
 }
 
 
@@ -194,6 +197,7 @@ a{text-decoration: none;}
 .mypage_selector a:hover {
     color: #00DC64;
     background-color: white;
+    text-decoration: none
 }
 
 /*==========================*/
