@@ -8,7 +8,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
     <style>
-        div, ul, li { border: 1px dashed grey;}
+        /*div, ul, li { border: 1px dashed grey;}*/
+        /*광고영역*/
+        .ad-item {
+            width: 300px;
+            height: 250px;
+            margin: 0;
+        }
+        /* 공지사항 영역 */
+        .notice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .notice-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            text-align: left;
+        }
+        .notice-list ul {
+            padding-left: 15px;
+            margin: 0;
+        }
+        .notice-list li {
+            list-style: none;
+            margin: 2px;
+            padding: 0; /* li 태그의 패딩 제거 */
+            font-size: 15px;
+        }
+
         /* 공통 스타일 */
         body {
             font-family: Arial, sans-serif;
@@ -145,16 +179,15 @@
             flex-direction: column;
             gap: 10px;
             text-align: center;
-            margin-top: 20px;
         }
 
         .aside-box {
             width: 300px;
-            height: 509px;
-            border: 1px dashed #eee;
         }
 
         .aside-title {
+            margin-bottom: 20px;
+            font-size: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -171,7 +204,7 @@
 
         .aside-item img {
             width: 60px;
-            height: 48px;
+            height: 65px;
             object-fit: cover;
         }
 
@@ -180,7 +213,9 @@
             justify-content: center;
             align-items: center;
             width: 25px;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: bold; /* 굵은 글씨 */
+            color: #333; /* 글자 색상 */
         }
 
         .aside-item-info {
@@ -190,37 +225,33 @@
             width: 115px;
         }
 
-        .ad-item {
-            width: 300px;
-            height: 250px;
+        #rank {
+            display: flex;
+            flex-direction: column;
+            /*padding: 5px;*/
+            margin: 0;
         }
 
-        /* 공지사항 영역 */
-        .notice-header {
+        #rank_list {
+            display: flex;
+            /*padding: 5px;*/
+            justify-content: flex-start;
+            align-items: center;
+            transition: transform 0.3s ease;
+            /*margin-bottom: 10px;*/
+        }
+
+        #rank_list div {
+            /*padding: 5px;*/
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #ebebeb;
         }
 
-        .notice-list {
-            list-style: none;
-            padding: 0 20px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            row-gap: 5px;
-            text-align: left;
-        }
 
-        .notice-list li {
-            font-size: 12px;
-        }
     </style>
 <body>
-
-<div class="container">
+    <div class="container">
     <div class="content-wrap">
         <div class="search-container">
             <div class="search-content-top">
@@ -259,79 +290,70 @@
         </div>
 
         <div class="aside-container">
-
-            <div class="ad-item">광고?</div>
+            <%--광고--%>
+                <div class="ad-item" id="ad-container">
+                    <iframe
+                            src="adPage"
+                            width="300"
+                            height="250"
+                            frameborder="0"
+                            sandbox="allow-scripts allow-same-origin allow-popups">
+                    </iframe>
+                </div>
 
             <div class="aside-box">
-    <div class="aside-title">
-        <div>실시간 인기웹툰</div>
-        <div>
-            <a href="#">전체</a>
-            <a href="#">여성</a>
-            <a href="#">남성</a>
-        </div>
-    </div>
-    <c:forEach begin="0" end="4" items="${webtoon}" var="wvo" varStatus="status">
-        <div class="aside-item">
-            <a href="webtoon_view?wseq=${wvo.wseq}">
-                <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
-            </a>
-            <div class="aside-item-rank">${status.index + 1}</div>
-            <div class="aside-item-info">
-                <div>
-                    <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
+                <div class="aside-title">
+                    <div>실시간 인기웹툰</div>
+                    <div>
+                        <!-- 성별 버튼 -->
+                        <a href="#" class="gender_button" data-gender="T">전체</a>
+                        <a href="#" class="gender_button" data-gender="F">여성</a>
+                        <a href="#" class="gender_button" data-gender="M">남성</a>
+                    </div>
                 </div>
-                <div>${wvo.userid}</div>
+                <!-- AJAX 데이터가 채워질 영역 -->
+                <div id="rank"></div>
             </div>
-        </div>
-    </c:forEach>
-</div>
 
-<div class="aside-box">
-    <div class="aside-title">
-        <div>실시간 신작</div>
-        <div>
-            <a href="#">전체</a>
-            <a href="#">여성</a>
-            <a href="#">남성</a>
-        </div>
-    </div>
-    <c:forEach begin="0" end="4" items="${last}" var="wvo" varStatus="status">
-        <div class="aside-item">
-            <a href="webtoon_view?wseq=${wvo.wseq}">
-                <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
-            </a>
-            <div class="aside-item-rank">${status.index + 1}</div>
-            <div class="aside-item-info">
-                <div>
-                    <a href="webtoon_view?wseq=${wvo.wseq}">${wvo.subject}</a>
-                </div>
-                <div>${wvo.userid}</div>
-            </div>
-        </div>
-    </c:forEach>
-</div>
-
-
-<div class="aside-box">
-    <div class="notice-header">
-        <div>공지사항</div>
-        <div><a href="notice">더보기 ＞</a></div>
-    </div>
-    <div class="notice-list">
-        <ul>
-            <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="7">
-                <li>
-                    <a href="notice_view?nseq=${noticeVO.nseq}">
-                        ${noticeVO.subject}
+            <div class="aside-box">
+                <div class="aside-title">실시간 신작</div>
+                <c:forEach begin="0" end="4" items="${last}" var="wvo" varStatus="status">
+                    <a href="webtoon_view?wseq=${wvo.wseq}" style="display: block;">
+                        <div class="aside-item">
+                            <div class="aside-item-rank">${status.index + 1}</div>
+                            <img src="/images/webtoon/webtoon_images/title_img/${wvo.image}" alt="${wvo.subject} 이미지">
+                            <div class="aside-item-info">
+                                <div>${wvo.subject}</div>
+                            </div>
+                        </div>
                     </a>
-                </li>
-            </c:forEach>
-        </ul>
-    </div>
-</div>
+                </c:forEach>
+            </div>
+
+
+            <div class="aside-box">
+                <div class="notice-header">
+                    <div>공지사항</div>
+                    <div><a href="notice">더보기 ></a></div>
+                </div>
+                <div class="notice-list">
+                    <ul>
+                        <c:forEach items="${noticeList}" var="noticeVO" begin="0" end="7">
+                            <li><a href="/notice?nseq=${noticeVO.nseq}">${noticeVO.subject}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <%@ include file="../footer.jsp" %>
+
+<script>
+    // iframe 클릭 시 새 창에서 열기
+    document.querySelector("#ad-container").addEventListener("click", function () {
+        window.open("adPage", "_blank"); // 새 창에서 광고 페이지 열기
+    });
+</script>

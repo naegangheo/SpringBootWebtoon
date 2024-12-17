@@ -80,16 +80,19 @@ public class WebtoonController {
 //    }
 
     @GetMapping("/search")
-    public String search(@RequestParam String keyword, Model model) {
+    public String search(@RequestParam String keyword, @RequestParam(defaultValue = "1") int page, Model model) {
         if (keyword.isEmpty()) {
             model.addAttribute("error", "검색어를 입력해주세요.");
             //return "main"; //검색어 없을 때 굳이 메인으로 갈지 고민..
         }
+
+        int pageSize = 10; // 한 페이지당 10개씩
         List<WebtoonVO> searchResults = webtoonService.searchWebtoonsByKeyword(keyword);/*제목이나 작가명으로 검색*/
 
         int resultCount = searchResults.size();// 검색 결과 개수
         model.addAttribute("resultCount", resultCount); // 검색 결과 개수 추가
         model.addAttribute("searchResults", searchResults);
+        model.addAttribute("currentPage", page);
         model.addAttribute("keyword", keyword);
 
 
@@ -102,5 +105,11 @@ public class WebtoonController {
 
         return "/webtoon/search";
     }
+
+    @GetMapping("/adPage")
+    public String adPage(){
+        return "/adpage/adPage";
+    }
+
 
 }

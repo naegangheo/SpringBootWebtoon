@@ -36,39 +36,43 @@
                     <img src="../images/webtoon/webtoon_images/content_img/content_img1.png" width="830px;" height="1080px" />
                 </div>
 
+                    <!-- 로그인한 사용자 정보를 hidden input으로 전달 -->
+                    <input type="hidden" id="loginUser" value="${loginUser != null ? loginUser.userid : ''}">
+
                 <div class="reply">
                     <h2>댓글</h2>
                     <form method="post" class="replyform">
                        <c:choose>
                             <c:when test="${not empty loginUser}">
                                 <form class="replyform">
-                                    <div>${loginUser.userid}</div>
-                                    <textarea id="reply_input" name="rcontent" placeholder="댓글을 입력하세요..." rows="4" cols="100" maxlength="500"></textarea>
+                                    <div id="replyUser">${loginUser.userid}</div>
+                                    <textarea id="reply_input" name="rcontent" placeholder="주제와 무관한 댓글이나 스포일러, 악플은 경고조치 없이 삭제되며 징계 대상이 될 수 있습니다." rows="4" cols="100" maxlength="500"></textarea>
+                                    <span id="reply_counter">0/500</span>
                                     <div class="reply-actions">
-                                        <span id="reply_counter">0/500</span>
                                         <input type="submit" value="댓글 추가" />
                                     </div>
                                 </form>
                             </c:when>
                             <c:otherwise>
-                                <div>댓글 작성은 로그인이 필요합니다.</div>
+                                <div id="nonuser">댓글 작성은 <a href="/login" style="color: gray; text-decoration: underline;">로그인</a>이 필요합니다.</div>
                             </c:otherwise>
                        </c:choose>
                     </form>
 
-                    <div class="reply-list">
-                        <div class="replylist">
-                            <c:forEach items="${replyList}" var="reply">
-                                <div class="reply-item">
-                                    <div class="reply-author">${reply.userid}</div>
-                                    <div class="reply-content">${reply.rcontent}</div>
-                                    <div class="reply-date">
-                                        <fmt:formatDate value="${reply.indate}" pattern="yyyy-MM-dd HH:mm:ss" />
-                                    </div>
+                    <div class="replylist">
+                        <c:forEach items="${replyList}" var="reply">
+                            <div class="reply-item">
+                                <div class="reply-author">${reply.userid}</div>
+                                <div class="reply-content">${reply.rcontent}</div>
+                                <div class="reply-date">
+                                    <fmt:formatDate value="${reply.indate}" pattern="yyyy-MM-dd HH:mm:ss" />
                                 </div>
-                            </c:forEach>
-                        </div>
+                                <button class="delete-reply" onclick="deleteReply(${reply.reseq}, ${wseq})">삭제</button>
+                            </div>
+                        </c:forEach>
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -86,17 +90,28 @@
             </div>
 
             <div class="notice">
-                <ul style="font-size: 26px; font-weight: bold;">
-                    <a href="#">공지사항</a>
-                </ul>
-                <ul class="notice_list">
-                    <li><a class="notice_line" href="/">첫 번째 공지</a></li>
-                    <li><a class="notice_line" href="/">두 번째 공지</a></li>
-                    <li><a class="notice_line" href="/">세 번째 공지</a></li>
-                    <li><a class="notice_line" href="/">네 번째 공지</a></li>
-                    <li><a class="notice_line" href="/">다섯 번째 공지</a></li>
-                </ul>
+                <div class ="list_title">
+                    <label>공지사항</label>
+                    <div>
+                        <a href="notice">더보기></a>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <ul>
+                        <c:if test="${empty noticeList}">
+                            <p>공지사항이 없습니다.</p>
+                        </c:if>
+                            <c:forEach items="${noticeList}" var="nvo">
+                                <li>
+                                    ${nvo.subject}
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
