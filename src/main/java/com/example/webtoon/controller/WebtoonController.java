@@ -36,7 +36,7 @@ public class WebtoonController {
         ModelAndView mav = new ModelAndView();
 
         List<WebtoonVO> webtoon = sl.select_webtoon();
-        List<WebtoonVO> list = msh.getNoticeList();
+        List<NoticeVO> list = msh.getNoticeList();
         List<WebtoonVO> last = sl.lastWebtoon();
 
 
@@ -96,7 +96,7 @@ public class WebtoonController {
         model.addAttribute("keyword", keyword);
 
 
-        List<WebtoonVO> noticeList = msh.getNoticeList(); /*공지사항 데이터*/
+        List<NoticeVO> noticeList = msh.getNoticeList(); /*공지사항 데이터*/
         model.addAttribute("noticeList", noticeList);
         List<WebtoonVO> webtoon = sl.select_webtoon(); /*인기리스트*/
         model.addAttribute("webtoon", webtoon);

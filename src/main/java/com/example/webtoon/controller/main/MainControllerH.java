@@ -2,6 +2,7 @@ package com.example.webtoon.controller.main;
 
 
 import com.example.webtoon.dto.MemberVO;
+import com.example.webtoon.dto.NoticeVO;
 import com.example.webtoon.dto.WebtoonVO;
 import com.example.webtoon.service.main.MainServiceH;
 import com.example.webtoon.service.main.MainServiceL;
@@ -78,11 +79,12 @@ public class MainControllerH {
 
     @GetMapping("/webtoon_view")
     public ModelAndView webtoonView(@RequestParam("wseq") int wseq,
-                                    @RequestParam(value = "gender", required = false, defaultValue = "N") String gender) {
+                                    @RequestParam(value = "gender", required = false, defaultValue = "N") String gender, Model model) {
         ModelAndView mav = new ModelAndView();
-
+        List<NoticeVO> noticeList = msh.getNoticeList();
         System.out.println("성별 : " + gender);
         mav.addObject("webtoonVO", msh.getWebtoon(wseq,gender));
+        model.addAttribute("noticeList", noticeList);
         mav.setViewName("/webtoon/webtoon_detail");
 
         return mav;

@@ -130,6 +130,7 @@ public class ReplyController {
         model.addAttribute("loginUser", loginUser);
         model.addAttribute("relpyUser", relpyUser);
 
+
         // 댓글 리스트 전달
 
         model.addAttribute("replyList", replyList);

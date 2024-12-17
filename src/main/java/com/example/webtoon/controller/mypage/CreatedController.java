@@ -34,16 +34,9 @@ public class CreatedController {
             // loginForm 으로 이동
             return "redirect:/login";
         }
-        // 기본 WebtoonVO 객체
 
-      /*  if (wseq != null) {
-            // 수정 시 기존 데이터 로드
-            webtoon = cs.getWebtoonById(wseq);*/
-            /*model.addAttribute("createTitle", "작품 수정");*/
-      /*  } else {*/
-            // 신규 등록
             model.addAttribute("createTitle", "신규 작품 등록");
-       /* }*/
+
 
         // JSP로 데이터 전달
         model.addAttribute("webtoon", webtoon);
