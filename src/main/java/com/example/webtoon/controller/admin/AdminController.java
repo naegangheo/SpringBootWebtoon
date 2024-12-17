@@ -179,6 +179,7 @@ public class AdminController {
 
 //========Q&AList=====================================
 
+
     @GetMapping("/adminQnalist")
     public ModelAndView adminQnalist(HttpServletRequest request, Model model) {
 
@@ -186,10 +187,10 @@ public class AdminController {
         HashMap<String, Object> result = ads.adSelectQna(request);
         int mCount= ads.adAllCountMember();
         int wCount = ads.adAllCountWebtoon();
-
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
-        mav.addObject("adSelectQna", result.get("adSelectQna"));
+
+        mav.addObject("qnaList", result.get("qnaList"));
         mav.addObject("paging", result.get("paging"));
         mav.setViewName("admin/qna/admin_qnalist");
 
@@ -197,7 +198,25 @@ public class AdminController {
         return mav;
     }
 
+    @GetMapping("/adminQreplyList")
+    public ModelAndView adminQreplyList(@RequestParam("qseq")int qseq) {
+        ModelAndView mav = new ModelAndView("admin/qna/admin_qnalist");
+
+        HashMap<String, Object> result=ads.getAdminQna(qseq);
+        mav.addObject("qna", result.get("qna"));
+        mav.addObject("qreplyList", result.get("qreplyList"));
+        System.out.println("qreply : "+result.get("qreplyList"));
+
+        return mav;
+    }
+
+
+
+
+
 //========NoticeList==================================
+
+
 
     @GetMapping("/adminNoticelist")
     public ModelAndView adminNoticelist(HttpServletRequest request,Model model) {
@@ -209,12 +228,95 @@ public class AdminController {
 
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
+
         mav.addObject("adSelectNotice", result.get("adSelectNotice"));
         mav.addObject("paging", result.get("paging"));
         mav.setViewName("admin/notice/admin_noticelist");
 
         return mav;
+
     }
+
+    @GetMapping("adminNoticeWriteForm")
+    public String adminNoticeWriteForm(HttpServletRequest request, Model model) {
+        return "admin/notice/notice_insert";
+    }
+
+    @PostMapping("/adminNoticeWrite")
+    public String adminNoticeWrite(@ModelAttribute("dto") @Valid NoticeVO noticevo, BindingResult result,
+                                   HttpSession session, Model model) {
+
+        String url="admin/notice/notice_insert";
+
+        AdminVO adminLogin=(AdminVO)session.getAttribute("loginAdmin");
+        model.addAttribute("adminLogin", adminLogin);
+        if(adminLogin==null){
+            return "redirect:/admin/admin_login";
+        }
+
+        if(result.getFieldError("adminid")!=null){
+            model.addAttribute("message",result.getFieldError("adminid").getDefaultMessage());
+        } else if(result.getFieldError("pwd")!=null){
+            model.addAttribute("message",result.getFieldError("pwd").getDefaultMessage());
+        } else if(result.getFieldError("subject")!=null){
+            model.addAttribute("message",result.getFieldError("subject").getDefaultMessage());
+        }else if(result.getFieldError("content")!=null){
+            model.addAttribute("message",result.getFieldError("content").getDefaultMessage());
+        } else{
+            ads.insertNotice(noticevo);
+             return url="redirect:/adminNoticelist";
+        }
+        return url;
+
+    }
+
+    @GetMapping("/adminNoticeUpdateForm")
+    public ModelAndView adminNoticeUpdate(@RequestParam("nseq") int nseq, HttpServletRequest request, Model model) {
+        System.out.println("nseq: " + nseq);
+        ModelAndView mav = new ModelAndView();
+        NoticeVO nvo = ads.getNoticeUpdate(nseq);
+        if (nvo == null) {
+            System.out.println("공지사항을 찾을 수 없습니다.");
+        } else {
+            System.out.println("조회된 공지사항: " + nvo);
+        }
+        mav.addObject("nvo", nvo);
+        mav.setViewName("admin/notice/notice_update");
+
+        return mav;
+
+    }
+
+    @PostMapping("/adminNoticeUpdate")
+    public String adminNoticeUpdate(@ModelAttribute("nvo") @Valid NoticeVO noticevo, BindingResult result, Model model){
+        String url="admin/notice/notice_update";
+
+        NoticeVO nvo = ads.getNoticeUpdate(noticevo.getNseq());
+        System.out.println("nseq1:"+noticevo.getNseq());
+        System.out.println("조회된 공지사항 nvo: " + nvo);  // nvo 값 확인
+        if(!nvo.getPwd().equals(noticevo.getPwd())){
+            model.addAttribute("message","수정 비밀 번호가 맞지 않음");
+        }else if(result.getFieldError("pwd")!=null){
+            model.addAttribute("message",result.getFieldError("pwd").getDefaultMessage());
+        }else if(result.getFieldError("subject")!=null){
+            model.addAttribute("message",result.getFieldError("subject").getDefaultMessage());
+        }else if(result.getFieldError("content")!=null){
+            model.addAttribute("message",result.getFieldError("content").getDefaultMessage());
+        }else{
+            ads.updateNotice(noticevo);
+            url="redirect:/adminNoticelist";
+        }
+        return url;
+    }
+
+    @GetMapping("/adminNoticeDelete")
+    public String adminNoticeDelete(@RequestParam("nseq") int nseq) {
+        ads.adminNoticeDelete(nseq);
+        return "redirect:/adminNoticelist";
+    }
+
+
+
 
 
 }

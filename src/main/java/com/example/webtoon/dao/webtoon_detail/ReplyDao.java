@@ -15,4 +15,9 @@ public interface ReplyDao {
     void updateReply(ReplyVO reply);
 
     void deleteReply(int reseq);
+
+
+    ReplyVO getReplyById(int reseq);
+
+    List<ReplyVO> getRepliesByWseq(int wseq);
 }

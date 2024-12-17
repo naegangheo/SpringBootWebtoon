@@ -1,10 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<script src="/script/admin.js"></script>
+<script type="text/javascript">
+    function NocieDelete(nseq){
+        if (confirm("정말 삭제하시겠습니까?")) {
+            location.href = "adminNoticeDelete?nseq="+nseq;
+        }
+    }
+</script>
 <%@ include file="../admin_header.jsp"%>
 
 <div class="admin_view">
 
   <div class="top">
-    <div>Notice List</div>
+    <div>
+      <a href="/adminNoticeWriteForm" style="text-decoration: none;">Notice List</a>
+    </div>
     <div>LOGO</div>
   </div>
 
@@ -19,18 +30,25 @@
         <br>
         <div class="content">
           <c:forEach items="${adSelectNotice}" var="ntc">
-            <div class="title">
-              <div class="col">
-                  ${ntc.nseq}
-              </div>
-              <div class="col">
-                  ${ntc.adminid}
-              </div>
-              <div class="col">
-                  ${ntc.subject}
-              </div>
-              <div class="col">
-                <fmt:formatDate value="${ntc.indate}" pattern="yyyy-MM-dd"/>
+            <div class="content_title toggle-header" data-target="content-${ntc.nseq}" id="title">
+                <div class="col">
+                    ${ntc.nseq}
+                </div>
+                <div class="col">
+                    ${ntc.adminid}
+                </div>
+                <div class="col">
+                    ${ntc.subject}
+                </div>
+                <div class="col">
+                  <fmt:formatDate value="${ntc.indate}" pattern="yyyy-MM-dd"/>
+                </div>
+            </div>
+            <div id="content-${ntc.nseq}" class="toggle-content">
+              <div>${ntc.content}</div>
+              <div>
+                <button type="button" value="수정" onclick="location.href='/adminNoticeUpdateForm?nseq=${ntc.nseq}'">수정</button>
+                <button type="button" value="삭제" onclick="NocieDelete(${ntc.nseq})">삭제</button>
               </div>
             </div>
           </c:forEach>

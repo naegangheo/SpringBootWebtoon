@@ -32,8 +32,26 @@
         WHERE reseq = #{reseq}
     </delete>
 
+    <!-- 댓글 ID로 특정 댓글 조회 -->
+    <select id="getReplyById" resultType="com.example.webtoon.dto.ReplyVO" parameterType="int">
+        SELECT reseq, wseq, userid, rcontent, indate
+        FROM
+            reply
+        WHERE
+            reseq = #{reseq}
+    </select>
 
 
+    <!-- 댓글 리스트 조회 -->
+    <select id="getRepliesByWseq" resultType="com.example.webtoon.dto.ReplyVO" parameterType="int">
+        SELECTreseq, wseq, userid, rcontent, indate
+        FROM
+            reply
+        WHERE
+            wseq = #{wseq}
+        ORDER BY
+            indate DESC
+    </select>
 
 
 
