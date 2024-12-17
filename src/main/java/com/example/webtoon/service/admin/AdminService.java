@@ -52,7 +52,7 @@ public class AdminService {
 
         List<WebtoonVO> list= iadao.adSelectWebtoon(paging);
 
-
+        System.out.println("webtoonpage 표시");
         result.put("adSelectWebtoon",list);
         result.put("paging", paging);
         return result;
