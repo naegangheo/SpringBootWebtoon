@@ -1,13 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <title>관리자 페이지</title>
-    <link rel="stylesheet" href="/admin/css/admin_main.css">
-    <script src="/admin/script/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="admin/css/admin_main.css">
+    <script src="script/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="/admin/script/admin.js"></script>
 </head>
 <body>
 <!-- <%--  여기부터가 header  --%> -->
