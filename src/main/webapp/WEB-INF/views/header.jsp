@@ -47,7 +47,7 @@
                         </c:when>
                         <c:otherwise>
                             <a href="updateMember">${loginUser.name}님&nbsp;</a>
-                            <a href="logout" class="in-out-btn" id="logout-confirm">logout</a>
+                            <a href="logout" class="in-out-btn" id="logout">logout</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -97,3 +97,14 @@
             </div>
         </div>
 
+<script>
+    document.getElementById('logout').addEventListener('click', function (event) {
+        event.preventDefault();
+
+
+        const confirmLogout = confirm('정말 로그아웃 하시겠습니까?');
+        if (confirmLogout) {
+            window.location.href = '/logout';
+        }
+    });
+</script>
