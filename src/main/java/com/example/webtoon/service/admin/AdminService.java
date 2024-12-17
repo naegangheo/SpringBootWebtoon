@@ -151,11 +151,15 @@ public class AdminService {
         return result;
     }
 
+    //==========WebtoonList=========================
 
 
 
     //==========WebtoonList=========================
-
+    public void adminUpdateWebtoon(WebtoonVO webtoonvo) {
+        System.out.println(webtoonvo);
+        iadao.adminUpdateWebtoon(webtoonvo);
+    }
 
     //==========Q&AList=============================
 

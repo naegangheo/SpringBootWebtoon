@@ -2,6 +2,7 @@ package com.example.webtoon.controller.admin;
 
 import com.example.webtoon.dto.*;
 import com.example.webtoon.service.admin.AdminService;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -96,6 +97,85 @@ public class AdminController {
 
     }
 
+    @PostMapping("/updateWebtoon")
+    @ResponseBody
+    public String updateWebtoon(@RequestBody WebtoonVO webtoonvo, BindingResult result, HttpServletRequest request,Model model) {
+        System.out.println("updateWebtoon VO:"+webtoonvo);
+
+        String url = "redirect:/admin";
+        if (result.getFieldError("subject")!=null) {
+            model.addAttribute("message", "제목을 입력하세요");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+        if(result.getFieldError("content")!=null) {
+            model.addAttribute("message", "내용을 입력하세요");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+        if (result.getFieldError("genre") != null) {
+            model.addAttribute("message", "장르를 선택해 주세요.");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+
+        if (result.getFieldError("week") != null) {
+            model.addAttribute("message", "요일을 선택해 주세요.");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+        ads.adminUpdateWebtoon(webtoonvo);
+
+
+        return url;
+    }
+
+
+    @PostMapping("/fileup")
+    @ResponseBody
+    public HashMap<String, Object> uploadFile(
+            @RequestParam("mainImage") MultipartFile mainImage,
+            @RequestParam("contentImage") MultipartFile contentImage) {
+        HashMap<String, Object> result = new HashMap<>();
+        System.out.println("fileup Start");
+        result.put("mainImage", saveAndUploadFile(mainImage, "mainImage"));
+        result.put("contentImage", saveAndUploadFile(contentImage, "contentImage"));
+        System.out.println("파일명 전환 직후 mainImage : " + result.get("mainImage") );
+        System.out.println("파일명 전환 직후 contentImage : " + result.get("contentImage") );
+        System.out.println(result);
+        return result;
+    }
+
+    private Object saveAndUploadFile(MultipartFile file, String savePath) {
+        String basePath = new File("src/main/resources/static/images/webtoon/webtoon_images/").getAbsolutePath();
+        String Path;
+        if (savePath.equals("mainImage")) {
+            Path = basePath + "/title_img";
+        } else {
+            Path = basePath + "/content_img";
+        }
+
+
+        File directory = new File(Path); // file이 저장될 디렉토리
+        if (!directory.exists()) {
+            directory.mkdirs(); // 경로가 없으면 생성
+        }
+
+        Calendar today = Calendar.getInstance();
+        long t = today.getTimeInMillis();
+        String filename = file.getOriginalFilename();
+        String fn1 = filename.substring(0, filename.indexOf("."));
+        String fn2 = filename.substring(filename.indexOf("."));
+        String savefilename = fn1 + t + fn2;
+        String uploadPath = Path + "/" + savefilename;
+        System.out.println("파일 저장 경로 = " + uploadPath);
+
+        HashMap<String, Object> result = new HashMap<>();
+        try {
+            file.transferTo(new File(uploadPath));
+            result.put("image", filename);
+            result.put("savefilename", savefilename);
+        } catch (IllegalStateException | IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 
 //========Q&AList=====================================
 

@@ -1,28 +1,28 @@
-function previewImage(event, previewId) {
-    const file = event.target.files[0];
+    function adpreviewImage(event, previewId) {
+        const file = event.target.files[0];
 
-    if (!file) {
-        alert("이미지가 선택되지 않았습니다.");
-        return;
+        if (!file) {
+            alert("이미지가 선택되지 않았습니다.");
+            return;
+        }
+
+        const preview = document.getElementById(previewId);
+        if (!preview) {
+            alert(`ID가 '${previewId}'인 미리보기 요소를 찾을 수 없습니다.`);
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
     }
-
-    const preview = document.getElementById(previewId);
-    if (!preview) {
-        alert(`ID가 '${previewId}'인 미리보기 요소를 찾을 수 없습니다.`);
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        preview.src = e.target.result;
-        preview.style.display = "block";
-    };
-    reader.readAsDataURL(file);
-}
 
 
 // 폼 제출 전 유효성 검사
-function validateForm() {
+function advalidateForm() {
 
     const subject = document.getElementById("subject").value.trim();
     const content = document.getElementById("content").value.trim();
@@ -60,41 +60,36 @@ function validateForm() {
 }
 
 // 업로드 버튼 클릭 시 input[type="file"] 트리거
-function triggerFileInput(inputId) {
+function adtriggerFileInput(inputId) {
     document.getElementById(inputId).click();
 }
 
-// 파일 업로드
 $(document).ready(function () {
     $('.bottom_button button[type="submit"]').click(function (event) {
+        event.preventDefault();  // 폼 기본 제출 방지
 
-        // 대표 이미지와 웹툰 이미지 업로드
         const mainImage = $('#mainImage')[0].files[0];
-        alert(mainImage.name);
         const contentImage = $('#contentImage')[0].files[0];
-        alert(contentImage.name)
 
 
-        const existingMainImage = $('#mainImagePreview').attr('src').split('/').pop();
-        const existingContentImage = $('#contentImagePreview').attr('src').split('/').pop();
 
         const formData = new FormData();
-
-        if (mainImage) formData.append('mainImage', existingMainImage);
-        if (contentImage) formData.append('contentImage', existingContentImage);
-
+        formData.append("mainImage", mainImage);
+        formData.append("contentImage", contentImage);
+        console.log(formData);
+        //return;
         // 파일 업로드 AJAX 요청
         $.ajax({
-            url: '/updateFile',
+            url: '/fileup',
             type: 'POST',
             data: formData,
             processData: false,
             contentType: false,
             success: function (uploadResponse) {
-                console.log(uploadResponse);
+                console.log(uploadResponse.mainImage);
                 if (uploadResponse.mainImage && uploadResponse.contentImage) {
                     // 파일 업로드 성공 시 웹툰 데이터 저장 요청
-                    saveWebtoon(uploadResponse.mainImage.savefilename, uploadResponse.contentImage.savefilename);
+                    updateWebtoon(uploadResponse.mainImage.savefilename, uploadResponse.contentImage.savefilename);
                 } else {
                     alert('파일 업로드 실패. 다시 시도해 주세요.');
                 }
@@ -107,8 +102,11 @@ $(document).ready(function () {
 });
 
 // 웹툰 데이터 저장 함수
-function saveWebtoon(savefilename, savefilename2) {
+function updateWebtoon(savefilename, savefilename2) {
+    console.log(savefilename, savefilename2);
+
     const webtoonData = {
+        wseq : $('#wseq').val(),
         subject: $('#subject').val(),
         genre: $('input[name="genre"]:checked').val(),
         content: $('#content').val(),
@@ -126,7 +124,7 @@ function saveWebtoon(savefilename, savefilename2) {
         contentType: 'application/json',
         success: function (response) {
             alert('웹툰 수정이 완료되었습니다!');
-            window.location.href = '/'; // 저장 성공 후 리다이렉트
+            window.location.href = '/admin'; // 저장 성공 후 리다이렉트
         },
         error: function () {
             alert('웹툰 수정 중 오류가 발생했습니다.');
@@ -149,13 +147,6 @@ window.onload = function () {
     updateCounter('subject', 'subjectCounter');
     updateCounter('content', 'contentCounter');
 };
-
-
-
-
-
-
-
 
 
 
