@@ -205,10 +205,10 @@ public class AdminController {
 
     @GetMapping("/adminQreplyList")
     @ResponseBody
-    public  Map<String, Object> adminQreplyList(@RequestParam("qseq")int qseq,HttpServletRequest request) {
+    public  Map<String, Object> adminQreplyList(@RequestParam("qseq")int qseq) {
 
         HashMap<String, Object> result=ads.getAdminQna(qseq);
-        request.getSession().removeAttribute("page");
+
         Map<String, Object> response = new HashMap<>();
         response.put("qna", result.get("qna"));
         response.put("qreplyList", result.get("qreplyList"));
