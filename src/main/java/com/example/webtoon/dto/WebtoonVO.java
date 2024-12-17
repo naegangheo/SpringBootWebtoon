@@ -5,10 +5,6 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-
-
-
-
 @Data
 public class WebtoonVO {
     // 웹툰 관련 속성

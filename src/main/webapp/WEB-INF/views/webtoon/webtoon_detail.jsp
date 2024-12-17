@@ -102,7 +102,7 @@
                         <c:if test="${empty noticeList}">
                             <p>공지사항이 없습니다.</p>
                         </c:if>
-                            <c:forEach items="${noticeList}" var="nvo">
+                            <c:forEach items="${noticeList}" var="nvo" begin="0" end="4">
                                 <li>
                                     ${nvo.subject}
                                 </li>
@@ -111,7 +111,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

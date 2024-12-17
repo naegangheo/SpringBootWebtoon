@@ -36,6 +36,8 @@ public interface IAdminDao {
 
     WebtoonVO adGetWebtoon(int wseq);
 
+    void adminUpdateWebtoon(WebtoonVO webtoonvo);
+
 
     // notice=============================
     void insertNotice(NoticeVO noticevo);

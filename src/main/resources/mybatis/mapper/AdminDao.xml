@@ -48,6 +48,12 @@
 
 <!-- WebtoonList================   -->
 
+    <update id="adminUpdateWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
+        update webtoon set subject=#{subject}, genre=#{genre}, content=#{content}, week=#{week},
+                           image=#{image}, image2=#{image2}, savefilename=#{savefilename}, savefilename2=#{savefilename2}
+        where wseq=#{wseq}
+    </update>
+
 
 <!-- NoticeList==================   -->
     <insert id="insertNotice" parameterType="com.example.webtoon.dto.NoticeVO">

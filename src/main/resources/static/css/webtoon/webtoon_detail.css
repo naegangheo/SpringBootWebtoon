@@ -10,7 +10,20 @@
     border-radius: 8px; /* 모서리 둥글게 */
 }
 
-/* 댓글 폼 */
+.title {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.title img{
+    width: 180px;
+    height: 250px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+    /* 댓글 폼 */
 .replyform {
     position: relative;
     border: 1px solid #757575;

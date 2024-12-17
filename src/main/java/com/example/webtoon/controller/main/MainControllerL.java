@@ -55,6 +55,7 @@ public class MainControllerL {
 
         WebtoonVO wvo = sl.get_webtoon(wseq);
         model.addAttribute("webtoon", wvo);
+        System.out.println("공지사항 목록 (getNoticeList): "); // 로그로 확인
         return "webtoon_detail";
 
     }
