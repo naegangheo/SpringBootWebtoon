@@ -2,6 +2,8 @@ package com.example.webtoon.dto;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 @Data
 public class WebtoonVO {
     // 웹툰 관련 속성
@@ -15,7 +17,7 @@ public class WebtoonVO {
     private String image2;       // 웹툰 이미지 2
     private String savefilename; // 저장된 이미지 파일 이름 1
     private String savefilename2;// 저장된 이미지 파일 이름 2
-    private String indate;       // 작성일자
+    private Timestamp indate;       // 작성일자
     private int readcountF;      // 여성 조회수
     private int readcountM;      // 남성 조회수
     private int readcountN;      // 전체 조회수(기타)

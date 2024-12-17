@@ -14,10 +14,11 @@
 </style>
 <div class="container">
 
-    <form method="POST" action="updateWebtoon" enctype="multipart/form-data" onsubmit="return validateForm()"  novalidate>
+    <form method="POST" action="updateWebtoon" enctype="multipart/form-data" onsubmit="return advalidateForm()"  novalidate>
+        <input type="hidden" id="wseq" value="${webtoon.wseq}">
         <h2>작품 수정</h2>
         <div class="updateinfo">
-            <input type="hidden" name="wseq" value="${webtoon.wseq}">
+
             <div class="subject">
                 <div class="sub">작품명</div>
                 <div class="text-container">
@@ -61,19 +62,19 @@
     </form>
 
     <form method="POST" action="fileup" enctype="multipart/form-data">
-        <input type="hidden" name="wseq" value="${webtoon.wseq}">
+
         <div class="images">
             <!-- 대표 이미지 -->
             <div class="sub">대표 이미지</div>
             <label>
-                <input type="file" id="mainImage" name="mainImage" style ="display: none;" onchange="previewImage(event, 'mainImagePreview')">
-                <button type="button" onclick="triggerFileInput('mainImage')">대표 이미지 선택</button>
+                <input type="file" id="mainImage" name="mainImage" style ="display: none;" onchange="adpreviewImage(event, 'mainImagePreview')">
+                <button type="button" onclick="adtriggerFileInput('mainImage')">대표 이미지 선택</button>
             </label>
             <!-- 웹툰 이미지 -->
             <div class="sub">웹툰 이미지</div>
             <label>
-                <input type="file" id="contentImage" name="contentImage" style="display: none;" onchange="previewImage(event, 'contentImagePreview')">
-                <button type="button" onclick="triggerFileInput('contentImage')">웹툰 이미지 선택</button>
+                <input type="file" id="contentImage" name="contentImage" style="display: none;" onchange="adpreviewImage(event, 'contentImagePreview')">
+                <button type="button" onclick="adtriggerFileInput('contentImage')">웹툰 이미지 선택</button>
             </label>
         </div>
         <!-- 이미지 미리보기 -->

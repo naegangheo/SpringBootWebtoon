@@ -98,15 +98,30 @@ public class AdminController {
     }
 
     @PostMapping("/updateWebtoon")
-    public String updateWebtoon(@ModelAttribute("webtoon") @Valid WebtoonVO webtoonvo, BindingResult result, HttpServletRequest request,Model model) {
+    @ResponseBody
+    public String updateWebtoon(@RequestBody WebtoonVO webtoonvo, BindingResult result, HttpServletRequest request,Model model) {
+        System.out.println("updateWebtoon VO:"+webtoonvo);
+
         String url = "redirect:/admin";
         if (result.getFieldError("subject")!=null) {
-            model.addAttribute("message","제목을 입력하세요");
-        }else if(result.getFieldError("content")!=null) {
-            model.addAttribute("message","내용을 입력하세요");
-        } else{
-            ads.adminUpdateWebtoon(webtoonvo);
+            model.addAttribute("message", "제목을 입력하세요");
+            return "admin/webtoon/admin_webtoon_update";
         }
+        if(result.getFieldError("content")!=null) {
+            model.addAttribute("message", "내용을 입력하세요");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+        if (result.getFieldError("genre") != null) {
+            model.addAttribute("message", "장르를 선택해 주세요.");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+
+        if (result.getFieldError("week") != null) {
+            model.addAttribute("message", "요일을 선택해 주세요.");
+            return "admin/webtoon/admin_webtoon_update";
+        }
+        ads.adminUpdateWebtoon(webtoonvo);
+
 
         return url;
     }
@@ -123,6 +138,7 @@ public class AdminController {
         result.put("contentImage", saveAndUploadFile(contentImage, "contentImage"));
         System.out.println("파일명 전환 직후 mainImage : " + result.get("mainImage") );
         System.out.println("파일명 전환 직후 contentImage : " + result.get("contentImage") );
+        System.out.println(result);
         return result;
     }
 
