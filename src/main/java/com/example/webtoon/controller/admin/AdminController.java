@@ -67,6 +67,7 @@ public class AdminController {
         HashMap<String, Object> result = ads.adSelectWebtoon(request);
         int mCount= ads.adAllCountMember();
         int wCount = ads.adAllCountWebtoon();
+        request.getSession().removeAttribute("page");
 
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
@@ -89,7 +90,11 @@ public class AdminController {
 
         ModelAndView mav = new ModelAndView();
         WebtoonVO wvo = ads.adGetWebtoon(wseq);
+        int mCount= ads.adAllCountMember();
+        int wCount = ads.adAllCountWebtoon();
 
+        model.addAttribute("webtoonCount", wCount);
+        model.addAttribute("memberCount", mCount);
         mav.addObject("webtoon", wvo);
         mav.setViewName("admin/webtoon/admin_webtoon_update");
 
@@ -189,7 +194,7 @@ public class AdminController {
         int wCount = ads.adAllCountWebtoon();
         model.addAttribute("webtoonCount", wCount);
         model.addAttribute("memberCount", mCount);
-
+        request.getSession().removeAttribute("page");
         mav.addObject("qnaList", result.get("qnaList"));
         mav.addObject("paging", result.get("paging"));
         mav.setViewName("admin/qna/admin_qnalist");
@@ -199,10 +204,11 @@ public class AdminController {
     }
 
     @GetMapping("/adminQreplyList")
-    public ModelAndView adminQreplyList(@RequestParam("qseq")int qseq) {
+    public ModelAndView adminQreplyList(@RequestParam("qseq")int qseq, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("admin/qna/admin_qnalist");
 
         HashMap<String, Object> result=ads.getAdminQna(qseq);
+        request.getSession().removeAttribute("page");
         mav.addObject("qna", result.get("qna"));
         mav.addObject("qreplyList", result.get("qreplyList"));
         System.out.println("qreply : "+result.get("qreplyList"));
