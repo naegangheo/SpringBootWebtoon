@@ -62,6 +62,10 @@ public interface IAdminDao {
 
     List<QreplyVO> selectQreply(int qseq);
 
+    void insertQreply(QreplyVO qreplyvo);
+
+    void adminQreplyDelete(QreplyVO qreplyvo);
+
     // Q&A==============================================
 
 

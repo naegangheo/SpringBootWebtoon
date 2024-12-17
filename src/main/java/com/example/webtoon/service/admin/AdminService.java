@@ -195,11 +195,40 @@ public class AdminService {
 
         QnaVO qvo = iadao.selectQnaOne(qseq);
         result.put("qna",qvo);
+        System.out.println(qvo);
 
         List<QreplyVO> list= iadao.selectQreply(qseq);
-        result.put("QreplyList",list);
+        result.put("qreplyList",list);
+        System.out.println(list);
 
         return result;
+    }
+
+
+    public HashMap<String, Object> insertQreply(QreplyVO qreplyvo) {
+        HashMap<String, Object> result= new HashMap<>();
+        iadao.insertQreply(qreplyvo);
+
+        QnaVO qvo = iadao.selectQnaOne(qreplyvo.getQseq());
+        result.put("qna",qvo);
+
+        List<QreplyVO>list=iadao.selectQreply(qreplyvo.getQseq());
+        result.put("qreplyList",list);
+        return result;
+    }
+
+    public HashMap<String, Object> adminQreplyDelete(QreplyVO qreplyvo) {
+
+        HashMap<String, Object> result= new HashMap<>();
+        iadao.adminQreplyDelete(qreplyvo);
+
+        QnaVO qvo= iadao.selectQnaOne(qreplyvo.getQseq());
+        result.put("qna",qvo);
+        List<QreplyVO>list=iadao.selectQreply(qreplyvo.getQseq());
+        result.put("qreplyList",list);
+
+       return result;
+
     }
 
 
