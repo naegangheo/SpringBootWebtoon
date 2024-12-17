@@ -28,7 +28,7 @@
         FROM
             webtoon
         ORDER BY
-            indate ASC
+            indate DESC
             LIMIT #{pageSize} OFFSET #{offset}
     </select>
 

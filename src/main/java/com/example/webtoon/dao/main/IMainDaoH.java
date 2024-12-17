@@ -1,5 +1,6 @@
 package com.example.webtoon.dao.main;
 
+import com.example.webtoon.dto.NoticeVO;
 import com.example.webtoon.dto.Paging;
 import com.example.webtoon.dto.WebtoonVO;
 import com.example.webtoon.service.main.MainServiceH;
@@ -16,7 +17,7 @@ public interface IMainDaoH {
 
     List<WebtoonVO> getGenreList(int genre);
 
-    List<WebtoonVO> getNoticeList();
+    List<NoticeVO> getNoticeList();
 
     WebtoonVO getWebtoon(int wseq);
 

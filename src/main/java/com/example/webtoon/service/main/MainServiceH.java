@@ -31,8 +31,8 @@ public class MainServiceH {
     }
 
 
-    public List<WebtoonVO> getNoticeList() {
-        List<WebtoonVO> list = mdaoh.getNoticeList();
+    public List<NoticeVO> getNoticeList() {
+        List<NoticeVO> list = mdaoh.getNoticeList();
         return list;
     }
 
