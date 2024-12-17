@@ -2,6 +2,7 @@ package com.example.webtoon.dto;
 
 import lombok.Data;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -12,5 +13,5 @@ public class NoticeVO {
     private String pwd;     // 관리자 비밀번호
     private String subject; // 공지사항 제목
     private String content; // 공지사항 내용
-    private Date indate;    // 작성일 (기본값: 현재 시간)
+    private Timestamp indate;    // 작성일 (기본값: 현재 시간)
 }
