@@ -34,4 +34,16 @@ public class ReplyService {
     public void deleteReply(int reseq) {
         rdao.deleteReply(reseq);
     }
+
+
+    public ReplyVO getReplyById(int reseq) {
+
+        return rdao.getReplyById(reseq);
+
+    }
+
+    public List<ReplyVO> getRepliesByWseq(int wseq) {
+
+        return rdao.getRepliesByWseq(wseq);
+    }
 }

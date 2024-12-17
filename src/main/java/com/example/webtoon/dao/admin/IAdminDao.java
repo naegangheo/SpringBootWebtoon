@@ -1,6 +1,7 @@
 package com.example.webtoon.dao.admin;
 
 import com.example.webtoon.dto.*;
+import jakarta.validation.Valid;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -48,4 +49,20 @@ public interface IAdminDao {
 
 
     /*mypage qna 끝*/
+    // notice=============================
+    void insertNotice(NoticeVO noticevo);
+
+    NoticeVO selectNoticeOne(int nseq);
+
+    void updateNotice(NoticeVO noticevo);
+
+    void adminNoticeDelete(int nseq);
+
+    QnaVO selectQnaOne(int qseq);
+
+    List<QreplyVO> selectQreply(int qseq);
+
+    // Q&A==============================================
+
+
 }
