@@ -82,5 +82,14 @@
         select * from qreply where qseq=#{qseq} order by qrseq desc
     </select>
 
+    <insert id="insertQreply" parameterType="com.example.webtoon.dto.QreplyVO">
+        insert into qreply(qseq,adminid, qrcontent)
+        values(#{qseq}, #{adminid}, #{qrcontent})
+    </insert>
+
+    <delete id="adminQreplyDelete">
+        delete from qreply where qrseq=#{qrseq}
+    </delete>
+
 
 </mapper>
