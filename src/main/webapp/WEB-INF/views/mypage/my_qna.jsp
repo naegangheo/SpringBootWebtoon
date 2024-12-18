@@ -4,53 +4,79 @@
 <%--<script src="/script/mypage/my_qna.js"></script>--%>
 
 <link rel="stylesheet" href="css/mypage/my_qna.css"/>
+<style>
 
-<section>
-    <div class="container">
+</style>
+<section> <%--width: 1200px;--%>
+    <div class="container"> <%--max-width: 1200px;--%>
         <div class="left">
             <div class="notice">
                 <h1>나의 Q&A</h1><button class="openFormButton" id="openFormButton">문의하기</button>
             </div>
-            <div class="notice_content">
+            <div class="notice_content-wrap">
                 <div class="notice_title">
-                    <div class="col">번호</div>
-                    <div class="col">제목</div>
-                    <div class="col">등록일</div>
+                    <div class="col-no">답변상태</div>
+                    <div class="col-text" style="text-align: center">제목</div>
+                    <div class="col-date">작성일</div>
                 </div>
                 <div class="notice_content">
                     <c:forEach items="${qnaList}" var="qnaVO" varStatus="status">
                         <div class="notice_title toggle-header" data-target="content-${qnaVO.qseq}">
-                            <div class="col">${fn:length(qnaList) - status.index}</div>
-                            <div class="col">${qnaVO.subject}</div>
-                            <div class="col">
+                            <div class="col-no"><%--답변완료/미답변--%>
+                                <c:choose>
+                                    <c:when test="${not empty qnaReplyList[qnaVO.qseq]}">
+                                        답변 완료
+                                    </c:when>
+                                    <c:otherwise>
+                                        미답변
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="col-text">${qnaVO.subject}</div>
+                            <div class="col-date">
                                 <fmt:formatDate value="${qnaVO.indate}" pattern="yyyy-MM-dd"/>
                             </div>
                         </div>
-                        <div id="content-${qnaVO.qseq}" class="toggle-content">
+                        <div id="content-${qnaVO.qseq}" class="toggle-content"><%--토글--%>
+                            <div></div>
                             <div class="qna-content">
-                                <div class="qna-text"><p>${qnaVO.content}</p></div>
-                                <div class="qna-edit-delete-button">
-                                    <button class="edit-button" data-qseq="${qnaVO.qseq}" data-subject="${qnaVO.subject}"
-                                    data-content="${qnaVO.content}">수정</button>
-
-                                    <form action="deleteQna" method="POST" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
-                                        <input type="hidden" name="qseq" value="${qnaVO.qseq}">
-                                        <button type="submit" class="delete-button">삭제</button>
-                                    </form>
+                                <div class="qna-content-main">
+                                    <div class="qna-text"><p>${qnaVO.content}</p></div>
+                                    <div class="third"></div>
                                 </div>
-                            </div>
-                            <%--<div class="qna-content-reply">댓글자리 입니다.</div>--%>
-                            <!-- 댓글 표시 영역 -->
-                            <div class="qna-content-reply">
-                                <c:forEach var="reply" items="${qnaReplyList[qnaVO.qseq]}">
-                                    <div class="reply-item">
-                                        <p>
-                                            <div style="width: 150px;"><strong>관리자 답변:</strong></div>
-                                            <div style="width: 550px; text-align: left; display: block; padding-top: 5px">${reply.qrcontent}</div>
-                                            <div style="width: 100px; padding-top: 5px"><small><fmt:formatDate value="${reply.indate}" pattern="yyyy-MM-dd HH:mm"/></small></div>
-                                        </p>
+                                <div class="qna-edit-delete-button">
+                                    <div class="button-wrap" style="font-size: 12px; color: #858891;">
+                                        <button class="edit-button" data-qseq="${qnaVO.qseq}" data-subject="${qnaVO.subject}"
+                                        data-content="${qnaVO.content}">수정</button>
+                                        <div>｜</div>
+                                        <form action="deleteQna" method="POST" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+                                            <input type="hidden" name="qseq" value="${qnaVO.qseq}">
+                                            <button type="submit" class="delete-button">삭제</button>
+                                        </form>
                                     </div>
-                                </c:forEach>
+                                    <div class="third"></div>
+                                </div>
+                                <!-- 댓글 표시 영역 -->
+                                <div class="qna-content-reply">
+                                    <div class="replies">
+                                        <c:choose>
+                                            <c:when test="${not empty qnaReplyList[qnaVO.qseq]}">
+                                                <c:forEach var="reply" items="${qnaReplyList[qnaVO.qseq]}">
+                                                    <div class="reply-item">
+                                                        <div>관리자 답변:</div>
+                                                        <div class="reply-2">${reply.qrcontent}</div>
+                                                        <div class="third" style="display: flex; justify-content: center;">
+                                                            <fmt:formatDate value="${reply.indate}" pattern="yyyy-MM-dd"/>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <div class="no-reply">아직 답변이 없습니다.</div>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </c:forEach>

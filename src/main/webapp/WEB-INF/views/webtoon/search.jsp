@@ -193,12 +193,13 @@
 
         .aside-title {
             margin-bottom: 20px;
-            font-size: 16px;
+            font-size: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #ebebeb;
+            font-weight: bold;
         }
 
         .aside-item {
@@ -310,7 +311,7 @@
             <div class="aside-box">
                 <div class="aside-title">
                     <div>실시간 인기웹툰</div>
-                    <div>
+                    <div style="font-size: 13px; font-weight: normal;">
                         <!-- 성별 버튼 -->
                         <a href="#" class="gender_button" data-gender="T">전체</a>
                         <a href="#" class="gender_button" data-gender="F">여성</a>

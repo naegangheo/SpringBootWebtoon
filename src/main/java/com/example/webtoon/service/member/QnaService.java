@@ -1,6 +1,5 @@
 package com.example.webtoon.service.member;
 
-import com.example.webtoon.dao.admin.IAdminDao;
 import com.example.webtoon.dao.member.IMemberDao;
 import com.example.webtoon.dto.Paging;
 import com.example.webtoon.dto.QnaVO;
@@ -12,12 +11,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class QnaService {
-    @Autowired
-    IAdminDao iadminDao;
     @Autowired
     IMemberDao IMemberDao;
 
@@ -27,9 +23,8 @@ public class QnaService {
     public void updateQna(QnaVO qnaVO) {
         IMemberDao.updateQna(qnaVO);
     }
-    public void deleteQna(int qseq, String userid) {
-        IMemberDao.deleteQna(qseq, userid);
-    }
+    public void deleteQna(int qseq, String userid) { IMemberDao.deleteQna(qseq, userid); }
+    public List<QreplyVO> getReplies(int qseq) { return IMemberDao.selectRepliesByQseq(qseq); }
 
     /*userid로 myqnalist 가져오는 작업*/
     public HashMap<String, Object> getUserSpecificQnaList(HttpServletRequest request, String userId) {
@@ -63,9 +58,5 @@ public class QnaService {
         result.put("qnaReplyList", qnaReplyMap); // 댓글 리스트를 qnaReplyList로 저장
         result.put("paging", paging);
         return result;
-    }
-
-    public List<QreplyVO> getReplies(int qseq) {
-        return IMemberDao.selectRepliesByQseq(qseq);
     }
 }

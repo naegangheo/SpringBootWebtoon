@@ -20,8 +20,6 @@ import java.util.List;
 public class MyQnaController {
 
     @Autowired
-    AdminService adminService;
-    @Autowired
     QnaService qnaService;
 
     @GetMapping("/myQna")

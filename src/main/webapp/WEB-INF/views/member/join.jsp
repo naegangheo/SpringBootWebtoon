@@ -121,8 +121,13 @@
 
         $('#email').blur(function() {
             const email = $(this).val().trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 이메일 형식 정규식
+
             if (!email) {
                 $('#emailErrorMessage').text('이메일을 입력해주세요.');
+                valid = false;
+            } else if (!emailRegex.test(email)) { // 이메일 형식이 올바르지 않을 때
+                $('#emailErrorMessage').text('올바른 이메일 형식이 아닙니다.');
                 valid = false;
             } else {
                 $('#emailErrorMessage').text('');
@@ -221,6 +226,8 @@
             if (!valid) {
                 $('#formErrorMessage').text('입력값을 확인해주세요.');
                 return;
+            } else {
+                $('#formErrorMessage').text(''); // 유효할 경우 에러 메시지 초기화
             }
 
             // AJAX 요청
@@ -250,6 +257,7 @@
             });
         });
     });
+
 </script>
 </body>
 </html>
