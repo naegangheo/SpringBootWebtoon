@@ -60,17 +60,17 @@
     <div class="nav_areaO">
         <div class="nav_area">
             <nav class="main_category">
-                <a href="/">Home</a>&nbsp;
-                <a href="#" id="category_link">Week</a>&nbsp;
-                <a href="/best">Best</a>&nbsp;
-                <a href="/genre" id="genre_link">Genre</a>&nbsp;
+                <a href="/" style="text-decoration: none;">Home</a>&nbsp;
+                <a href="#" id="category_link" style="text-decoration: none;">Week</a>&nbsp;
+                <a href="/best" style="text-decoration: none;">Best</a>&nbsp;
+                <a href="/genre" id="genre_link" style="text-decoration: none;">Genre</a>&nbsp;
                 <c:choose>
                     <c:when test="${empty loginUser}">
                     <%-- 로그아웃시 :  안 보임 --%>
                     </c:when>
                     <c:otherwise>
                     <%-- 로그인 시 : 보임 --%>
-                    <a href="#"  id="mypage_link">Mypage</a>
+                    <a href="#"  id="mypage_link" style="text-decoration: none;">Mypage</a>
                     </c:otherwise>
                 </c:choose>
             </nav>
@@ -102,11 +102,16 @@
             </div>
             </div>
          </div>
-            <div id="mypage_selector" class="mypage_selector">
-                <a href="#">회원탈퇴/수정</a>
-                <a href="created">게시물 등록</a>
-                <a href="myQna">Q&A</a>
+
+        <div class="nav_areaO3">
+            <div class="nav_area">
+                <div id="mypage_selector" class="mypage_selector">
+                    <a href="updateMember" >회원탈퇴/수정</a>
+                    <a href="created"  style="text-decoration: none;">게시물 등록</a>
+                    <a href="myQna"  style="text-decoration: none;">Q&A</a>
+                </div>
             </div>
+        </div>
 
 
 

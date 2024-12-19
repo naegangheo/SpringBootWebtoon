@@ -230,3 +230,225 @@ select * from qna;
 select * from qreply;
 select * from reply;
 select * from webtoon;
+
+
+-- veiw
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_0` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_1` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 1)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_2` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 2)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_3` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 3)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_4` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 4)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_5` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 5)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_6` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 6)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `week_7` AS
+    SELECT 
+        `webtoon`.`wseq` AS `wseq`,
+        `webtoon`.`userid` AS `userid`,
+        `webtoon`.`subject` AS `subject`,
+        `webtoon`.`genre` AS `genre`,
+        `webtoon`.`content` AS `content`,
+        `webtoon`.`week` AS `week`,
+        `webtoon`.`image` AS `image`,
+        `webtoon`.`image2` AS `image2`,
+        `webtoon`.`savefilename` AS `savefilename`,
+        `webtoon`.`savefilename2` AS `savefilename2`,
+        `webtoon`.`indate` AS `indate`,
+        `webtoon`.`readcountF` AS `readcountF`,
+        `webtoon`.`readcountM` AS `readcountM`,
+        `webtoon`.`readcountN` AS `readcountN`,
+        ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) AS `total_readcount`
+    FROM
+        `webtoon`
+    WHERE
+        (`webtoon`.`week` = 7)
+    ORDER BY ((`webtoon`.`readcountF` + `webtoon`.`readcountM`) + `webtoon`.`readcountN`) DESC;
+
