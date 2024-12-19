@@ -1,27 +1,51 @@
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $('#category_link').click(function(event) {
+    $('#category_link').click(function (event) {
         event.preventDefault();
-        $('#week_selector').slideToggle();
+
+        // #week_selector 슬라이드 토글
+        $('#week_selector').slideToggle(function () {
+            // 슬라이드 상태에 따라 border-bottom 토글
+            if ($('#week_selector').is(':visible')) {
+                $('.nav_areaO1').css('border-bottom', '1px solid gainsboro');
+            } else {
+                $('.nav_areaO1').css('border-bottom', 'none');
+            }
+        });
     });
 
-    $('nav.main_category a').not('#category_link').click(function() {
-        $('#week_selector').slideUp();
+    // 다른 링크를 클릭하면 슬라이드 닫기 및 border 제거
+    $('nav.main_category a').not('#category_link').click(function () {
+        $('#week_selector').slideUp(function () {
+            $('.nav_areaO1').css('border-bottom', 'none');
+        });
     });
 });
 
 //=============
 
-$(document).ready(function() {
-
-    $('#genre_link').click(function(event) {
+$(document).ready(function () {
+    // #genre_link 클릭 시 genre_selector 슬라이드 토글
+    $('#genre_link').click(function (event) {
         event.preventDefault();
-        $('#genre_selector').slideToggle();
+
+        // #genre_selector 슬라이드 토글
+        $('#genre_selector').slideToggle(function () {
+            // 슬라이드 상태에 따라 border-bottom 토글
+            if ($('#genre_selector').is(':visible')) {
+                $('.nav_areaO2').css('border-bottom', '1px solid gainsboro');
+            } else {
+                $('.nav_areaO2').css('border-bottom', 'none');
+            }
+        });
     });
 
-    $('nav.main_category a').not('#genre_link').click(function() {
-        $('#genre_selector').slideUp();
+    // 다른 링크를 클릭하면 genre_selector 닫기 및 border 제거
+    $('nav.main_category a').not('#genre_link').click(function () {
+        $('#genre_selector').slideUp(function () {
+            $('.nav_areaO2').css('border-bottom', 'none');
+        });
     });
 });
 //==================
@@ -107,19 +131,12 @@ $(function () {
                 response.forEach(function (rcg) {
                     html += `
                         <div class="genre_item">
-                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}">
+                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}" >
                                 <img src="/images/webtoon/webtoon_images/title_img/${rcg.image}" style="width: 150px" />
                             </a>
-                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}">
-                                제목 ${rcg.subject}
-                            </a>
-                            <div class="author">
-                                <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}">
-                                    저자 ${rcg.userid}
-                                </a>
-                            </div>
-                            <div class="views">
-                                👁 조회수 ${rcg.readcountM + rcg.readcountF + rcg.readcountN}
+                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}" >
+                                ${rcg.subject}
+                            </a>                    
                             </div>
                         </div>`;
                 });
@@ -166,7 +183,7 @@ $(function () {
                                 <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}">
                                     <img src="/images/webtoon/webtoon_images/title_img/${rbg.image}" style="width: 50px; padding-left: 10px;">
                                 </a>
-                                <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}">
+                                <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}" style="color: black" >
                                     ${rbg.subject}
                                 </a>
                             </div>

@@ -1,27 +1,32 @@
 /* 전체 컨테이너 */
 .container {
     width: 1190px;
-    border: 2px solid red;
+
     padding: 10px;
     margin: 20px auto;
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-    border-radius: 8px; /* 모서리 둥글게 */
+
+
 }
 
 .title {
     display: flex;
-    border-bottom: 1px solid #ddd;
+
 }
 
 .title img{
-    width: 180px;
+    width: 200px;
     height: 250px;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 10px;
 }
 
+.title_right{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+/*------------------------------------------------------*/
 
     /* 댓글 폼 */
 .replyform {
@@ -189,11 +194,68 @@ input[type=submit]:hover {
 
 /*----------------------------------------------------------------*/
 
+.list_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    border-bottom:1px solid #cccccc;
+}
 
 
+.list_title label {
+    display: flex;
+    margin-bottom: 10px;
+}
 
 
+#noticeMore {
+    font-size: 14px;
+    color: gray;
 
+    margin-left: 0; /* 왼쪽 간격 추가 */
+
+}
+
+.nosub {
+    display: block;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0px;
+    transition: transform 0.3s ease; /* transform에 애니메이션 효과 추가 */
+}
+
+
+.notice a:hover {
+    transform: scale(1.02); /* 10.5% 크기 확대 */
+    text-decoration: underline;
+}
+
+.ad {
+
+    width: 240px;
+    height: 280px;
+    margin-bottom: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.wbimg{
+    border: 1px solid  #cccccc;
+    width: 100%;
+    height: 100%;
+}
+
+
+.wbimg2{
+    border: 1px solid  #cccccc;
+    width: 100%;
+    height: 100%;
+
+}
 
 
 
