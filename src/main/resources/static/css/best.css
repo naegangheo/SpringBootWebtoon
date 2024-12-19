@@ -38,6 +38,7 @@ body {
 }
 
 .today-best .best-item {
+    border-radius: 8px;
     overflow: hidden;
     width: 260px;
     text-align: left;
