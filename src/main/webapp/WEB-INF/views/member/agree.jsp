@@ -6,7 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>가입 약관</title>
     <link href="css/member/agree.css" rel="stylesheet">
-  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // "전체 동의" 체크박스 클릭 이벤트
+            $('#all').on('click', function () {
+                const isChecked = $(this).is(':checked'); // "전체 동의" 체크 여부
+                $('input[type="checkbox"]').not('#all').prop('checked', isChecked); // 모든 개별 체크박스를 체크/해제
+            });
+
+            // 개별 체크박스 클릭 이벤트
+            $('input[type="checkbox"]').not('#all').on('click', function () {
+                const total = $('input[type="checkbox"]').not('#all').length; // 개별 체크박스 총 개수
+                const checked = $('input[type="checkbox"]:checked').not('#all').length; // 선택된 개별 체크박스 개수
+
+                // 모든 개별 체크박스가 선택되면 "전체 동의" 체크박스 체크, 아니면 해제
+                $('#all').prop('checked', total === checked);
+            });
+        });
+    </script>
+
 </head>
 <body>
     <div class="container">

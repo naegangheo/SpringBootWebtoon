@@ -204,17 +204,43 @@ public class AdminController {
     }
 
     @GetMapping("/adminQreplyList")
-    public ModelAndView adminQreplyList(@RequestParam("qseq")int qseq, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("admin/qna/admin_qnalist");
+    @ResponseBody
+    public  Map<String, Object> adminQreplyList(@RequestParam("qseq")int qseq) {
 
         HashMap<String, Object> result=ads.getAdminQna(qseq);
-        request.getSession().removeAttribute("page");
-        mav.addObject("qna", result.get("qna"));
-        mav.addObject("qreplyList", result.get("qreplyList"));
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("qna", result.get("qna"));
+        response.put("qreplyList", result.get("qreplyList"));
         System.out.println("qreply : "+result.get("qreplyList"));
 
-        return mav;
+        return response;
     }
+
+    @PostMapping("/adminQreplyInsert")
+    @ResponseBody
+    public Map<String, Object> adminQreplyInsert(@RequestParam("qseq")int qseq, QreplyVO qreplyvo, HttpSession session, Model model) {
+
+        AdminVO adminLogin=(AdminVO)session.getAttribute("loginAdmin");
+        qreplyvo.setAdminid(adminLogin.getAdminid());
+        HashMap<String, Object>result=ads.insertQreply(qreplyvo);
+        Map<String, Object> response = new HashMap<>();
+        response.put("qna", result.get("qna"));
+        response.put("qreplyList", result.get("qreplyList"));
+        return response;
+    }
+
+    @PostMapping("/adminQreplyDelete")
+    @ResponseBody
+    public Map<String, Object> adminQreplyDelete(@RequestParam("qseq")int qseq, @RequestParam("qrseq")int qrseq, QreplyVO qreplyvo) {
+        HashMap<String, Object> result = ads.adminQreplyDelete(qreplyvo);
+        Map<String, Object> response = new HashMap<>();
+        response.put("reply", result.get("reply"));
+        response.put("qreplyList", result.get("qreplyList"));
+        return response;
+    }
+
+
 
 
 

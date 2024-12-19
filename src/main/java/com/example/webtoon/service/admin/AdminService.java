@@ -52,7 +52,7 @@ public class AdminService {
 
         List<WebtoonVO> list= iadao.adSelectWebtoon(paging);
 
-        System.out.println("webtoonpage 표시");
+
         result.put("adSelectWebtoon",list);
         result.put("paging", paging);
         return result;
@@ -125,31 +125,6 @@ public class AdminService {
         return result;
     }
 
-    /*userid로 myqnalist 가져오는 작업*/
-    public HashMap<String, Object> getUserSpecificQnaList(HttpServletRequest request, String userId) {
-        HashMap<String, Object> result = new HashMap<>();
-        HttpSession session = request.getSession();
-        int page = 1;
-
-        if (request.getParameter("page") != null) {
-            page = Integer.parseInt(request.getParameter("page"));
-            session.setAttribute("page", page);
-        } else if (session.getAttribute("page") != null) {
-            page = (Integer) session.getAttribute("page");
-        }
-
-        Paging paging = new Paging();
-        paging.setPage(page);
-        int count = iadao.getCountQnaByUserId(userId); // 사용자별 Q&A 총 개수
-        paging.setTotalCount(count);
-        paging.calPaging();
-
-        List<QnaVO> list = iadao.selectQnaByUserId(userId, paging); // 사용자별 Q&A 데이터 가져오기
-
-        result.put("qnaList", list);
-        result.put("paging", paging);
-        return result;
-    }
 
     //==========WebtoonList=========================
 
@@ -195,11 +170,40 @@ public class AdminService {
 
         QnaVO qvo = iadao.selectQnaOne(qseq);
         result.put("qna",qvo);
+        System.out.println(qvo);
 
         List<QreplyVO> list= iadao.selectQreply(qseq);
-        result.put("QreplyList",list);
+        result.put("qreplyList",list);
+        System.out.println(list);
 
         return result;
+    }
+
+
+    public HashMap<String, Object> insertQreply(QreplyVO qreplyvo) {
+        HashMap<String, Object> result= new HashMap<>();
+        iadao.insertQreply(qreplyvo);
+
+        QnaVO qvo = iadao.selectQnaOne(qreplyvo.getQseq());
+        result.put("qna",qvo);
+
+        List<QreplyVO>list=iadao.selectQreply(qreplyvo.getQseq());
+        result.put("qreplyList",list);
+        return result;
+    }
+
+    public HashMap<String, Object> adminQreplyDelete(QreplyVO qreplyvo) {
+
+        HashMap<String, Object> result= new HashMap<>();
+        iadao.adminQreplyDelete(qreplyvo);
+
+        QnaVO qvo= iadao.selectQnaOne(qreplyvo.getQseq());
+        result.put("qna",qvo);
+        List<QreplyVO>list=iadao.selectQreply(qreplyvo.getQseq());
+        result.put("qreplyList",list);
+
+       return result;
+
     }
 
 

@@ -16,7 +16,7 @@
     <div>
       <a href="/adminNoticeWriteForm" style="text-decoration: none;">Notice List</a>
     </div>
-    <div>LOGO</div>
+      <div><a href="/">LOGO</a></div>
   </div>
 
     <div class="bottom">

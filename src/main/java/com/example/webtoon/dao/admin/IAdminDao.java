@@ -39,16 +39,6 @@ public interface IAdminDao {
     void adminUpdateWebtoon(WebtoonVO webtoonvo);
 
 
-
-    /*mypage qna 작업*/
-    List<QnaVO> selectQnaByUserId(@Param("userId") String userId, @Param("paging") Paging paging);
-    int getCountQnaByUserId(@Param("userId") String userId);
-    void insertQna(QnaVO qnaVO);
-    void updateQna(QnaVO qnaVO);
-    void deleteQna(@Param("qseq") int qseq, @Param("userid") String userid);
-
-
-    /*mypage qna 끝*/
     // notice=============================
     void insertNotice(NoticeVO noticevo);
 
@@ -61,6 +51,10 @@ public interface IAdminDao {
     QnaVO selectQnaOne(int qseq);
 
     List<QreplyVO> selectQreply(int qseq);
+
+    void insertQreply(QreplyVO qreplyvo);
+
+    void adminQreplyDelete(QreplyVO qreplyvo);
 
     // Q&A==============================================
 

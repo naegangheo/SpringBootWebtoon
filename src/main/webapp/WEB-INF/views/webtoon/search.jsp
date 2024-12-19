@@ -9,7 +9,7 @@
     <title>Search Results</title>
     <style>
         /*div, ul, li { border: 1px dashed grey;}*/
-        /*광고영역*/
+       /*광고영역*/
         .ad-item {
             width: 300px;
             height: 250px;
@@ -147,7 +147,7 @@
         }
 
         .result-info h3 {
-            margin: 0 0 8px;
+            margin: 10px 0 0 0;
             font-size: 18px;
             font-weight: bold;
             color: #333;
@@ -156,10 +156,16 @@
         .result-info .horizontal-info {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin: 0 0 8px;
+            gap: 0px;
+            margin: 0 0 0px;
             color: #666;
             font-size: 14px;
+            height: 30px;
+        }
+
+        .p-second{
+            font-size: 14px;
+            margin: 0 auto;
         }
 
         .tags span {
@@ -187,12 +193,13 @@
 
         .aside-title {
             margin-bottom: 20px;
-            font-size: 16px;
+            font-size: 18px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             border-bottom: 1px solid #ebebeb;
+            font-weight: bold;
         }
 
         .aside-item {
@@ -275,7 +282,7 @@
                                     <div class="horizontal-info">
                                         <p>작가: ${result.userid}</p>
                                         <p>ㅣ</p>
-                                        <p>최종 업데이트: ${result.indate.split(' ')[0]}</p>
+                                        <p>최종 업데이트: ${result.indate.toString().split(' ')[0]}</p>
                                     </div>
                                     <p class="p-second">${result.content}</p>
                                 </div>
@@ -291,20 +298,20 @@
 
         <div class="aside-container">
             <%--광고--%>
-                <div class="ad-item" id="ad-container">
-                    <iframe
-                            src="adPage"
-                            width="300"
-                            height="250"
-                            frameborder="0"
-                            sandbox="allow-scripts allow-same-origin allow-popups">
-                    </iframe>
-                </div>
+            <div class="ad-item" id="ad-container">
+                <iframe
+                        src="adPage"
+                        width="300"
+                        height="250"
+                        frameborder="0"
+                        sandbox="allow-scripts allow-same-origin allow-popups">
+                </iframe>
+            </div>
 
             <div class="aside-box">
                 <div class="aside-title">
                     <div>실시간 인기웹툰</div>
-                    <div>
+                    <div style="font-size: 13px; font-weight: normal;">
                         <!-- 성별 버튼 -->
                         <a href="#" class="gender_button" data-gender="T">전체</a>
                         <a href="#" class="gender_button" data-gender="F">여성</a>

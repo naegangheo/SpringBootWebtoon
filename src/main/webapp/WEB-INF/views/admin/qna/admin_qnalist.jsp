@@ -5,10 +5,12 @@
 <div class="admin_view">
 
     <div class="top">
-        <div>Q&a List</div>
-        <div>LOGO</div>
+        <div>Q&A List</div>
+        <div><a href="/">LOGO</a></div>
     </div>
-
+    <form method="post" action="/adminQreplyInsert">
+        <input type="hidden" name= "qseq" value="${qna.qseq}"/>
+        <input type="hidden" name="adminid" value="l${loninUser.loginAdmin}"/>
     <div class="bottom">
 
       <div class="content">
@@ -35,43 +37,22 @@
                   <fmt:formatDate value="${qna.indate}" pattern="yyyy-MM-dd"/>
               </div>
             </div>
-            <div id="content-${qna.qseq}" class="toggle-contentq">
+            <div id="content-${qna.qseq}" class="toggle-contentq" data-qseq="${qna.qseq}">
+
               <div>${qna.content}</div>
               <div>
-                <input type="text" name="content"/>
-                <button type="button" value="댓글 작성" onclick="location.href='/adminQreplyInsert?qrseq=${qreply.qrseq}'">댓글 작성</button>
+                <input type="text" id="newReplyContent-${qna.qseq}" name="qrcontent" placeholder="댓글을 작성하세요"/>
+                <input id ="reply_button" type="submit" value="댓글 작성" data-qseq="${qna.qseq}"/>
               </div>
 
               <div class="qreply">
-                  <c:choose>
-                    <c:when test="${qreplyList.size()==0}">
-                        <div class="qreply_title">
-                            <div class="qreply_col">
-                                    아직 댓글이 하나도 없습니다.
-                            </div>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <c:forEach items="${qreplyList}" var="qreply">
-                            <div class="qreply_title">
-                                <div class="qreply_col">${qreply.qrcontent}</div>
-                                <div class="qreply_col">
-                                    <fmt:formatDate value="${qreply.indate}" pattern="MM/dd hh:mm"/>
-                                </div>
-                                <div class="qreply_col">
-                                     <c:if test="${qreply.adminid==loginUser.adminid}">
-                                        <input type="button" value="삭제"
-                                            onClick="deleteReply('${qreply.qrseq}', '${qna.qseq}')"/>
-                                     </c:if>
-                                </div>
-                            </div>
-                        </c:forEach>
-                    </c:otherwise>
-                  </c:choose>
-
+                    <%--        ajax구현부          --%>
               </div>
             </div>
+
           </c:forEach>
+
+    </form>
           <br>
             <div class="pagebutton">
                 <c:if test="${paging.prev}" >
