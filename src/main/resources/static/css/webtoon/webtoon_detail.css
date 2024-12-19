@@ -30,6 +30,7 @@
 
     /* 댓글 폼 */
 .replyform {
+    width: 1200px;
     position: relative;
     border: 1px solid #757575;
     border-radius: 5px;
@@ -37,12 +38,6 @@
     margin-bottom: 20px; /* 댓글 리스트와 간격 */
 }
 
-/* 댓글 입력 필드 및 글자 수 카운터 */
-.reply-input-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
 
 #reply_counter {
     align-self: flex-end; /* 오른쪽 정렬 */
@@ -65,7 +60,7 @@
 #reply_input {
     color : black;
     border: none;
-    width: calc(100% - 60px); /* 버튼과 간격 조정 */
+    width:  calc(100% - 60px); /* 버튼과 간격 조정 */
     border-radius: 4px;
     padding: 10px;
     font-size: 12px;
@@ -91,8 +86,8 @@ input[type=submit]:hover {
 /* 댓글 리스트 */
 .replylist {
     width: 100%;
-    max-width: 840px;
-    border: 1px solid #757575;
+    max-width: 1200px;
+    /*border: 1px solid #757575;*/
     padding: 10px; /* 내부 여백 */
     margin: 0 auto 20px auto; /* 가운데 정렬 및 간격 */
     border-radius: 5px;
