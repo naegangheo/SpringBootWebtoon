@@ -10,13 +10,13 @@
                 <%-- 제목,이미지--%>
                 <div class="title">
                     <div class="title_image">
-                        <img class="wbimg" src="../images/webtoon/webtoon_images/title_img/${webtoonVO.image}"/>
+                        <img class="wbimgT" src="../images/webtoon/webtoon_images/title_img/${webtoonVO.image}"/>
                     </div>
                     <div class="title_right">
                         <div class="subtitle" style="font-size: 26px; font-weight: bold;">${webtoonVO.subject}</div>
-                        <div class="title_name" id="tag">작가 : ${webtoonVO.userid}</div>
-                        <div class="title_content" id="tag">내용 : ${webtoonVO.content}</div>
-                        <div class="title_content" id="tag">
+                        <div class="title_name" >작가 : ${webtoonVO.userid}</div>
+                        <div class="title_content" >내용 : ${webtoonVO.content}</div>
+                        <div class="title_content" >
                             <c:choose>
                                 <c:when test ="${webtoonVO.genre == 1}">장르 : 전체</c:when>
                                 <c:when test ="${webtoonVO.genre == 2}">장르 : 로맨스</c:when>
@@ -82,19 +82,14 @@
 <%-- 오른쪽 광고 및 공지사항--%>
         <div class="aside_banner">
             <div class="ad">
-                <img class="wbimg" src="images/webtoon/noimg.png">
+                <img class="wbimg" src="images/adImages/img.png">
             </div>
-            <br/>
             <div class="ad">
-                <img class="wbimg" src="images/webtoon/noimg.png">
+                <img class="wbimg2" src="images/adImages/ad_image2.png" >
             </div>
-
             <div class="notice">
                 <div class ="list_title">
-                    <label>공지사항</label>
-                    <div>
-                        <a href="notice">더보기></a>
-                    </div>
+                    <label>공지사항 </label><a href="notice" id="noticeMore">더보기></a>
                 </div>
                 <div>
                     <div>
@@ -103,9 +98,9 @@
                             <p>공지사항이 없습니다.</p>
                         </c:if>
                             <c:forEach items="${noticeList}" var="nvo" begin="0" end="4">
-                                <li>
+                                    <a href="/notice?nseq=${noticeVO.nseq}" class="nosub">
                                     ${nvo.subject}
-                                </li>
+                                    </a>
                             </c:forEach>
                         </ul>
                     </div>
