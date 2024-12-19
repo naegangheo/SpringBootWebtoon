@@ -34,9 +34,8 @@ section {
 .paging{
     position: relative; /* grid 레이아웃을 고려 */
     bottom: 0;
-    margin-top: 10px;
+    margin-top: 40px;
     padding: 5px;
-
 } /*페이지 번호*/
 .paging a{text-decoration: none; color: inherit;} /* 밑줄, 색 제거*/
 
@@ -267,9 +266,14 @@ border-top: 1px solid #ebebeb;
     box-sizing: border-box; /* 패딩 포함 너비 */
 }
 .qna-text {
-    text-align: left;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
     width: 100%; /* 부모 요소의 너비에 맞춤 */
-    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+    box-sizing: border-box; /* 패딩 포함 너비 계산 */
+    word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    overflow-wrap: break-word; /* 추가 줄바꿈 옵션 */
+    white-space: normal; /* 텍스트 줄바꿈 허용 */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    padding: 10px 0 10px 0;
 } /*문의 본문*/
 
 .qna-edit-delete-button{

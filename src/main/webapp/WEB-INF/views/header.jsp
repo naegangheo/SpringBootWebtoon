@@ -102,10 +102,11 @@
             </div>
             </div>
          </div>
+
         <div class="nav_areaO3">
             <div class="nav_area">
                 <div id="mypage_selector" class="mypage_selector">
-                    <a href="/updateMember" >회원탈퇴/수정</a>
+                    <a href="updateMember" >회원탈퇴/수정</a>
                     <a href="created"  style="text-decoration: none;">게시물 등록</a>
                     <a href="myQna"  style="text-decoration: none;">Q&A</a>
                 </div>

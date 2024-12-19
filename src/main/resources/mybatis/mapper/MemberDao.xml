@@ -56,8 +56,8 @@
     </select>
 
     <insert id="insertQna">
-        INSERT INTO qna (userid, pwd, subject, content, indate)
-        VALUES (#{userid}, #{pwd}, #{subject}, #{content}, NOW())
+        INSERT INTO qna (userid, subject, content, indate, pwd)
+        VALUES (#{userid}, #{subject}, #{content}, NOW(), '1')
     </insert>
 
     <select id="checkPassword" parameterType="map" resultType="int">

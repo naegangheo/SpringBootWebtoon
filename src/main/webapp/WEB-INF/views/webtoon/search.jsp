@@ -13,7 +13,7 @@
         .ad-item {
             width: 300px;
             height: 250px;
-            margin: 0;
+            margin: 10px auto;
         }
         /* 공지사항 영역 */
         .notice-header {
@@ -341,7 +341,7 @@
             <div class="aside-box">
                 <div class="notice-header">
                     <div>공지사항</div>
-                    <div><a href="notice">더보기 ></a></div>
+                    <div><a href="notice">더보기 ＞</a></div>
                 </div>
                 <div class="notice-list">
                     <ul>
