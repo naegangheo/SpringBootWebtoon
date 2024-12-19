@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.admin.IAdminDao">
+
+    <select id="getAdmin" resultType="com.example.webtoon.dto.AdminVO" >
+        select * from admin where adminid=#{param1}
+    </select>
+
+    <select id="adGetWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where wseq=#{wseq}
+    </select>
+
+    <select id="adSelectWebtoon" resultType="com.example.webtoon.dto.WebtoonVO" parameterType="com.example.webtoon.dto.WebtoonVO">
+        select*from webtoon order by wseq desc limit #{displayRow} offset #{startNum}
+    </select>
+
+    <select id="adSelectQna" resultType="com.example.webtoon.dto.QnaVO" parameterType="com.example.webtoon.dto.QnaVO">
+        select*from qna order by qseq desc limit #{displayRow} offset #{startNum}
+    </select>
+
+    <select id="adSelectNotice" resultType="com.example.webtoon.dto.NoticeVO">
+        select*from notice order by nseq desc limit #{displayRow} offset #{startNum}
+    </select>
+
+    <select id="getAllcount" resultType="_int">
+        select count(*) from webtoon
+    </select>
+
+    <select id="getAllcountQna" resultType="_int">
+        select count(*) from qna
+    </select>
+
+    <select id="adAllCountMember" resultType="_int">
+        select count(*) from member
+    </select>
+
+    <select id="getAllcountNotice" resultType="_int">
+        select count(*) from notice
+    </select>
+
+    <delete id="adminWebtoonDelete">
+        delete from webtoon where wseq=#{wseq}
+    </delete>
+
+
+<!-- WebtoonList================   -->
+
+    <update id="adminUpdateWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
+        update webtoon set subject=#{subject}, genre=#{genre}, content=#{content}, week=#{week},
+                           image=#{image}, image2=#{image2}, savefilename=#{savefilename}, savefilename2=#{savefilename2}
+        where wseq=#{wseq}
+    </update>
+
+
+<!-- NoticeList==================   -->
+    <insert id="insertNotice" parameterType="com.example.webtoon.dto.NoticeVO">
+        insert into notice(adminid,pwd, subject, content) values(#{adminid},#{pwd},#{subject},#{content})
+    </insert>
+
+    <select id="selectNoticeOne" resultType="com.example.webtoon.dto.NoticeVO">
+        select * from notice where nseq=#{nseq}
+    </select>
+
+    <update id="updateNotice" parameterType="com.example.webtoon.dto.NoticeVO">
+        update notice set pwd=#{pwd} , subject=#{subject}, content=#{content} where nseq=#{nseq}
+    </update>
+
+    <delete id="adminNoticeDelete">
+        delete from notice where nseq=#{nseq}
+    </delete>
+
+    <!-- Q&AList===================   -->
+
+    <select id="selectQnaOne" resultType="com.example.webtoon.dto.QnaVO">
+        select * from qna where qseq=#{qseq}
+    </select>
+
+    <select id="selectQreply" resultType="com.example.webtoon.dto.QreplyVO">
+        select * from qreply where qseq=#{qseq} order by qrseq desc
+    </select>
+
+    <insert id="insertQreply" parameterType="com.example.webtoon.dto.QreplyVO">
+        insert into qreply(qseq,adminid, qrcontent)
+        values(#{qseq}, #{adminid}, #{qrcontent})
+    </insert>
+
+    <delete id="adminQreplyDelete">
+        delete from qreply where qrseq=#{qrseq}
+    </delete>
+
+
+</mapper>

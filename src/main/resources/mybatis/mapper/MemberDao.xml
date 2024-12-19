@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.member.IMemberDao">
+
+    <insert id="insertMember" parameterType="com.example.webtoon.dto.MemberVO">
+        insert into member( userid, pwd, name, email, phone, gender)
+        values( #{userid}, #{pwd}, #{name}, #{email}, #{phone}, #{gender})
+    </insert>
+
+    <select id="getMember" resultType="com.example.webtoon.dto.MemberVO" >
+        select * from member where userid=#{param1}
+    </select>
+
+    <update id="updateMember" parameterType="com.example.webtoon.dto.MemberVO">
+        UPDATE member
+        <set>
+            <trim suffixOverrides=",">
+                <if test="pwd != null and pwd != ''">pwd = #{pwd},</if>
+                <if test="name != null and name != ''">name = #{name},</if>
+                <if test="gender != null and gender != ''">gender = #{gender},</if>
+                <if test="email != null and email != ''">email = #{email},</if>
+                <if test="phone != null and phone != ''">phone = #{phone},</if>
+            </trim>
+        </set>
+        WHERE userid = #{userid}
+    </update>
+
+    <delete id="deleteMember" parameterType="String">
+        DELETE FROM member WHERE userid = #{userid}
+    </delete>
+
+    <!-- 제목(subject) 검색 -->
+    <select id="searchBySubjectOrUserid" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT *
+        FROM webtoon
+        WHERE subject LIKE CONCAT('%', #{keyword}, '%')
+           OR userid LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <!--userid 기반 myQnaList 가져오기-->
+    <select id="selectQnaByUserId" resultType="com.example.webtoon.dto.QnaVO">
+        SELECT *
+        FROM qna
+        WHERE userid = #{userId}
+        ORDER BY qseq DESC
+            LIMIT #{paging.startNum}, #{paging.displayRow}
+    </select>
+
+    <select id="getCountQnaByUserId" resultType="int">
+        SELECT COUNT(*)
+        FROM qna
+        WHERE userid = #{userId}
+    </select>
+
+    <insert id="insertQna">
+        INSERT INTO qna (userid, subject, content, indate, pwd)
+        VALUES (#{userid}, #{subject}, #{content}, NOW(), '1')
+    </insert>
+
+    <select id="checkPassword" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+        FROM users
+        WHERE userid = #{userid} AND pwd = #{pwd}
+    </select>
+
+    <update id="updateQna" parameterType="com.example.webtoon.dto.QnaVO">
+        UPDATE qna
+        SET
+            subject = #{subject},
+            content = #{content},
+            indate = NOW()
+        WHERE
+            qseq = #{qseq} AND userid = #{userid}
+    </update>
+
+    <delete id="deleteQna">
+        DELETE FROM qna
+        WHERE qseq = #{qseq} AND userid = #{userid}
+    </delete>
+
+    <select id="selectRepliesByQseq" resultType="com.example.webtoon.dto.QreplyVO">
+        SELECT qrseq, qseq, adminid, qrcontent, indate
+        FROM qreply
+        WHERE qseq = #{qseq}
+        ORDER BY qrseq DESC
+    </select>
+    <!--userid 기반 myQnaList 끝-->
+
+
+</mapper>

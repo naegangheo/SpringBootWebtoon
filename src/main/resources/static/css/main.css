@@ -3,16 +3,21 @@
 
 /*------------------------------------------------*/
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .wrap .main{
     width: 1200px;
-    border:1px dotted black;
     margin: 0 auto;
+
 }
 
 .m_top{
     width: 1200px;
     height: 450px;
-    border: 1px dotted orange;
+
 }
 
 .m_top_week{
@@ -21,9 +26,14 @@
 
 .top_week_cate{
     display: flex;
-    padding: 10px;
-
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 150%;
+    font-weight: bold;
 }
+
+
 
 .top_week_img {
     width: 1200px;
@@ -40,98 +50,256 @@
     display: flex;
     justify-content: space-between;
 }
-.image_wrapper div a img{
-    width: 230px;
+
+.best_item{
     padding: 5px;
 }
+
+.b_author {
+    font-weight: bold;
+}
+
+
+#TitleBorder{
+    border: 1px;
+    padding: 0;
+    display: inline-block; /* 부모가 이미지 크기를 감쌀 수 있도록 설정 */
+    border-radius: 5px; /* 테두리 둥글게 (선택 사항) */
+    overflow: hidden; /* 부모 경계 밖 이미지를 숨김 */
+    width: 230px; /* 이미지와 동일한 너비 */
+    height: 290px; /* 이미지와 동일한 높이 */
+
+}
+
+#best_subject {
+    font-weight: bold;
+    font-size: larger;
+
+}
+
+#TitleBorder img{
+    transition: transform 0.4s ease;
+    width: 100%; /* 부모 요소에 맞게 채우기 */
+    height: 100%; /* 부모 요소에 맞게 채우기 */
+    border-radius: 5px;
+}
+#TitleBorder img:hover{
+    transform: scale(1.05);
+}
+
+.best_item a{
+    text-decoration: none; /* 밑줄 제거 */
+    color: black; /* 기본 글자 색상 */
+}
+.best_item a:hover{
+    color: #00DC64;
+}
+.b_author a:hover img{
+    color: #00DC64;
+}
+
 a.prev, a.next {
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     z-index: 10;
     padding: 10px;
     border-radius: 50%;
-    border: 0.5px solid #00DC64;
-    background: #00DC64;
+    box-shadow: 0px 4px 3px 0px rgba(0, 0, 0, 0.5);
+    background: white;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease, box-shadow 0.4s ease, border 0.9s ease;;
     line-height: 10px;
-    opacity: 0.6; /* 호버 시 효과 */
+    opacity: 0.8;
 }
 
 a.prev img, a.next img {
     width: 30px;
-    height: 40px;
+    height: 30px;
 }
 
 a.prev{
-    left: 0; /* 오른쪽 끝에 위치 */
+    left: 1px; /* 오른쪽 끝에 위치 */
 }
 a.next{
-    right: 0;
+    right: 1px;
 }
 
 a.prev:hover,
 a.next:hover {
-    opacity: 0.3; /* 호버 시 효과 */
+    opacity: 110%;
+    box-shadow: 0px 4px 3px 1px rgba(0, 0, 0, 0.6);
+    border: 1px solid #00DC64;  ;
 }
 
 .m_mid{
     display: flex;
-    padding: 10px;
 }
 
 .m_mid_left{
-    width : 795px;
-    border: 1px dotted blue;
+
+    width : 800px;
     padding: 10px;
 }
 
-.mid_genre{
-    height: 310px;
-    border: 1px solid orange;
+
+
+
+.genre h2{
+
 }
 
-.genre{
-    border: 1px dotted orange;
-}
+
 
 .mid_genre_cate{
+
     display: flex;
-    padding-left: 5px;
+    padding-right: 5px;
     text-align: center;
+    text-decoration: none;
+}
+
+.genre_button {
+    cursor: pointer;
+    display: flex;
+    color: rgba(25,23,24,0.73);
+    transition: transform 0.3s ease;
+    text-align: center;
+    padding-right: 10px;
+}
+
+.genre_button:hover{
+    color: #00DC64;
 }
 
 .genre_img{
     display: flex;
-    padding: 10px;
-    justify-content: space-evenly;
+}
+
+.genre_item {
+    text-align: center; /* 모든 콘텐츠 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center;
     padding: 5px;
+    transition: transform 0.3s ease;
 }
 
-.mid_new{
 
-    height: 310px;
+.genre_item:hover{
+    transform: scale(1.05);
+}
+
+.genre_item a{
+    text-decoration: none;
+    color: black;
+}
+.genre_item a:hover{
+    color: #00DC64;
+}
+
+.gender_item a{
+    color: gray;
+    font-size: 70% ;
+
+}
+
+
+
+
+.mid_new {
+    margin-top: 50px;
+
+}
+
+
+
+.new label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: left;
+
+}
+/*#TitleBorder{
+    border: 1px;
+    padding: 0;
+    display: inline-block; !* 부모가 이미지 크기를 감쌀 수 있도록 설정 *!
+    border-radius: 5px; !* 테두리 둥글게 (선택 사항) *!
+    overflow: hidden; !* 부모 경계 밖 이미지를 숨김 *!
+    width: 230px; !* 이미지와 동일한 너비 *!
+    height: 290px; !* 이미지와 동일한 높이 *!
+
+}*/
+
+
+/*#TitleBorder img{
+    transition: transform 0.4s ease;
+    width: 100%; !* 부모 요소에 맞게 채우기 *!
+    height: 100%; !* 부모 요소에 맞게 채우기 *!
+    border-radius: 5px;
+}*/
+
+.new_img {
+    display: flex; /* 가로 정렬 */
+    flex-wrap: nowrap; /* 가로줄 넘어가지 않도록 설정 */
+    justify-content: space-between; /* 요소 간격 균등 배치 */
+    align-items: center; /* 세로 축에서 가운데 정렬 */
+    gap: 5px; /* 각 이미지 간 간격 */
+}
+
+#new_Atag {
+    border-radius: 8px;
+    display: inline-block;
+    text-align: center;
+    flex: 0 0 auto; /* 이미지 크기에 따라 고정 */
+    overflow: hidden;
+}
+
+.new_item {
+    text-align: center;
+    flex: 0 0 auto; /* 이미지 크기에 따라 고정 */
+}
+
+.new_item img {
+    width: 250px;
+    height: 150px;
+    transition: transform 0.5s ease; /* 호버 애니메이션 */
+    border-radius: 8px; /* 둥근 모서리 */
+}
+
+.new_item img:hover {
+    transform: scale(1.05); /* 확대 효과 */
+
+}
+
+
+#new_Atag2 {
+    font-weight: bold;
     display: flex;
-    border: 1px dotted orange;
-
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
-.new{
-    width : 795px;
+#new_Atag2:hover {
+    color: #00DC64;
 }
 
-
-.new_img{
-    display: flex;
-    justify-content: space-evenly;
-}
 
 .m_mid_right{
+    position: relative;
     width: 395px;
-    border: 1px dotted red;
-    padding: 10px;
 }
+
+.notice {
+    margin-top: 20px;
+}
+
 
 #ad{
    justify-content: center;
@@ -139,69 +307,143 @@ a.next:hover {
 }
 
 .mid_right_list{
-    border: 1px dotted red;
     padding: 15px;
-
 }
 
-
-.list_title{
-    display: flex;
-    justify-content: space-between;
-}
-
-.gender{
-
-}
 
 ul{
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
-    border: 1px solid red;
 }
+
+
 
 li{
     list-style-type: none;
     display: flex;
-    padding: 10px;
-    border: 1px dotted red;
+    padding: 5px;
+
     justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+li:hover{
+    transform: scale(1.05);
+}
+#rank{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: 0;
+}
+
+#rank_list {
+    display: flex;
+    padding: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+}
+
+#rank_list:hover{
+    transform: scale(1.05);
+
+}
+
+#rank_list > div > a:last-of-type:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+#rank_list div{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+
     align-items: center;
 }
 
-.title{
-    padding: 5px;
-    border: 1px solid red;
-    width: 150px;
+#rank_list div a{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 5px;
 }
 
-li div {
+
+.title{
+    width: 100%;
+    padding: 5px;
+
+    width: 150px;
+    text-align: center;
     display: flex;
     justify-content: space-between;
+
 }
 
-li >div >label{
+
+.title a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+
+}
+
+.title a:hover{
+    color: #00DC64;
+}
+
+
+.list_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-weight: bold;
-    font-size: 200%;
-    border: 1px solid blue;
-    text-align: center;
-    line-height: 60px;
+    font-size: 20px;
+    padding: 5px;
+    border-bottom:1px solid #cccccc;
 }
 
-.notice{
-    width: 300px;
-    padding: 10px;
-}
-
-label{
-    font-family: Verdana;
-    font-size: 120%;
-    font-weight: bold;
+.list_title label {
+    display: flex;
+    letter-spacing: -2px;
 }
 
 
+.list_title div a:hover{
+    color: #00DC64;
+}
 
 
+
+
+
+
+#noticeMore {
+    font-size: 14px;
+    color: gray;
+
+    margin-left: 0; /* 왼쪽 간격 추가 */
+
+}
+
+.nosub {
+    display: block;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0px;
+    transition: transform 0.3s ease; /* transform에 애니메이션 효과 추가 */
+}
+
+
+.notice a:hover {
+    transform: scale(1.02); /* 10.5% 크기 확대 */
+    text-decoration: underline;
+}
 
 /*--------------------------------------------------*/
 

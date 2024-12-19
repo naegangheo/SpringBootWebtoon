@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.main.IMainDaoH">
+
+    <select id="getGenreList" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where genre=#{genre} or #{genre}=1 order by (readcountF + readcountM + readcountN) desc;
+    </select>
+
+    <select id="getNoticeList" resultType="com.example.webtoon.dto.NoticeVO">
+        select * from notice order by indate desc;
+    </select>
+
+    <select id="getWebtoon" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where wseq=#{param1}
+    </select>
+
+    <select id="selectGenreList" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where (genre=#{genre} or #{genre}=1) order by wseq limit #{displayRow} offset #{startNum}
+    </select>
+
+    <select id="getAllcount" resultType="_int">
+        select count(*) from webtoon where genre=#{genre} or #{genre}=1;
+    </select>
+
+    <select id="getReadCountByGenre" resultType="com.example.webtoon.dto.WebtoonVO">
+        select * from webtoon where genre=#{genre} order by (readcountF + readcountM + readcountN) desc limit 5
+    </select>
+
+    <select id="getReadCountByGender" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT wseq, image, subject,
+               CASE
+                   WHEN #{gender} = 'F' THEN readcountF
+                   WHEN #{gender} = 'M' THEN readcountM
+                   ELSE readcountN
+                   END AS readcount
+        FROM webtoon
+        ORDER BY readcount DESC
+            LIMIT 5;
+    </select>
+
+    <select id="getAllReadcount" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT wseq, image, subject,
+               (readcountF + readcountM + readcountN) AS readcountT
+        FROM webtoon
+        ORDER BY readcountT DESC
+            LIMIT 5;
+    </select>
+
+
+
+
+</mapper>
+
+
+

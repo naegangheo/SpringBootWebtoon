@@ -1,0 +1,266 @@
+/* 전체 컨테이너 */
+.container {
+    width: 1190px;
+
+    padding: 10px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.title {
+    display: flex;
+
+}
+
+.title img{
+    width: 200px;
+    height: 250px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.title_right{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+/*------------------------------------------------------*/
+
+    /* 댓글 폼 */
+.replyform {
+    position: relative;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px; /* 댓글 리스트와 간격 */
+}
+
+/* 댓글 입력 필드 및 글자 수 카운터 */
+.reply-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#reply_counter {
+    align-self: flex-end; /* 오른쪽 정렬 */
+    font-size: 12px;
+    color: gray;
+}
+
+/* 댓글 추가 버튼 */
+.reply-actions {
+    display: flex;
+    justify-content: flex-end; /* 우측 정렬 */
+    margin-top: 10px;
+}
+
+#replyUser{
+    margin-left: 5px;
+}
+
+/* 댓글 입력 필드 */
+#reply_input {
+    color : black;
+    border: none;
+    width: calc(100% - 60px); /* 버튼과 간격 조정 */
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 12px;
+    resize: none; /* 크기 조절 비활성화 */
+}
+
+/* 댓글 제출 버튼 */
+input[type=submit] {
+    background: #00dc64; /* 기본 색상 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px; /* 여백 조정 */
+    border-radius: 4px; /* 버튼 모서리 둥글게 */
+    transition: background 0.3s ease;
+    font-size: 14px;
+}
+
+input[type=submit]:hover {
+    background: #008c45; /* 호버 시 색상 변경 */
+}
+
+/* 댓글 리스트 */
+.replylist {
+    width: 100%;
+    max-width: 840px;
+    border: 1px solid #757575;
+    padding: 10px; /* 내부 여백 */
+    margin: 0 auto 20px auto; /* 가운데 정렬 및 간격 */
+    border-radius: 5px;
+}
+
+/* 댓글 항목 */
+.reply-item {
+    position: relative; /* 삭제 버튼 위치 기준 */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd; /* 하단에 구분선 */
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* 요소 간격 */
+}
+
+.reply-item:last-child {
+    border-bottom: none; /* 마지막 항목은 구분선 제거 */
+}
+
+/* 댓글 작성자 */
+.reply-author {
+    font-weight: bold;
+    color: #333;
+}
+
+/* 댓글 내용 */
+.reply-content {
+    font-size: 14px;
+    line-height: 1.6; /* 줄 간격 증가 */
+    color: #555;
+}
+
+/* 댓글 날짜 */
+.reply-date {
+    font-size: 12px;
+    color: gray;
+    align-self: flex-start; /* 왼쪽 정렬 */
+}
+
+/* 삭제 버튼 */
+.delete-reply {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    padding: 5px 8px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.delete-reply:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+    transform: scale(1.05); /* 약간 확대 효과 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .replylist {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .delete-reply {
+        bottom: 5px;
+        right: 5px;
+    }
+}
+
+#nonuser {
+    color: gray; /* 회색 텍스트 */
+    font-size: 14px; /* 글자 크기 설정 */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#nonuser a {
+    color: gray; /* 로그인 링크 색상 */
+    text-decoration: underline; /* 링크에 밑줄 추가 */
+    font-weight: bold;
+}
+
+.no-replies-message {
+    color: gray; /* 회색으로 텍스트 색상 지정 */
+    font-size: 16px; /* 글자 크기 설정 */
+    margin-bottom: 20px; /* 위쪽 여백 */
+}
+
+
+/*----------------------------------------------------------------*/
+
+.list_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    border-bottom:1px solid #cccccc;
+}
+
+
+.list_title label {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+#noticeMore {
+    font-size: 14px;
+    color: gray;
+
+    margin-left: 0; /* 왼쪽 간격 추가 */
+
+}
+
+.nosub {
+    display: block;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    padding: 5px 0px;
+    transition: transform 0.3s ease; /* transform에 애니메이션 효과 추가 */
+}
+
+
+.notice a:hover {
+    transform: scale(1.02); /* 10.5% 크기 확대 */
+    text-decoration: underline;
+}
+
+.ad {
+
+    width: 240px;
+    height: 280px;
+    margin-bottom: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.wbimg{
+    border: 1px solid  #cccccc;
+    width: 100%;
+    height: 100%;
+}
+
+
+.wbimg2{
+    border: 1px solid  #cccccc;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+
+
+
+
+
+

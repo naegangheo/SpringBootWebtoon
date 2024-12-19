@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.webtoon.dao.main.IMainDaoK">
+
+    <select id="getBestListTop" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT
+            wseq, userid, subject, genre, content, week,
+            image, image2, savefilename, savefilename2,
+            indate, readcountF, readcountM, readcountN,
+            (COALESCE(readcountF, 0) + COALESCE(readcountM, 0) + COALESCE(readcountN, 0)) AS total_readcount
+        FROM
+            webtoon
+        ORDER BY
+            total_readcount DESC
+            LIMIT #{limit}
+    </select>
+
+
+    <!-- 1. 등록 날짜가 빠른 순서로 웹툰 리스트 조회 -->
+    <select id="getDayList" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT
+            wseq, userid, subject, genre, content, week,
+            image, image2, savefilename, savefilename2,
+            indate, readcountF, readcountM, readcountN
+        FROM
+            webtoon
+        ORDER BY
+            indate DESC
+            LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+    <!-- 2. 조회수가 높은 순서로 웹툰 리스트 조회 -->
+    <select id="getbestlist" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT
+            wseq, userid, subject, genre, content, week,
+            image, image2, savefilename, savefilename2,
+            indate, readcountF, readcountM, readcountN,
+            (COALESCE(readcountF, 0) + COALESCE(readcountM, 0) + COALESCE(readcountN, 0)) AS total_readcount
+        FROM
+            webtoon
+        ORDER BY
+            total_readcount DESC
+            LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+
+    <!-- 3. 작품 이름이 가나다순으로 정렬된 웹툰 리스트 조회 -->
+    <select id="getNameList" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT
+            wseq, userid, subject, genre, content, week,
+            image, image2, savefilename, savefilename2,
+            indate, readcountF, readcountM, readcountN
+        FROM
+            webtoon
+        ORDER BY
+            subject COLLATE utf8mb4_general_ci ASC
+            LIMIT #{pageSize} OFFSET #{offset}
+    </select>
+
+<!--  특정 웹툰 조회
+    <select id="getWebtoonById" parameterType="int" resultType="com.example.webtoon.dto.WebtoonVO">
+        SELECT * FROM webtoon WHERE wseq = #{wseq}
+    </select>-->
+
+
+    <!-- 업로드된 파일 정보 저장 -->
+    <insert id="insertWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
+        INSERT INTO webtoon (
+            subject, genre, week, content, savefilename,
+                  savefilename2, image, image2, userid, indate
+        )
+        VALUES (#{subject}, #{genre},  #{week}, #{content}, #{savefilename}, #{savefilename2}, #{image}, #{image2}, #{userid},
+                   NOW() )
+    </insert>
+
+<!--전체 데이터 개수를 계산    -->
+    <select id="getTotalCount" resultType="int">
+        SELECT COUNT(*)
+        FROM webtoon
+    </select>
+
+
+  <!--  <update id="updateWebtoon" parameterType="com.example.webtoon.dto.WebtoonVO">
+        UPDATE webtoon
+        SET subject = #{subject}, genre = #{genre}, content = #{content},
+            savefilename = #{savefilename}, savefilename2 = #{savefilename2}, userid = #{userid}
+        WHERE wseq = #{wseq}
+    </update>-->
+
+
+
+
+
+
+
+
+</mapper>
+
+
+

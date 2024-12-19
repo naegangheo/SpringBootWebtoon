@@ -1,15 +1,68 @@
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $('#category_link').click(function(event) {
+    $('#category_link').click(function (event) {
         event.preventDefault();
-        $('#week_selector').slideToggle();
+
+        // #week_selector 슬라이드 토글
+        $('#week_selector').slideToggle(function () {
+            // 슬라이드 상태에 따라 border-bottom 토글
+            if ($('#week_selector').is(':visible')) {
+                $('.nav_areaO1').css('border-bottom', '1px solid gainsboro');
+            } else {
+                $('.nav_areaO1').css('border-bottom', 'none');
+            }
+        });
     });
 
-    $('nav.main_category a').not('#category_link').click(function() {
-        $('#week_selector').slideUp();
+    // 다른 링크를 클릭하면 슬라이드 닫기 및 border 제거
+    $('nav.main_category a').not('#category_link').click(function () {
+        $('#week_selector').slideUp(function () {
+            $('.nav_areaO1').css('border-bottom', 'none');
+        });
     });
 });
+
+//=============
+
+$(document).ready(function () {
+    // #genre_link 클릭 시 genre_selector 슬라이드 토글
+    $('#genre_link').click(function (event) {
+        event.preventDefault();
+
+        // #genre_selector 슬라이드 토글
+        $('#genre_selector').slideToggle(function () {
+            // 슬라이드 상태에 따라 border-bottom 토글
+            if ($('#genre_selector').is(':visible')) {
+                $('.nav_areaO2').css('border-bottom', '1px solid gainsboro');
+            } else {
+                $('.nav_areaO2').css('border-bottom', 'none');
+            }
+        });
+    });
+
+    // 다른 링크를 클릭하면 genre_selector 닫기 및 border 제거
+    $('nav.main_category a').not('#genre_link').click(function () {
+        $('#genre_selector').slideUp(function () {
+            $('.nav_areaO2').css('border-bottom', 'none');
+        });
+    });
+});
+//==================
+
+$(document).ready(function() {
+
+    $('#mypage_link').click(function(event) {
+        event.preventDefault();
+        $('#mypage_selector').slideToggle();
+    });
+
+    $('nav.main_category a').not('#mypage_link').click(function() {
+        $('#mypage_selector').slideUp();
+    });
+});
+
+//============================================
 
 $(document).ready(function() {
     $(".main_category a").click(function() {
@@ -26,45 +79,124 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-    let currentIndex = 0; // 현재 슬라이드 인덱스
-    const slideWidth = 1200; // 각 슬라이드 그룹의 너비
-    const totalSlides = $('.image_wrapper').length; // 전체 슬라이드 그룹 개수
-
-    // 이전 버튼 클릭
-    $('.prev').click(function() {
-        if (currentIndex > 0) {
-            currentIndex--; // 슬라이드를 이전으로
-            $('.image_container').css('transform', 'translateX(' + (-currentIndex * slideWidth) + 'px)');
-            checkButtons(); // 버튼 상태 업데이트
-        }
+    $(".genre_selector a").click(function() {
+        $(".genre_selector a").removeClass("selected");
+        $(this).addClass("selected");
     });
-
-    // 다음 버튼 클릭
-    $('.next').click(function() {
-        if (currentIndex < totalSlides - 1) { // 마지막 슬라이드까지만 이동
-            currentIndex++; // 슬라이드를 다음으로
-            $('.image_container').css('transform', 'translateX(' + (-currentIndex * slideWidth) + 'px)');
-            checkButtons(); // 버튼 상태 업데이트
-        }
-    });
-
-    // 버튼 상태 확인 (이동할 공간이 없으면 버튼 숨기기)
-    function checkButtons() {
-        // 이전 버튼이 필요 없다면 숨기기
-        if (currentIndex === 0) {
-            $('.prev').hide();
-        } else {
-            $('.prev').show();
-        }
-
-        // 다음 버튼이 필요 없다면 숨기기
-        if (currentIndex === totalSlides - 1) {
-            $('.next').hide();
-        } else {
-            $('.next').show();
-        }
-    }
-
-    // 페이지 로드 시 초기 버튼 상태 설정
-    checkButtons();
 });
+
+$(document).ready(function() {
+    $(".mypage_selector a").click(function() {
+        $(".mypage_selector a").removeClass("selected");
+        $(this).addClass("selected");
+    });
+});
+
+
+//======================================
+//main webtoonList where genre order by readcountT
+
+var loginUser = {
+    gender: `${loginUser != null ? loginUser.gender : "N"}` // 로그인하지 않은 경우 "N"으로 설정
+};
+
+$(function () {
+    // 페이지 로드 시 초기 데이터 로드
+    loadWebtoonsByGenre(2); // 기본 장르를 2로 설정하여 호출 (필요시 변경 가능)
+
+    // 장르 버튼 클릭 이벤트
+    $('.genre_button').click(function (event) {
+        event.preventDefault(); // 기본 링크 동작 방지
+
+        var genre = $(this).data('genre'); // 선택한 장르 값
+        console.log('선택된 장르:', genre);
+        console.log('로그인 유저 성별:', loginUser.gender);
+
+        loadWebtoonsByGenre(genre); // 클릭한 장르로 웹툰 목록 로드
+    });
+
+    // AJAX를 이용한 데이터 로드 함수
+    function loadWebtoonsByGenre(genre) {
+        $.ajax({
+            url: `/readCountByGenre`, // AJAX 요청 URL
+            type: "GET",
+            async: true,
+            data: { genre: genre, gender: loginUser.gender }, // 요청 시 장르 및 성별 데이터 전송
+            timeout: 10000,
+            success: function (response) {
+                console.log('서버 응답:', response);
+
+                // 서버에서 받은 데이터로 HTML 생성
+                let html = '';
+                response.forEach(function (rcg) {
+                    html += `
+                        <div class="genre_item">
+                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}" >
+                                <img src="/images/webtoon/webtoon_images/title_img/${rcg.image}" style="width: 150px" />
+                            </a>
+                            <a href="webtoon_view?wseq=${rcg.wseq}&gender=${loginUser.gender}" >
+                                ${rcg.subject}
+                            </a>                    
+                            </div>
+                        </div>`;
+                });
+
+                // 결과를 DOM에 추가
+                $(".genre_img").html(html); // 기존 내용을 새 데이터로 교체
+            },
+            error: function (error) {
+                console.error('에러 발생:', error);
+            },
+        });
+    }
+});
+
+$(function () {
+    loadWebtoonsByGender('T');
+    $('.gender_button').click(function (event) {
+
+        event.preventDefault('T');
+
+        var gender=$(this).data('gender');
+        console.log(gender);
+
+        loadWebtoonsByGender(gender);
+
+    });
+
+    function loadWebtoonsByGender(gender){
+        $.ajax({
+            url:`/readCountByGender`,
+            type: 'GET',
+            async: true,
+            data: { gender:gender},
+            timeout: 10000,
+            success: function (response) {
+                console.log(response);
+
+                let html = '';
+                response.forEach(function (rbg, index) {
+                    html += `
+                        <div id="rank_list">
+                            <label>${index+1}</label>
+                            <div>
+                                <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}">
+                                    <img src="/images/webtoon/webtoon_images/title_img/${rbg.image}" style="width: 50px; padding-left: 10px;">
+                                </a>
+                                <a href="webtoon_view?wseq=${rbg.wseq}&gender=${loginUser.gender}" style="color: black" >
+                                    ${rbg.subject}
+                                </a>
+                            </div>
+                        </div>`;
+                });
+
+                $("#rank").html(html);
+            },
+            error: function (error) {
+                console.log(error);
+            },
+        });
+    }
+});
+
+
