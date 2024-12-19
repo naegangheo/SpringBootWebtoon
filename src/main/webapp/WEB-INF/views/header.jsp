@@ -103,7 +103,7 @@
             </div>
          </div>
             <div id="mypage_selector" class="mypage_selector">
-                <a href="#">회원탈퇴/수정</a>
+                <a href="updateMember">회원탈퇴/수정</a>
                 <a href="created">게시물 등록</a>
                 <a href="myQna">Q&A</a>
             </div>

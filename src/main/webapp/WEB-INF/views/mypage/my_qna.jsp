@@ -14,7 +14,7 @@
                 <h1>나의 Q&A</h1><button class="openFormButton" id="openFormButton">문의하기</button>
             </div>
             <div class="notice_content-wrap">
-                <div class="notice_title">
+                <div class="notice_title" style="border-top: none; font-weight: bold">
                     <div class="col-no">답변상태</div>
                     <div class="col-text" style="text-align: center">제목</div>
                     <div class="col-date">작성일</div>
@@ -41,7 +41,7 @@
                             <div></div>
                             <div class="qna-content">
                                 <div class="qna-content-main">
-                                    <div class="qna-text"><p>${qnaVO.content}</p></div>
+                                    <div class="qna-text">${qnaVO.content}</div>
                                     <div class="third"></div>
                                 </div>
                                 <div class="qna-edit-delete-button">
@@ -82,7 +82,7 @@
                     </c:forEach>
                 </div>
             </div>
-            <div class="paging" style="font-size: 14px">
+            <div class="paging" style="font-size: 14px;">
                 <!-- prev 버튼의 표시 여부 -->
                 <c:if test="${paging.prev}" >
                     <a href="myQna?page=${paging.beginPage-1}">◀</a>&nbsp;
@@ -125,10 +125,7 @@
                 <label for="subject">제목</label><br>
                 <input type="text" id="subject" name="subject" required>
             </div>
-            <div>
-                <label for="pwd">비밀번호</label><br>
-                <input type="password" id="pwd" name="pwd" required>
-            </div>
+
             <div>
                 <label for="content">내용</label><br>
                 <textarea id="content" name="content" rows="5" required></textarea>

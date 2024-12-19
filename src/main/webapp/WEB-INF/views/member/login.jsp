@@ -28,7 +28,7 @@
         <div class="bottom">
             <div class="bottom-group"><a href="agree">회원가입</a></div>
             <div class="bottom-group">|</div>
-            <div class="bottom-group"><a href="#">고객센터</a></div>
+            <div class="bottom-group"><a href="myQna">고객센터</a></div>
         </div>
         <div class="footer"><img src="images/member/ad_pet.png" alt="광고"></div>
         <div class="footer">Copyright © NAVER Corp. All Rights Reserved.</div>
