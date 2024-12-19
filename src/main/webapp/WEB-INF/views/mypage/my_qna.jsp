@@ -7,8 +7,8 @@
 <style>
 
 </style>
-<section> <%--width: 1200px;--%>
-    <div class="container"> <%--max-width: 1200px;--%>
+<section>
+    <div class="container">
         <div class="left">
             <div class="notice">
                 <h1>나의 Q&A</h1><button class="openFormButton" id="openFormButton">문의하기</button>
@@ -82,7 +82,7 @@
                     </c:forEach>
                 </div>
             </div>
-            <div class="paging">
+            <div class="paging" style="font-size: 14px">
                 <!-- prev 버튼의 표시 여부 -->
                 <c:if test="${paging.prev}" >
                     <a href="myQna?page=${paging.beginPage-1}">◀</a>&nbsp;
