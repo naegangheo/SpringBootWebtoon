@@ -15,7 +15,7 @@
 
     <div class="top">
         <div>Webtoon List</div>
-        <div>LOGO</div>
+        <div><a href="/">LOGO</a></div>
     </div>
 
     <div class="bottom">

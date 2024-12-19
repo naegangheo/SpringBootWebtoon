@@ -6,7 +6,7 @@
 
     <div class="top">
         <div>Q&A List</div>
-        <div>LOGO</div>
+        <div><a href="/">LOGO</a></div>
     </div>
     <form method="post" action="/adminQreplyInsert">
         <input type="hidden" name= "qseq" value="${qna.qseq}"/>
