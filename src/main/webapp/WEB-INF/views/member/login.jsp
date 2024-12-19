@@ -36,8 +36,9 @@
 </form>
 
 <script>
-    $(document).ready(function() {
-        $('#loginButton').click(function() {
+    $(document).ready(function () {
+        // 로그인 버튼 클릭 이벤트
+        $('#loginButton').click(function () {
             // 에러 메시지 초기화
             $('#errorMessage').text('');
 
@@ -62,7 +63,7 @@
                         userid: userid,
                         pwd: password
                     },
-                    success: function(response) {
+                    success: function (response) {
                         if (response.success) {
                             // 로그인 성공 시
                             window.location.href = response.redirectUrl; // 리다이렉트
@@ -71,14 +72,23 @@
                             $('#errorMessage').text(response.message);
                         }
                     },
-                    error: function() {
+                    error: function () {
                         $('#errorMessage').text('로그인 요청 중 문제가 발생했습니다.');
                     }
                 });
             }
         });
+
+        // Enter 키를 눌렀을 때 로그인 버튼 클릭
+        $('#loginForm').on('keypress', function (e) {
+            if (e.which === 13) { // Enter 키의 keyCode는 13
+                $('#loginButton').click(); // 로그인 버튼 클릭 이벤트 호출
+                e.preventDefault(); // 기본 Enter 동작(폼 제출 방지)
+            }
+        });
     });
 </script>
+
 
 
 </body>
