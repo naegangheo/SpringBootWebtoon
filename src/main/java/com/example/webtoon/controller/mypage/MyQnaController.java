@@ -50,20 +50,24 @@ public class MyQnaController {
             return "redirect:/login";
         }
 
-        // 유효성 검사
+        qnaVO.setUserid(loginUser.getUserid());
+
+        // pwd 필드에 기본값 설정
+        if (qnaVO.getPwd() == null) {
+            qnaVO.setPwd("1");
+        }
+
         if (qnaVO.getQseq() == null) {
-            // 신규 QnA 작성
-            qnaVO.setUserid(loginUser.getUserid());
             qnaService.insertQna(qnaVO);
         } else {
-            // QnA 수정
-            qnaVO.setUserid(loginUser.getUserid());
             qnaService.updateQna(qnaVO);
         }
 
         redirectAttributes.addFlashAttribute("message", "처리가 완료되었습니다.");
         return "redirect:/myQna";
     }
+
+
 
     @PostMapping("/deleteQna")
     public String deleteQna(@RequestParam("qseq") int qseq, HttpSession session, RedirectAttributes rttr) {
